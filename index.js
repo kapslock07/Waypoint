@@ -1,14 +1,8 @@
 const express = require("express");
 const path = require("path");
-const mongoose = require("mongoose");
+require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 const app = express();
-
-
-mongoose.connect('mongodb://localhost/gamedb', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
 
 app.use([
   express.urlencoded({ extended: true }),
