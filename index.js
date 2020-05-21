@@ -5,8 +5,8 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use([
-    express.urlencoded({ extended: true }),
-    express.json()
+  express.urlencoded({ extended: true }),
+  express.json()
 ]);
 
 if (process.env.NODE_ENV === "production") {
