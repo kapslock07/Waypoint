@@ -11,8 +11,8 @@ mongoose.connect('mongodb://localhost/gamedb', {
 });
 
 app.use([
-    express.urlencoded({ extended: true }),
-    express.json()
+  express.urlencoded({ extended: true }),
+  express.json()
 ]);
 
 if (process.env.NODE_ENV === "production") {
