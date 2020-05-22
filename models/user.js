@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
   User.associate = models => {
-    User.belongsTo(models.Games, {});
+    User.belongsTo(models.Games);
   };
   return User;
 };
