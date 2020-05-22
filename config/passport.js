@@ -1,6 +1,7 @@
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var db = require("../models");
 
@@ -35,6 +36,22 @@ passport.use(new LocalStrategy(
     }
 ));
 
+// Use the GoogleStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and Google
+//   profile), and invoke a callback with a user object.
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://www.example.com/auth/google/callback" //Need to figure out the proper config for this
+},
+    function (accessToken, refreshToken, profile, done) {
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+            return done(err, user);
+        });
+    }
+));
+
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
@@ -47,19 +64,5 @@ passport.deserializeUser(function (obj, cb) {
 });
 
 
-// passport.use('provider', new OAuth2Strategy({
-//     authorizationURL: 'https://www.provider.com/oauth2/authorize',
-//     tokenURL: 'https://www.provider.com/oauth2/token',
-//     clientID: '123-456-789',
-//     clientSecret: 'shhh-its-a-secret',
-//     callbackURL: 'https://www.example.com/auth/provider/callback'
-//   },
-//   function(accessToken, refreshToken, profile, done) {
-//     User.findOrCreate(..., function(err, user) {
-//       done(err, user);
-//     });
-//   }
-// ));
 
-// Exporting our configured passport
 module.exports = passport;
