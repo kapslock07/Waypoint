@@ -1,5 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Navbar } from 'react-bootstrap';
+import SampleImg from "../../assets/images/samplelogo.jpg";
+
+import "./style.css";
 
 
 
@@ -7,10 +11,16 @@ function Nav() {
     const location = useLocation();
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light mb-4">
-            <a className="navbar-brand text-dark" href="#">
-                Cool Logo Here
-                 </a>
+        <nav className="navbar navbar-expand-lg navbar-dark mb-4 py-4">
+            <Navbar.Brand href="#home">
+                <img
+                    src={SampleImg}
+                    width="75"
+                    height="75"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                />
+            </Navbar.Brand>
             <button
                 className="navbar-toggler"
                 type="button"
@@ -38,15 +48,15 @@ function Nav() {
                             location.pathname === "/" ? "nav-link active" : "nav-link"
                         }
                     >
-                        Search
+                        Home
                     </Link>
                     <Link
                         to="/saved"
                         className={
-                            location.pathname === "/saved" ? "nav-link active" : "nav-link"
+                            location.pathname === "/chats" ? "nav-link active" : "nav-link"
                         }
                     >
-                        Saved
+                        Chat
                     </Link>
                 </div>
             </div>
