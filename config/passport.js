@@ -43,7 +43,7 @@ passport.use(new LocalStrategy(
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://www.example.com/auth/google/callback" //Need to figure out the proper config for this
+    callbackURL: "http://localhost:3000/auth/google/callback" //Need to figure out the proper config for this
 },
     function (accessToken, refreshToken, profile, done) {
         User.findOrCreate({ googleId: profile.id }, function (err, user) {
