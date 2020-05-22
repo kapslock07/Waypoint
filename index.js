@@ -16,6 +16,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+//including API routes here, passes server and db through to routes
+require("./routes/apiRoutes")(app, db);
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
