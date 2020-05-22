@@ -2,14 +2,17 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Feed from "./pages/Home";
 import Chat from "./pages/Chat";
-import Nav from "./components/Nav";
+import Login from "./components/Login";
+
+// import Nav from "./components/Nav";
 
 function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
+          <Login />
           <Route exact path={["/", "/home"]}>
             <Feed />
           </Route>

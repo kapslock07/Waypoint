@@ -1,0 +1,18 @@
+html {
+    /* The image used */
+    background-image: url("../../assets/images/callofduty.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Button {
+    position: center;
+}
+
+.FormGroup {
+    position: center;
+}
