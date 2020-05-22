@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     
     //Id of game
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
@@ -21,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     //image for game
     image: {
+        type: DataTypes.STRING,
         allowNull: true,
         defaultValue: "none"
     }
