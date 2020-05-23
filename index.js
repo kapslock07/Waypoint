@@ -18,6 +18,9 @@ if (process.env.NODE_ENV === "production") {
 
 //including API routes here, passes server and db through to routes
 require("./routes/apiRoutes")(app, db);
+//including authentication routes here
+require("./routes/authenticationRoute");
+
 
 
 app.get("*", (req, res) => {
@@ -25,8 +28,8 @@ app.get("*", (req, res) => {
 });
 
 
-db.sequelize.sync( { force: true } ).then(function() { //syncs our models to database, remove 'force: true' in production so we dont destroy our data
-  app.listen(PORT, function() {
+db.sequelize.sync({ force: true }).then(function () { //syncs our models to database, remove 'force: true' in production so we dont destroy our data
+  app.listen(PORT, function () {
     console.log("🚀  API server now on port", PORT);
   });
 });
