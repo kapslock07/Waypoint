@@ -38,36 +38,41 @@ function Nav() {
                     <button className="gameSearchButton btn btn-outline-light my-2 my-sm-0"
                         type="submit">Search</button>
                 </Form.Group>
-                {/* <form className="form-inline my-2 my-lg-0 mx-auto">
-                    <input className="gameSearchInput form-control mr-sm-2" type="search" placeholder="Search For A Game"
-                        aria-label="Search">
-                    </input>
-                    <button className="gameSearchButton btn btn-outline-light my-2 my-sm-0"
-                        type="submit">Search</button>
-                </form> */}
 
                 <div className="navbar-nav">
                     <Link
-                        to="/"
+                        to="/home"
                         className={
-                            location.pathname === "/" ? "nav-link active" : "nav-link"
+                            location.pathname === "/home" ? "nav-link active" : "nav-link"
                         }
                     >
                         <div className="mx-4">
-                            <i className="fa fa-3x fa-gamepad d-flex justify-content-center"></i>
+                            <i className="fa fa-2x fa-gamepad d-flex justify-content-center"></i>
                             <h5>Home</h5>
                         </div>
                     </Link>
                     <Link
-                        to="/saved"
+                        to="/chat"
                         className={
-                            location.pathname === "/chats" ? "nav-link active" : "nav-link"
+                            location.pathname === "/chat" ? "nav-link active" : "nav-link"
                         }
 
                     >
                         <div className="mx-4">
-                            <i className="fa fa-3x fa-comments d-flex justify-content-center"></i>
+                            <i className="fa fa-2x fa-comments d-flex justify-content-center"></i>
                             <h5>Chat</h5>
+                        </div>
+                    </Link>
+                    <Link
+                        to="/profile"
+                        className={
+                            location.pathname === "/profile" ? "nav-link active" : "nav-link"
+                        }
+
+                    >
+                        <div className="mx-4">
+                            <i className="fa fa-2x fa-user-circle d-flex justify-content-center"></i>
+                            <h5>Profile</h5>
                         </div>
                     </Link>
                 </div>

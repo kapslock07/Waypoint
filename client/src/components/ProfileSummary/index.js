@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "../Grid";
 
-function Profile() {
+function ProfileSummary() {
     return (
         <Container fluid>
             <Row>
@@ -18,4 +18,4 @@ function Profile() {
     );
 }
 
-export default Profile;
+export default ProfileSummary;
