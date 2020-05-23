@@ -16,14 +16,13 @@ function Profile() {
                         <h3 className="mt-5">Favorite Games</h3>
                         <div className="mt-2">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQFWPIbG508gT06CyihUonzG1fWZwK6TcMLDfC8YB1mA3t6kCTS&usqp=CAU" alt="User Image" width="100" height="100"></img>
-
                             <span className="mr-3"> Rocket League </span>
                         </div>
                         <div className="mt-2">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR7dSK4WGwixhn3M2J40ekgaWs05P2WXnXusL1vLccNFy9EQYhO&usqp=CAU" alt="User Image" width="100" height="100"></img>
                             <span className="mr-3"> Battlefield V </span>
                         </div>
-
+                        <h3 className="mt-5"><u>Logout</u></h3>
                     </div>
                 </Col>
             </Row >
