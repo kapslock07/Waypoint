@@ -4,13 +4,15 @@ import Feed from "./pages/Home";
 import Chat from "./pages/Chat";
 import Login from "./components/Login";
 
-// import Nav from "./components/Nav";
+import Nav from "./components/Nav";
+import "./App.css";
+
 
 function App() {
   return (
     <Router>
       <div>
-        {/* <Nav /> */}
+        <Nav />
         <Switch>
           <Login />
           <Route exact path={["/", "/home"]}>
