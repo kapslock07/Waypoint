@@ -28,6 +28,9 @@
 		"passport-http-bearer": "^1.0.1",
 		"passport-local": "^1.0.0",
 		"passport-oauth": "^1.0.0",
-		"react-router-dom": "^5.2.0"
+		"react-router-dom": "^5.2.0",
+		"mysql2": "^2.1.0",
+		"sequelize": "^5.21.10",
+		"bootstrap": "^4.5.0"
 	}
 }
