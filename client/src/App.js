@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Feed from "./pages/Home";
 import Chat from "./pages/Chat";
 import Nav from "./components/Nav";
+import "./App.css";
+
 
 function App() {
   return (
