@@ -34,8 +34,8 @@ function Nav() {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <form class="form-inline md-form mr-auto mb-4 mx-auto">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"></input>
-                    <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search For Games" aria-label="Search"></input>
+                    <button class="btn aqua-gradient btn-rounded btn-sm my-0 text-dark" type="submit"><strong>Search</strong></button>
                 </form>
 
                 <div className="navbar-nav">

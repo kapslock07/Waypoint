@@ -4,7 +4,9 @@
   border-image-slice: 1;
   border-width: 0px 5px 0px 0px;
   border-image-source: linear-gradient(to top, #05ffa3, #2096ff);
+  height: 100%;
 }
+
 
 
 
