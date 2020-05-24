@@ -1,7 +1,8 @@
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
-// var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
-// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+require("dotenv").config();
 
 var db = require("../models");
 
@@ -40,17 +41,17 @@ passport.use(new LocalStrategy(
 //   Strategies in Passport require a `verify` function, which accept
 //   credentials (in this case, an accessToken, refreshToken, and Google
 //   profile), and invoke a callback with a user object.
-// passport.use(new GoogleStrategy({
-//     clientID: GOOGLE_CLIENT_ID,
-//     clientSecret: GOOGLE_CLIENT_SECRET,
-//     callbackURL: "http://localhost:3000/auth/google/callback" //Need to figure out the proper config for this
-// },
-//     function (accessToken, refreshToken, profile, done) {
-//         User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//             return done(err, user);
-//         });
-//     }
-// ));
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "https://localhost:3001/auth/google/callback" //Need to figure out the proper config for this
+},
+    function (accessToken, refreshToken, profile, done) {
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+            return done(err, user);
+        });
+    }
+));
 
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user
