@@ -1,7 +1,10 @@
 nav {
-    background-color: #2cb5e8;
+/* background-color: #2cb5e8; */
+border: 10px solid;
+border-image-slice: 1;
+border-width: 0px 0px 5px 0px;
+border-color: #2096ff
 }
 
-.gameSearchInput {
-    width: 100px;
-}
+
+

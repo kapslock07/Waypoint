@@ -1,12 +1,14 @@
 import React from "react";
 import { Col, Row, Container } from "../Grid";
+import "./style.css";
+
 
 function ProfileSummary() {
     return (
         <Container fluid>
-            <Row>
-                <Col size="md-12">
-                    <div className="text-center border border-primary p-4">
+            <Row >
+                <Col size="md-12" >
+                    <div className="text-center p-4 profileSummary z-depth-2">
                         <h1 className="mb-4">Profile Summary</h1>
                         <h3>Primary Console</h3>
                         <img src="https://www.clipartkey.com/mpngs/m/178-1788860_clip-art-logo-ps4-png-ps4-playstation-4.png" alt="User Image" width="100" height="100"></img>

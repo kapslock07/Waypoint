@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Navbar, Form } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import SampleImg from "../../assets/images/samplelogo.jpg";
 
 import "./style.css";
@@ -11,7 +11,7 @@ function Nav() {
     const location = useLocation();
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark mb-4 py-4">
+        <nav className="navbar navbar-expand-lg mb-4 py-4 z-depth-2">
             <Navbar.Brand href="#home">
                 <img
                     src={SampleImg}
@@ -33,11 +33,10 @@ function Nav() {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <Form.Group className="form-inline my-2 my-lg-0 mx-auto">
-                    <Form.Control size="lg" type="text" placeholder="Search For A Game" className="gameSearchInput form-control mr-sm-2" />
-                    <button className="gameSearchButton btn btn-outline-light my-2 my-sm-0"
-                        type="submit">Search</button>
-                </Form.Group>
+                <form class="form-inline md-form mr-auto mb-4 mx-auto">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"></input>
+                    <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+                </form>
 
                 <div className="navbar-nav">
                     <Link
