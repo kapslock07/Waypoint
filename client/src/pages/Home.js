@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import Profile from "../components/Profile";
+import ProfileSummary from "../components/ProfileSummary";
 import Feed from "../components/Feed";
 import Trending from "../components/Trending";
 
@@ -9,7 +9,7 @@ function Home() {
         <Container fluid>
             <Row>
                 <Col size="md-3">
-                    <Profile />
+                    <ProfileSummary />
                 </Col>
                 <Col size="md-6">
                     <Feed />
