@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "production") {
 //including API routes here, passes server and db through to routes
 require("./routes/apiRoutes")(app, db);
 //including authentication routes here
-require("./routes/authenticationRoute")(app);
+require("./routes/authenticationRoute.js")(app);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
