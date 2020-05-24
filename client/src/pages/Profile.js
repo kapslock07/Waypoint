@@ -22,7 +22,8 @@ function Profile() {
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR7dSK4WGwixhn3M2J40ekgaWs05P2WXnXusL1vLccNFy9EQYhO&usqp=CAU" alt="User Image" width="100" height="100"></img>
                             <span className="mr-3"> Battlefield V </span>
                         </div>
-                        <h3 className="mt-5"><u>Logout</u></h3>
+                        <button className="logoutButton btn btn-outline-light mt-4"
+                            type="submit">Search</button>
                     </div>
                 </Col>
             </Row >

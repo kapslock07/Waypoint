@@ -72,7 +72,7 @@ function Nav() {
                     >
                         <div className="mx-4">
                             <i className="fa fa-2x fa-user-circle d-flex justify-content-center"></i>
-                            <h5>Profile</h5>
+                            <h5>Profile </h5>
                         </div>
                     </Link>
                 </div>
