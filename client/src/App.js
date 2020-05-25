@@ -1,8 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Feed from "./pages/Home";
+import Home from "./pages/Home";
+import Login from "./pages/Login"
 import Chat from "./pages/Chat";
-import Login from "./components/Login";
+import Profile from "./pages/Profile";
+
+//import Login from "./components/Login";
 
 import Nav from "./components/Nav";
 import "./App.css";
@@ -12,14 +15,16 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
         <Switch>
-          <Login />
-          <Route exact path={["/", "/home"]}>
-            <Feed />
+          <Route exact path="/" component={Login} />
+          <Route exact path="/home">
+            <Home />
           </Route>
           <Route exact path="/chat">
             <Chat />
+          </Route>
+          <Route exact path="/profile">
+            <Profile />
           </Route>
         </Switch>
       </div>

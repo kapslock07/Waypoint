@@ -1,0 +1,11 @@
+.trending {
+    /* background-color: #2cb5e8; */
+    border: 10px solid;
+  border-image-slice: 1;
+  border-width: 0px 0px 0px 5px;
+  /* NEED TO CHOOSE EITHER INSIDE OR FULL BORDER */
+  border-image-source: linear-gradient(to top, #05ffa3, #2096ff);
+}
+
+
+
