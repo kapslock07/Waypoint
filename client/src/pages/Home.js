@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Container, Row, Col } from 'react-bootstrap';
 import ProfileSummary from "../components/ProfileSummary";
 import Feed from "../components/Feed";
 import Trending from "../components/Trending";
@@ -8,13 +8,13 @@ function Home() {
     return (
         <Container fluid>
             <Row>
-                <Col size="md-3">
+                <Col xs={3}>
                     <ProfileSummary />
                 </Col>
-                <Col size="md-6">
+                <Col xs={6}>
                     <Feed />
                 </Col>
-                <Col size="md-3">
+                <Col xs={3}>
                     <Trending />
                 </Col>
             </Row>
