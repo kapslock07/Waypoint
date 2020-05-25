@@ -4,6 +4,8 @@ import ProfileSummary from "../components/ProfileSummary";
 import Feed from "../components/Feed";
 import Trending from "../components/Trending";
 import Nav from "../components/Nav";
+import { MDBAnimation } from "mdbreact";
+
 
 function Home() {
     return (
@@ -11,13 +13,17 @@ function Home() {
             <Nav />
             <Row>
                 <Col xs={3}>
-                    <ProfileSummary />
+                    <MDBAnimation type="slideInLeft">
+                        <ProfileSummary />
+                    </MDBAnimation>
                 </Col>
                 <Col xs={6}>
                     <Feed />
                 </Col>
                 <Col xs={3}>
-                    <Trending />
+                    <MDBAnimation type="slideInRight">
+                        <Trending />
+                    </MDBAnimation>
                 </Col>
             </Row>
         </Container>

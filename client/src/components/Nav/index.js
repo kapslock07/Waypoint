@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
 import SampleImg from "../../assets/images/samplelogo.jpg";
-
 import "./style.css";
 
 
@@ -11,8 +10,8 @@ function Nav() {
     const location = useLocation();
 
     return (
-        <nav className="navbar navbar-light fixed-top navbar-expand-lg navbar-primary mb-4 py-4 z-depth-2">
-            <Navbar.Brand href="#home">
+        <nav className="navbar fixed-top navbar-expand-lg mb-4 z-depth-2">
+            <Navbar.Brand href="/home">
                 <img
                     src={SampleImg}
                     width="100"
@@ -33,13 +32,14 @@ function Nav() {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <form class="form-inline md-form mr-auto mb-4 mx-auto">
+                <form class="form-inline md-form mb-4 mx-auto">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search For Games" aria-label="Search"></input>
-                    <button class="btn aqua-gradient btn-rounded btn-sm my-0 text-dark" type="submit"><strong>Search</strong></button>
+                    <button class="btn aqua-gradient btn-rounded btn-sm my-0 text-light " type="submit"><strong>Search</strong></button>
                 </form>
 
-                <div className="navbar-nav">
+                <div className="navbar-nav justify-content-end text-light">
                     <Link
+                        style={{ color: "#2096ff" }}
                         to="/home"
                         className={
                             location.pathname === "/home" ? "nav-link active" : "nav-link"
@@ -51,6 +51,8 @@ function Nav() {
                         </div>
                     </Link>
                     <Link
+                        style={{ color: "#2096ff" }}
+
                         to="/chat"
                         className={
                             location.pathname === "/chat" ? "nav-link active" : "nav-link"
@@ -63,6 +65,7 @@ function Nav() {
                         </div>
                     </Link>
                     <Link
+                        style={{ color: "#2096ff" }}
                         to="/profile"
                         className={
                             location.pathname === "/profile" ? "nav-link active" : "nav-link"
