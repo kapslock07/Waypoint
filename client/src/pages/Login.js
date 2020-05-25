@@ -7,25 +7,24 @@ const Login = () => {
     return (
         <MDBContainer>
             <MDBRow>
-                <MDBCol md="6">
+                <MDBCol lg="6">
                     <Carousel />
                 </MDBCol>
-                <MDBCol md="6">
+                <MDBCol lg="6">
                     <MDBCard>
                         <div className="header pt-3 grey-gradient">
                             <MDBRow className="d-flex justify-content-center">
                                 <img src={Logo} />
                             </MDBRow>
                         </div>
-                        <MDBCardBody className="mx-4 mt-4" style={{ marginTop: "20px" }}>
+                        <MDBCardBody className="mx-4 mt-4">
                             <MDBRow className="d-flex align-items-center mb-4 mt-5">
                                 <MDBCol md="5" className="d-flex align-items-start">
                                     <div className="text-center">
                                         <MDBBtn
-                                            color="blue"
                                             rounded
                                             type="button"
-                                            className="z-depth-1a"
+                                            className="z-depth-1a aqua-gradient"
                                         >
                                             Log in
                     </MDBBtn>
@@ -36,7 +35,7 @@ const Login = () => {
                                         color="red"
                                         rounded
                                         type="button"
-                                        className="z-depth-1a"
+                                        className="z-depth-1a aqua-gradient"
                                     >
                                         Sign Up
                     </MDBBtn>

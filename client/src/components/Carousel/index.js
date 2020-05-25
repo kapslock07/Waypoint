@@ -55,8 +55,6 @@ function TestScreen9(props) {
 const testScreens = [TestScreen1, TestScreen2, TestScreen3, TestScreen4, TestScreen5, TestScreen6, TestScreen7, TestScreen8, TestScreen9,];
 
 const Container = styled("div")`
-  height: 400px;
-  position: relative;
   width: 100%;
   cursor: pointer;
   & > div {
@@ -64,6 +62,7 @@ const Container = styled("div")`
     position: absolute;
     width: 100%;
     height: 100%;
+    clear: both;
   }
   max-width: 100%;
 `;
