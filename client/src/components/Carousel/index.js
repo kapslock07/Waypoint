@@ -1,9 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Image1 from "../../assets/images/animalcrossing.jpg"
-import Image2 from "../../assets/images/rocketleague.jpg"
+import Image2 from "../../assets/images/halo.jpg"
 import Image3 from "../../assets/images/fifa20.jpeg"
-
+import Image4 from "../../assets/images/callofduty.jpg"
+import Image5 from "../../assets/images/rocketleague.jpg"
+import Image6 from "../../assets/images/overwatch.jpg"
+import Image7 from "../../assets/images/NBA.jpg"
+import Image8 from "../../assets/images/apex.jpg"
+import Image9 from "../../assets/images/destiny2.jpg"
 
 import { jsx } from "@emotion/core";
 import styled from "@emotion/styled";
@@ -16,22 +21,38 @@ const TestScreen = styled("div")`
   justify-content: center;
   align-items: center;
   background-image: url(${props => props.imgUrl})
- 
 `;
 
 function TestScreen1(props) {
     return <TestScreen imgUrl={Image1}> </TestScreen>;
 }
-
 function TestScreen2(props) {
     return <TestScreen imgUrl={Image2}> </TestScreen>;
 }
-
 function TestScreen3(props) {
     return <TestScreen imgUrl={Image3}> </TestScreen>;
 }
+function TestScreen4(props) {
+    return <TestScreen imgUrl={Image4}> </TestScreen>;
+}
+function TestScreen5(props) {
+    return <TestScreen imgUrl={Image5}> </TestScreen>;
+}
+function TestScreen6(props) {
+    return <TestScreen imgUrl={Image6}> </TestScreen>;
+}
+function TestScreen7(props) {
+    return <TestScreen imgUrl={Image7}> </TestScreen>;
+}
+function TestScreen8(props) {
+    return <TestScreen imgUrl={Image8}> </TestScreen>;
+}
+function TestScreen9(props) {
+    return <TestScreen imgUrl={Image9}> </TestScreen>;
+}
 
-const testScreens = [TestScreen1, TestScreen2, TestScreen3];
+
+const testScreens = [TestScreen1, TestScreen2, TestScreen3, TestScreen4, TestScreen5, TestScreen6, TestScreen7, TestScreen8, TestScreen9,];
 
 const Container = styled("div")`
   height: 400px;
@@ -54,7 +75,7 @@ class Carousel extends React.Component {
 
     toggle = e =>
         this.setState(state => ({
-            index: state.index === 2 ? 0 : state.index + 1
+            index: state.index === 8 ? 0 : state.index + 1
         }))
     render() {
         const { index } = this.state;
@@ -63,7 +84,7 @@ class Carousel extends React.Component {
             self.toggle()
         }, 5000)
         return (
-            <div>
+            <div style={{ height: "100vh" }}>
                 <Container >
                     <Transition
                         native
