@@ -11,7 +11,7 @@ function Nav() {
     const location = useLocation();
 
     return (
-        <nav className="navbar navbar-expand-lg mb-4 py-4 z-depth-2">
+        <nav className="navbar navbar-light fixed-top navbar-expand-lg navbar-primary mb-4 py-4 z-depth-2">
             <Navbar.Brand href="#home">
                 <img
                     src={SampleImg}
@@ -45,8 +45,8 @@ function Nav() {
                             location.pathname === "/home" ? "nav-link active" : "nav-link"
                         }
                     >
-                        <div className="mx-4">
-                            <i className="fa fa-2x fa-gamepad d-flex justify-content-center"></i>
+                        <div className="mx-4 text-center">
+                            <i className="fa fa-2x fa-gamepad"></i>
                             <h5>Home</h5>
                         </div>
                     </Link>
@@ -57,8 +57,8 @@ function Nav() {
                         }
 
                     >
-                        <div className="mx-4">
-                            <i className="fa fa-2x fa-comments d-flex justify-content-center"></i>
+                        <div className="mx-4 text-center">
+                            <i className="fa fa-2x fa-comments"></i>
                             <h5>Chat</h5>
                         </div>
                     </Link>
@@ -69,8 +69,10 @@ function Nav() {
                         }
 
                     >
-                        <div className="mx-4">
-                            <i className="fa fa-2x fa-user-circle d-flex justify-content-center"></i>
+                        <div className="mx-4 text-center">
+                            {/* <i className="fa fa-2x fa-user-circle d-flex justify-content-center"></i> */}
+                            <img src="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/2/2019/07/60698636_DATEBOOK_MER2018100515460770kahn0801.jpg" alt="User " width="33" height="33"></img>
+
                             <h5>Profile </h5>
                         </div>
                     </Link>

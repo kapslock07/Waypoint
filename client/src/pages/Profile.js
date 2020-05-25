@@ -11,7 +11,7 @@ function Profile() {
                     <Row>
                         <Col xs={12} className="text-center">
                             <h1>JerryGarcia's Profile</h1>
-                            <img className="mt-2 px-auto" src="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/2/2019/07/60698636_DATEBOOK_MER2018100515460770kahn0801.jpg" alt="User  " width="188" height="188"></img>
+                            <img className="mt-2 px-auto" src="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/2/2019/07/60698636_DATEBOOK_MER2018100515460770kahn0801.jpg" alt="User" width="188" height="188"></img>
                         </Col>
                     </Row >
                     <Row>

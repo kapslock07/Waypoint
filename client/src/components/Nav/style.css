@@ -3,7 +3,8 @@ nav {
 border: 10px solid;
 border-image-slice: 1;
 border-width: 0px 0px 5px 0px;
-border-color: #2096ff
+border-color: #2096ff;
+background-color: white;
 }
 
 
