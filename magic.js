@@ -1,81 +1,40 @@
-require("dotenv").config();
 const axios = require("axios");
 const fs = require("fs");
 
 
-let completeData = [];
-
-function grabData(){
+const searchTitle = "Rocket League" // change this to search
 
 
-    axios({
-        url: "https://api-v3.igdb.com/search/",
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'user-key': process.env.APIKEY
-        },
-        data: `fields *; search "Rocket League";`
-      })
-        .then(response => {
-            //console.log(response.data);
-            completeData = response.data;
+function readFromFile(){
+    fs.readFile("./seeds/cusjson.json", "utf-8", (err, data) => {
+        if (err) throw err;
 
-            completeData = grabCover(completeData);
-            console.log(completeData)
-        })
-        .catch(err => {
-            console.error(err);
-        });
-}
-
-function grabCover(data){
-
-     data.forEach( async e => {
-        let cover = await axiosCover(e.cover);
-        e.cover = cover;
+        console.log(JSON.parse(data));
+        searchGame(searchTitle, JSON.parse(data));
     });
-
-    return data;
 }
 
-function axiosCover(id){
+function searchGame(title, oldData){
+    axios.get(`https://api.rawg.io/api/games?search=${title}&page_size=1`).then(res => {
+    
+        //console.log(res.data.results[0])
+        data = res.data.results[0];
+        
+        writeToFile(data, oldData);
+    });
+}
 
-    return new Promise((resolve, reject) => {
+function writeToFile(data, oldData){
 
-        id ?
-            axios({
-                url: `https://api-v3.igdb.com/covers`,
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'user-key': process.env.APIKEY
-                },
-                data: `fields url,game; where id = ${id};`
-            })
-                .then(response => {
-                    console.log(response.data[0].url)
-                resolve(response.data[0].url);
-                })
-                .catch(err => {
-                    reject(err);
-                })
+    oldData.push(data);
 
-        : resolve("none");
+
+    fs.writeFile("./seeds/cusjson.json", JSON.stringify(oldData), (err) => {
+
+        err ? console.log(err) : console.log("success");
     })
 }
 
-//grabData();
 
-function searchGame(title){
-    axios.get(`https://api.rawg.io/api/games?search=${title}`).then(res => {
-    
-        console.log(res.data.results[0])
-        
-        writeToFile(data);
-    });
-}
 
-function writeToFile(data){
-
-}
+readFromFile();
