@@ -2,39 +2,39 @@ const axios = require("axios");
 const fs = require("fs");
 
 
-const searchTitle = "Rocket League" // change this to search
+let searchArray = [
+    "Rocket League",
+    "League of Legends",
+    "Counter-Strike Global Offensive",
+    "Call of Duty Warzone",
+    "Overwatch",
+    "Rainbow Six Siege"
+]
 
-
-function readFromFile(){
-    fs.readFile("./seeds/cusjson.json", "utf-8", (err, data) => {
-        if (err) throw err;
-
-        console.log(JSON.parse(data));
-        searchGame(searchTitle, JSON.parse(data));
-    });
-}
-
-function searchGame(title, oldData){
-    axios.get(`https://api.rawg.io/api/games?search=${title}&page_size=1`).then(res => {
+function start(){
     
-        //console.log(res.data.results[0])
-        data = res.data.results[0];
-        
-        writeToFile(data, oldData);
+    let oldData =  JSON.parse(fs.readFileSync("./seeds/cusjson.json", "utf-8"));
+
+    searchArray.forEach(async e => {
+        oldData.push(await loadSearch(e));
+        console.log("pushed");
+        console.log(oldData);
+        fs.writeFileSync("./seeds/cusjson.json", JSON.stringify(oldData));
     });
 }
 
-function writeToFile(data, oldData){
-
-    oldData.push(data);
-
-
-    fs.writeFile("./seeds/cusjson.json", JSON.stringify(oldData), (err) => {
-
-        err ? console.log(err) : console.log("success");
+function loadSearch(title){
+    return new Promise((resolve, reject) => {
+        searchGame(title).then(res => {
+            
+            resolve(res.data.results[0]);
+        });
     })
 }
 
+function searchGame(title){
+    return axios.get(`https://api.rawg.io/api/games?search=${title}&page_size=1`);
+}
 
+start();
 
-readFromFile();
