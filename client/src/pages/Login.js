@@ -1,33 +1,53 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import Logo from "../assets/images/samplelogo.jpg"
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon } from 'mdbreact';
 import Carousel from "../components/Carousel"
 
-
-export default function Login() {
+const Login = () => {
     return (
-        <div>
-            <MDBContainer>
-                <MDBRow>
-                    <MDBCol md="12">
-                        <Carousel />
-                    </MDBCol>
-                    {/* <MDBCol md="6"> */}
-                    <div>
-                        <form>
-                            <p className="h5 text-center mb-4">Sign in</p>
-                            <div className="grey-text">
-                                <MDBInput label="Type your email" icon="envelope" group type="email" validate error="wrong"
-                                    success="right" />
-                                <MDBInput label="Type your password" icon="lock" group type="password" validate />
-                            </div>
-                            <div className="text-center">
-                                <MDBBtn>Login</MDBBtn>
-                            </div>
-                        </form>
-                    </div>
-                    {/* </MDBCol> */}
-                </MDBRow>
-            </MDBContainer>
-        </div>
-    )
-}
+        <MDBContainer>
+            <MDBRow>
+                <MDBCol lg="6">
+                    <Carousel />
+                </MDBCol>
+                <MDBCol lg="6">
+                    <MDBCard>
+                        <div className="header pt-3 grey-gradient">
+                            <MDBRow className="d-flex justify-content-center">
+                                <img src={Logo} />
+                            </MDBRow>
+                        </div>
+                        <MDBCardBody className="mx-4 mt-4">
+                            <MDBRow className="d-flex align-items-center mb-4 mt-5">
+                                <MDBCol md="5" className="d-flex align-items-start">
+                                    <div className="text-center">
+                                        <MDBBtn
+                                            rounded
+                                            type="button"
+                                            className="z-depth-1a aqua-gradient"
+                                        >
+                                            Log in
+                    </MDBBtn>
+                                    </div>
+                                </MDBCol>
+                                <MDBCol md="7" className="d-flex justify-content-end">
+                                    <MDBBtn
+                                        color="red"
+                                        rounded
+                                        type="button"
+                                        className="z-depth-1a aqua-gradient"
+                                    >
+                                        Sign Up
+                    </MDBBtn>
+                                </MDBCol>
+                            </MDBRow>
+                        </MDBCardBody>
+                    </MDBCard>
+                </MDBCol>
+            </MDBRow>
+        </MDBContainer >
+    );
+};
+
+export default Login;
+
