@@ -5,9 +5,7 @@ import Login from "./pages/Login"
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 
-//import Login from "./components/Login";
 
-import Nav from "./components/Nav";
 import "./App.css";
 
 

@@ -7,5 +7,9 @@ border-color: #2096ff;
 background-color: white;
 }
 
+.nav-link:hover {
+    color: #05ffa3;
+}
+
 
 
