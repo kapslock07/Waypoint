@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 function Card(props) {
     return (
@@ -6,7 +7,7 @@ function Card(props) {
             <div className="card-header text-dark">
                 <h2>{props.heading}</h2>
             </div>
-            <div className="card-body text-secondary">{props.children}</div>
+            <p className="card-body">{props.children}</p>
         </div>
     );
 }
