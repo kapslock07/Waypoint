@@ -13,17 +13,20 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
     },
-    //Game Description
-    desc: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        defaultValue: "No Description Available"
+    platforms: {
+      type: DataTypes.STRING
     },
     //image for game
     image: {
         type: DataTypes.STRING,
         allowNull: true,
         defaultValue: "none"
+    },
+    short_screenshots: {
+      type: DataTypes.STRING
+    },
+    genres: {
+      type: DataTypes.STRING
     }
   });
 
