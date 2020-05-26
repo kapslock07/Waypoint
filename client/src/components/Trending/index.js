@@ -12,6 +12,21 @@ function Trending() {
                         <p>Animal Crossing</p>
                         <p>MLB The Show 20</p>
                         <p>Last of Us Part 2</p>
+                        <p>Animal Crossing</p>
+                        <p>MLB The Show 20</p>
+                        <p>Last of Us Part 2</p>
+                        <p>Animal Crossing</p>
+                        <p>MLB The Show 20</p>
+                        <p>Last of Us Part 2</p>
+                        <p>Animal Crossing</p>
+                        <p>MLB The Show 20</p>
+                        <p>Last of Us Part 2</p>
+                        <p>Animal Crossing</p>
+                        <p>MLB The Show 20</p>
+                        <p>Last of Us Part 2</p>
+                        <p>Animal Crossing</p>
+                        <p>MLB The Show 20</p>
+                        <p>Last of Us Part 2</p>
                     </div>
                 </Col>
             </Row>

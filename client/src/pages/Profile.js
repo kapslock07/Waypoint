@@ -1,9 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
+import Nav from "../components/Nav";
 
 function Profile() {
     return (
         <Container fluid>
+            <Nav />
+
             <Row>
                 <Col xs={4}>
                 </Col>

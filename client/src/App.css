@@ -2,10 +2,10 @@
 body {
   /* background-color: rgb(39, 39, 39);
   color: rgb(216, 215, 215); */
- 
+  background-image: linear-gradient(to bottom, white, #a8a8a8);
+
     padding-top: 200px; 
 }
-
 
 
 
