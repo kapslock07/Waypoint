@@ -47,9 +47,12 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:3001/auth/google/callback"
 },
     function (accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-            return done(err, user);
-        });
+        console.log(profile)
+        db.GoogleUser.findOrCreate({ where: { googleId: profile.id }, defaults: { googleId: profile.id } })
+            .then(dbUser => {
+                console.log("The user object is ", dbUser);
+                return done(null, dbUser)
+            });
     }
 ));
 

@@ -32,7 +32,10 @@ module.exports = app => {
     //   the user to google.com.  After authorization, Google will redirect the user
     //   back to this application at /auth/google/callback
     app.get('/auth/google',
-        passport.authenticate('google', { scope: 'https://www.google.com/m8/feeds' }))
+        passport.authenticate('google', {
+            scope: ['https://www.googleapis.com/auth/userinfo.email',
+                'https://www.googleapis.com/auth/userinfo.profile']
+        }))
 
     // GET /auth/google/callback
     //   Use passport.authenticate() as route middleware to authenticate the
