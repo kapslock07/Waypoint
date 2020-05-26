@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Container, Row, Col } from 'react-bootstrap';
 import Nav from "../components/Nav";
 
 function Chat() {
@@ -7,7 +7,7 @@ function Chat() {
         <Container fluid>
             <Nav />
             <Row>
-                <Col size="md-12">
+                <Col xs={12}>
 
                 </Col>
             </Row>
