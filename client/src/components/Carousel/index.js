@@ -7,7 +7,7 @@ import Image4 from "../../assets/images/callofduty.jpg"
 import Image5 from "../../assets/images/rocketleague.jpg"
 import Image6 from "../../assets/images/overwatch.jpg"
 import Image7 from "../../assets/images/NBA.jpg"
-import Image8 from "../../assets/images/apex.jpg"
+import Image8 from "../../assets/images/fortnite.jpeg"
 import Image9 from "../../assets/images/destiny2.jpg"
 
 import { jsx } from "@emotion/core";
@@ -15,11 +15,9 @@ import styled from "@emotion/styled";
 import { Transition, animated } from "react-spring/renderprops";
 
 const TestScreen = styled("div")`
-  width: 100%;
+  width: 100;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   background-image: url(${props => props.imgUrl})
 `;
 
@@ -51,8 +49,7 @@ function TestScreen9(props) {
     return <TestScreen imgUrl={Image9}> </TestScreen>;
 }
 
-
-const testScreens = [TestScreen1, TestScreen2, TestScreen3, TestScreen4, TestScreen5, TestScreen6, TestScreen7, TestScreen8, TestScreen9,];
+const testScreens = [TestScreen1, TestScreen2, TestScreen3, TestScreen4, TestScreen5, TestScreen6, TestScreen7, TestScreen8, TestScreen9];
 
 const Container = styled("div")`
   width: 100%;

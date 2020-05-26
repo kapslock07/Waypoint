@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assets/images/samplelogo.jpg"
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn } from 'mdbreact';
+import Modal from 'react-bootstrap/Modal'
 import Carousel from "../components/Carousel"
+
+const [show, setShow] = useState(false);
+const handleShow = () => setShow(true);
+
 
 const Login = () => {
     return (
@@ -24,7 +29,7 @@ const Login = () => {
                                         <MDBBtn
                                             rounded
                                             type="button"
-                                            className="z-depth-1a aqua-gradient"
+                                            className="z-depth-2 aqua-gradient"
                                         >
                                             Log in
                     </MDBBtn>
@@ -32,10 +37,10 @@ const Login = () => {
                                 </MDBCol>
                                 <MDBCol md="7" className="d-flex justify-content-end">
                                     <MDBBtn
-                                        color="red"
                                         rounded
                                         type="button"
-                                        className="z-depth-1a aqua-gradient"
+                                        className="z-depth-2 aqua-gradient"
+                                        onClick={handleShow}
                                     >
                                         Sign Up
                     </MDBBtn>
