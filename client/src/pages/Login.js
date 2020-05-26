@@ -4,8 +4,8 @@ import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn } from 'mdbr
 import Modal from 'react-bootstrap/Modal'
 import Carousel from "../components/Carousel"
 
-const [show, setShow] = useState(false);
-const handleShow = () => setShow(true);
+// const [show, setShow] = useState(false);
+// const handleShow = () => setShow(true);
 
 
 const Login = () => {
@@ -40,7 +40,7 @@ const Login = () => {
                                         rounded
                                         type="button"
                                         className="z-depth-2 aqua-gradient"
-                                        onClick={handleShow}
+                                    // onClick={handleShow}
                                     >
                                         Sign Up
                     </MDBBtn>
