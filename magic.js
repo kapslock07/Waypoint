@@ -11,7 +11,7 @@ let searchArray = [
     "Rainbow Six Siege",
     "Fortnite",
     "FIFA 19"
-]
+];
 
 function start(){
     
@@ -33,10 +33,10 @@ function loadSearch(title){
 
             let newData = {
                 title: data.name,
-                platforms: data.platforms,
+                platforms: data.platforms.map(e => { return e.platform.name }),
                 image: data.background_image,
-                short_screenshots: data.short_screenshots,
-                genres: data.genres
+                short_screenshots: data.short_screenshots.filter((e, index) => { if (index < 2)return e.image  }),
+                genres: data.genres.map(e => { return e.name })
             }
             
             resolve(newData);

@@ -1,4 +1,4 @@
-
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = (server, db) => {
 
@@ -15,7 +15,7 @@ module.exports = (server, db) => {
 
 
     //returns all games from db
-    server.get("/api/games", (req, res) => { //should use authentication middleware here
+    server.get("/api/games", isAuthenticated(),(req, res) => { //should use authentication middleware here
         db.Games.findAll({
             include: [db.User]
         }).then(data => {
@@ -23,7 +23,7 @@ module.exports = (server, db) => {
         });
     });
 
-    server.get("/api/users", (req,res) => { //should use authentication middleware here
+    server.get("/api/users", isAuthenticated(), (req,res) => { //should use authentication middleware here
         db.User.findOne({
             where: {
                 id: req.user.id
