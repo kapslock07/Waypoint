@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login"
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
+import NoMatch from "./pages/NoMatch";
 
 
 import "./App.css";
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route exact path="/profile">
             <Profile />
+          </Route>
+          <Route>
+            <NoMatch />
           </Route>
         </Switch>
       </div>
