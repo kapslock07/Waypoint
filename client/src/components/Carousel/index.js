@@ -18,6 +18,7 @@ const TestScreen = styled("div")`
   width: 100;
   height: 100vh;
   display: block;
+  background-repeat: no-repeat;
   background-image: url(${props => props.imgUrl})
 `;
 
