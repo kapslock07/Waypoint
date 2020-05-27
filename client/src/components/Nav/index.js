@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
-import SampleImg from "../../assets/images/samplelogo.jpg";
+import SampleImg from "../../assets/images/mainLogo.jpeg";
 import "./style.css";
 
 
@@ -14,8 +14,7 @@ function Nav() {
             <Navbar.Brand href="/home">
                 <img
                     src={SampleImg}
-                    width="100"
-                    height="100"
+                    width="75%"
                     className="d-inline-block align-top ml-4"
                     alt="React Bootstrap logo"
                 />
@@ -39,7 +38,7 @@ function Nav() {
 
                 <div className="navbar-nav justify-content-end ml-auto text-light">
                     <div>
-                        <i className="fa mx-4 text-center fa-2x fa-search pt-3 animated wobble infinite"></i>
+                        <i className="fa mx-4 text-center fa-2x fa-search pt-3 animated heartBeat infinite"></i>
                     </div>
                     <Link
                         style={{ color: "#2096ff" }}
