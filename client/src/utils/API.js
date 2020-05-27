@@ -1,0 +1,17 @@
+import axios from "axios";
+
+export default {
+    //Get All Games
+    getGames: function(){
+        return axios.get("/api/games");
+    },
+    //Search Games by Title
+    searchGamesT: function(title){
+        return axios.get(`/api/games/${title}`);
+    },
+    //Search Games by Title and Platform
+    searchGamesTP: function(title, platform){
+        return axios.get(`/api/games/${platform}/${title}`);
+    }
+};
+
