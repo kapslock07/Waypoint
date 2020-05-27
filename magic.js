@@ -8,8 +8,10 @@ let searchArray = [
     "Counter-Strike Global Offensive",
     "Call of Duty Warzone",
     "Overwatch",
-    "Rainbow Six Siege"
-]
+    "Rainbow Six Siege",
+    "Fortnite",
+    "FIFA 19"
+];
 
 function start(){
     
@@ -26,8 +28,18 @@ function start(){
 function loadSearch(title){
     return new Promise((resolve, reject) => {
         searchGame(title).then(res => {
+
+            let data = res.data.results[0];
+
+            let newData = {
+                title: data.name,
+                platforms: data.platforms.map(e => { return e.platform.name }),
+                image: data.background_image,
+                short_screenshots: data.short_screenshots.filter((e, index) => { if (index < 2)return e.image  }),
+                genres: data.genres.map(e => { return e.name })
+            }
             
-            resolve(res.data.results[0]);
+            resolve(newData);
         });
     })
 }
