@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
 import SampleImg from "../../assets/images/mainLogo.jpeg";
+import { MDBBtn } from 'mdbreact';
 import "./style.css";
 
 
@@ -15,7 +16,7 @@ function Nav() {
                 <img
                     src={SampleImg}
                     width="75%"
-                    className="d-inline-block align-top ml-4"
+                    className="brandLogo d-inline-block align-top ml-5"
                     alt="React Bootstrap logo"
                 />
             </Navbar.Brand>
@@ -37,9 +38,10 @@ function Nav() {
                 </form> */}
 
                 <div className="navbar-nav justify-content-end ml-auto text-light">
-                    <div>
-                        <i className="fa mx-4 text-center fa-2x fa-search pt-3 animated heartBeat infinite"></i>
+                    <div className="navBtn">
+                        <i type="button" className="fa mx-4 text-center fa-2x fa-search pt-3 animated pulse infinite"></i>
                     </div>
+
                     <Link
                         style={{ color: "#2096ff" }}
                         to="/home"
@@ -47,7 +49,7 @@ function Nav() {
                             location.pathname === "/home" ? "nav-link active" : "nav-link"
                         }
                     >
-                        <div className="mx-4 text-center">
+                        <div className="navBtn mx-4 text-center">
                             <i className="fa fa-2x fa-gamepad"></i>
                             <h5>Home</h5>
                         </div>
@@ -61,7 +63,7 @@ function Nav() {
                         }
 
                     >
-                        <div className="mx-4 text-center">
+                        <div className="navBtn mx-4 text-center">
                             <i className="fa fa-2x fa-comments"></i>
                             <h5>Chat</h5>
                         </div>
@@ -74,7 +76,7 @@ function Nav() {
                         }
 
                     >
-                        <div className="mx-4 text-center">
+                        <div className="navBtn mx-4 text-center">
                             {/* <i className="fa fa-2x fa-user-circle d-flex justify-content-center"></i> */}
                             <img src="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/2/2019/07/60698636_DATEBOOK_MER2018100515460770kahn0801.jpg" alt="User " width="33" height="33"></img>
 
