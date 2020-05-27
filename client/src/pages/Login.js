@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { state, useState, toggle } from "react";
 import Logo from "../assets/images/freeLogo.jpeg"
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn, MDBInput } from 'mdbreact';
-import Modal from 'react-bootstrap/Modal'
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
 import Carousel from "../components/Carousel"
 
 
 const Login = () => {
+
+
+    const [state, setState] = useState({ modal: false })
+
+    const toggle = () => {
+        setState({
+            ...state, modal: !state.modal
+        });
+    }
+
     return (
         <MDBContainer>
             <MDBRow>
@@ -51,11 +60,71 @@ const Login = () => {
                                     <p className="font-small grey-text mt-3">
                                         Don't have an account?
                     <a
-                                            href="#!"
+                                            onClick={toggle}
                                             className="dark-grey-text ml-1 font-weight-bold"
                                         >
                                             Sign up
                     </a>
+                                        <MDBModal isOpen={state.modal} toggle={toggle}>
+                                            <MDBModalHeader toggle={toggle}>Sign Up </MDBModalHeader>
+                                            <MDBModalBody>
+                                                <MDBRow>
+                                                    <MDBCol md="12">
+                                                        <MDBCard>
+                                                            <MDBCardBody>
+                                                                <form>
+                                                                    <div className="grey-text">
+                                                                        <MDBInput
+                                                                            label="Your name"
+                                                                            icon="user"
+                                                                            group
+                                                                            type="text"
+                                                                            validate
+                                                                            error="wrong"
+                                                                            success="right"
+                                                                        />
+                                                                        <MDBInput
+                                                                            label="Your email"
+                                                                            icon="envelope"
+                                                                            group
+                                                                            type="email"
+                                                                            validate
+                                                                            error="wrong"
+                                                                            success="right"
+                                                                        />
+                                                                        <MDBInput
+                                                                            label="Confirm your email"
+                                                                            icon="exclamation-triangle"
+                                                                            group
+                                                                            type="text"
+                                                                            validate
+                                                                            error="wrong"
+                                                                            success="right"
+                                                                        />
+                                                                        <MDBInput
+                                                                            label="Your password"
+                                                                            icon="lock"
+                                                                            group
+                                                                            type="password"
+                                                                            validate
+                                                                        />
+                                                                    </div>
+                                                                    <div className="text-center py-4 mt-3">
+                                                                        <MDBBtn color="cyan" type="submit">
+                                                                            Register
+                  </MDBBtn>
+                                                                    </div>
+                                                                </form>
+                                                            </MDBCardBody>
+                                                        </MDBCard>
+                                                    </MDBCol>
+                                                </MDBRow>
+                                            </MDBModalBody>
+                                            <MDBModalFooter>
+                                                <MDBBtn color="secondary" onClick={toggle}>Close</MDBBtn>
+                                                <MDBBtn color="primary">Save changes</MDBBtn>
+                                            </MDBModalFooter>
+                                        </MDBModal>
                                     </p>
                                 </MDBCol>
                             </MDBRow>
