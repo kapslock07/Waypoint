@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
-import SampleImg from "../../assets/images/samplelogo.jpg";
+import SampleImg from "../../assets/images/mainLogo.jpeg";
+import { MDBBtn } from 'mdbreact';
 import "./style.css";
 
 
@@ -14,9 +15,8 @@ function Nav() {
             <Navbar.Brand href="/home">
                 <img
                     src={SampleImg}
-                    width="100"
-                    height="100"
-                    className="d-inline-block align-top ml-4"
+                    width="75%"
+                    className="brandLogo d-inline-block align-top ml-5"
                     alt="React Bootstrap logo"
                 />
             </Navbar.Brand>
@@ -32,12 +32,16 @@ function Nav() {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <form class="form-inline md-form mb-4 mx-auto">
+                {/* <form class="form-inline md-form mb-4 mx-auto">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search For Games" aria-label="Search"></input>
                     <button class="btn aqua-gradient btn-rounded btn-sm my-0 text-light " type="submit"><strong>Search</strong></button>
-                </form>
+                </form> */}
 
-                <div className="navbar-nav justify-content-end text-light">
+                <div className="navbar-nav justify-content-end ml-auto text-light">
+                    <div className="navBtn">
+                        <i type="button" className="fa mx-4 text-center fa-2x fa-search pt-3 animated pulse infinite"></i>
+                    </div>
+
                     <Link
                         style={{ color: "#2096ff" }}
                         to="/home"
@@ -45,7 +49,7 @@ function Nav() {
                             location.pathname === "/home" ? "nav-link active" : "nav-link"
                         }
                     >
-                        <div className="mx-4 text-center">
+                        <div className="navBtn mx-4 text-center">
                             <i className="fa fa-2x fa-gamepad"></i>
                             <h5>Home</h5>
                         </div>
@@ -59,7 +63,7 @@ function Nav() {
                         }
 
                     >
-                        <div className="mx-4 text-center">
+                        <div className="navBtn mx-4 text-center">
                             <i className="fa fa-2x fa-comments"></i>
                             <h5>Chat</h5>
                         </div>
@@ -72,7 +76,7 @@ function Nav() {
                         }
 
                     >
-                        <div className="mx-4 text-center">
+                        <div className="navBtn mx-4 text-center">
                             {/* <i className="fa fa-2x fa-user-circle d-flex justify-content-center"></i> */}
                             <img src="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/2/2019/07/60698636_DATEBOOK_MER2018100515460770kahn0801.jpg" alt="User " width="33" height="33"></img>
 

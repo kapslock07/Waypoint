@@ -53,7 +53,7 @@ const Login = () => {
                                             href="/auth/google"
                                         >
                                             Log in
-                    </MDBBtn>
+                                        </MDBBtn>
                                     </div>
                                 </MDBCol>
                                 <MDBCol md="7" className="d-flex justify-content-end">
