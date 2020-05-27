@@ -14,6 +14,19 @@ module.exports = (server, db) => {
 
     */
 
+    //add a user to a game
+    server.post("/api/games/:title", (req, res) => { 
+        db.Games.findOne({
+            where: {
+                title: req.params.title
+            }
+        }).then(data => {
+            data.addUsers(req.body.id);
+            data.save();
+            res.status(200).end();
+        })
+    });
+
 
     //returns all games from db
     server.get("/api/games", (req, res) => { 
