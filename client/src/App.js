@@ -15,16 +15,10 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/chat">
-            <Chat />
-          </Route>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
+          <Route exact path={["/", "/login"]} component={Login} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/chat" component={Chat} />
+          <Route exact path="/profile" component={Profile} />
           <Route>
             <NoMatch />
           </Route>

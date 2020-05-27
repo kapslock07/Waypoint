@@ -27,7 +27,7 @@ const Login = () => {
                                             className="z-depth-1a aqua-gradient"
                                         >
                                             Log in
-                    </MDBBtn>
+                                        </MDBBtn>
                                     </div>
                                 </MDBCol>
                                 <MDBCol md="7" className="d-flex justify-content-end">

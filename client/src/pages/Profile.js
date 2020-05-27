@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import Nav from "../components/Nav";
-import { MDBAnimation } from "mdbreact";
+import { MDBBtn } from "mdbreact";
 
 
 function Profile() {
@@ -12,7 +12,14 @@ function Profile() {
                 <Col xs={4} className="text-center">
                     <h1>JerryGarcia's Profile</h1>
                     <img className="mt-2 px-auto" src="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/2/2019/07/60698636_DATEBOOK_MER2018100515460770kahn0801.jpg" alt="User" width="188" height="188"></img>
-                    <div><button class="logout btn aqua-gradient btn-rounded btn-sm my-5" type="submit"><u><strong>Logout</strong></u></button>
+                    <div>
+                        <MDBBtn
+                            rounded
+                            type="button"
+                            className="z-depth-1a aqua-gradient mt-4"
+                        >
+                            Logout
+                    </MDBBtn>
                     </div>
                 </Col>
                 <Col xs={4} className="text-center">

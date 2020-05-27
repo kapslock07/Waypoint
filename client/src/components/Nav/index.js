@@ -32,12 +32,15 @@ function Nav() {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <form class="form-inline md-form mb-4 mx-auto">
+                {/* <form class="form-inline md-form mb-4 mx-auto">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search For Games" aria-label="Search"></input>
                     <button class="btn aqua-gradient btn-rounded btn-sm my-0 text-light " type="submit"><strong>Search</strong></button>
-                </form>
+                </form> */}
 
-                <div className="navbar-nav justify-content-end text-light">
+                <div className="navbar-nav justify-content-end ml-auto text-light">
+                    <div>
+                        <i className="fa mx-4 text-center fa-2x fa-search pt-3 animated wobble infinite"></i>
+                    </div>
                     <Link
                         style={{ color: "#2096ff" }}
                         to="/home"
