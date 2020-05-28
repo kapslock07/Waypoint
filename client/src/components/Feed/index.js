@@ -9,7 +9,7 @@ function Feed() {
     return (
         <Container fluid>
             <Row>
-                <Col xs={12}>
+                <Col lg={12}>
                     <MDBAnimation type="fadeInDown">
                         <Header name={"My Feed"} />
                     </MDBAnimation>

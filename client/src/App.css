@@ -14,6 +14,22 @@ html {
   min-height: 100%;
 }
 
+.myConsoles, .myGames {
+  display:inline-block;
+  position:relative;
+ }
+.removeConsoleBtn, .removeGameBtn {
+  position: absolute;
+  right:0;
+  color:white;
+  font-weight: bold;
+  padding:0.2em ;
+  margin-right: 2px;
+  margin-top: 2px
+
+ }
+
+ 
 
 
 

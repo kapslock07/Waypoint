@@ -5,6 +5,6 @@ module.exports = function (req, res, next) {
         return next();
     }
 
-    // If the user isn't logged in, redirect them to the login page
-    return res.redirect("http://localhost:3000/login");
+    // If the user isn't logged in, redirect them status code 403
+    return res.redirect("/auth/failure");
 };
