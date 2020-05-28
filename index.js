@@ -6,8 +6,6 @@ const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 
-
-
 const PORT = process.env.PORT || 3001;
 var db = require("./models"); //grabs database models
 
