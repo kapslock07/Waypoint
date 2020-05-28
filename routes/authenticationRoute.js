@@ -43,15 +43,19 @@ module.exports = app => {
     //   login page.  Otherwise, the primary route function function will be called,
     //   which, in this example, will redirect the user to the home page.
     app.get('/auth/google/callback',
-        passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login' }),
+        passport.authenticate('google', { failureRedirect: '/auth/failure' }),
         function (req, res) {
-            res.redirect(200, 'http://localhost:3000/home')
+            res.send(200)
         })
+
+    app.get('/auth/failure', function (req, res) {
+        res.send(401)
+    })
 
     // Route for logging user out
     app.get("/logout", function (req, res) {
         req.logout();
-        res.redirect(200, "http://localhost:3000/");
+        res.send(200);
     });
 
     // Route for getting some data about our user to be used client side
