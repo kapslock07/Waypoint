@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
 import SampleImg from "../../assets/images/mainLogo.jpeg";
-import { MDBBtn } from 'mdbreact';
 import "./style.css";
 
 
