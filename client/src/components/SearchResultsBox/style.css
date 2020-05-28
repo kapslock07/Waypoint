@@ -1,0 +1,9 @@
+.searchResultsBox {
+    height: 150px;
+    width: 100%;
+    background-color: white;
+}
+
+p {
+    margin-bottom: 10px;
+}
