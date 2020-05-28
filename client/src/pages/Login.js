@@ -31,7 +31,7 @@ const Login = () => {
                                 <h3> WayPoint </h3>
                             </MDBRow>
                             <MDBRow className="d-flex justify-content-center">
-                                <h3 style={{ paddingTop: "15px", fontFamily: "Nature Spriit Regular" }}> A place where Gamers meet! </h3>
+                                <h3 style={{ paddingTop: "15px", fontFamily: "Nature Spirit Regular" }}> A place where Gamers meet! </h3>
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
