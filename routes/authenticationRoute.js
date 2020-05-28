@@ -45,13 +45,13 @@ module.exports = app => {
     app.get('/auth/google/callback',
         passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login' }),
         function (req, res) {
-            res.redirect('http://localhost:3000/home')
+            res.redirect(200, 'http://localhost:3000/home')
         })
 
     // Route for logging user out
     app.get("/logout", function (req, res) {
         req.logout();
-        res.redirect("http://localhost:3000/");
+        res.redirect(200, "http://localhost:3000/");
     });
 
     // Route for getting some data about our user to be used client side
