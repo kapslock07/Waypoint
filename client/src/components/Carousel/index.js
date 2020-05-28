@@ -15,10 +15,11 @@ import styled from "@emotion/styled";
 import { Transition, animated } from "react-spring/renderprops";
 
 const TestScreen = styled("div")`
-  width: 100;
+  width: 100vw;
   height: 100vh;
   display: block;
   background-repeat: no-repeat;
+  background-cover: cover;
   background-image: url(${props => props.imgUrl})
 `;
 
@@ -79,7 +80,7 @@ class Carousel extends React.Component {
         var self = this
         setTimeout(function () {
             self.toggle()
-        }, 5000)
+        }, 10000)
         return (
             <div style={{ height: "100vh" }}>
                 <Container >
