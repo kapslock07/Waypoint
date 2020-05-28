@@ -14,5 +14,10 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
       }
     });
+
+    Chat.associate = models => {
+        Chat.hasMany(models.Message);
+    }
+    
     return Chat;
   };

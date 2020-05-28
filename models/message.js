@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     Message.associate = models => {
         Message.hasOne(models.User, {
             foreignKey: {
-                name: "userId",
+                name: "authorId",
                 allowNull: false
             }
         });
