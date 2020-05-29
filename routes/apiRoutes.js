@@ -13,32 +13,32 @@ module.exports = (server, db) => {
 
     */
 
-    server.get("/api/users", (req, res) => {
-        db.User.findAll({}).then(data => {
-            res.json(data);
-        });
-    })
+  server.get("/api/users", (req, res) => {
+    db.User.findAll({}).then(data => {
+      res.json(data);
+    });
+  })
 
-    //add a user to a game
-    server.post("/api/games", (req, res) => { 
+  //add a user to a game
+  server.post("/api/games", (req, res) => {
 
-        let titles = req.body.titles;
+    let titles = req.body.titles;
 
-        db.Games.findAll({ //grabs all games with specified titles
-            where: {
-                title: {
-                    [sequelize.Op.in]: titles
-                }
-            }
-        }).then(data => {
-            data.forEach(e => {
-                e.addUsers(req.body.userId);//adds user to game
-                e.save();//saves it
-            });
-            res.status(200).end();
-        });
+    db.Games.findAll({ //grabs all games with specified titles
+      where: {
+        title: {
+          [sequelize.Op.in]: titles
+        }
+      }
+    }).then(data => {
+      data.forEach(e => {
+        e.addUsers(req.body.userId);//adds user to game
+        e.save();//saves it
+      });
+      res.status(200).end();
     });
   });
+
 
   //returns all games from db
   server.get("/api/games", (req, res) => {
