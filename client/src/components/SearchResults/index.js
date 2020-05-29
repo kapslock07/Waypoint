@@ -3,9 +3,19 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { MDBAnimation } from "mdbreact";
 import Header from "../Header";
 import SearchResultsBox from "../SearchResultsBox";
+import API from "../../utils/API";
 
 
 function SearchResults() {
+
+    const [users, setUsers] = React.useState([]);
+
+    React.useEffect(() => {
+        API.getUsers().then(data => {
+            setUsers(data);
+            console.log(users);
+        });
+    });
 
     return (
         <Container fluid>
