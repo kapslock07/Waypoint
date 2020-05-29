@@ -1,7 +1,16 @@
 .trending {
-
   background-color: white;
 }
+
+.trending {
+  /* background-color: #2cb5e8; */
+  border: 10px solid;
+border-image-slice: 1;
+border-width: 5px;
+border-image-source: linear-gradient(to top, #05ffa3, #2096ff);
+height: 100%;
+}
+
 
 
 
