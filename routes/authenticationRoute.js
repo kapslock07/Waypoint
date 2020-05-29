@@ -26,6 +26,17 @@ module.exports = app => {
             });
     });
 
+    app.get("/auth/success", (req, res) => {
+        if (req.user) {
+            res.json({
+                success: true,
+                message: "User has successfully authenticated",
+                user: req.user,
+                cookies: req.cookies
+            });
+        }
+    });
+
     // GET /auth/google
     //   Use passport.authenticate() as route middleware to authenticate the
     //   request.  The first step in Google authentication will involve redirecting
@@ -56,7 +67,7 @@ module.exports = app => {
     // Route for logging user out
     app.get("/logout", function (req, res) {
         req.logout();
-        res.send(200);
+        res.redirect("http://localhost:3000/");
     });
 
     // Route for getting some data about our user to be used client side
