@@ -7,7 +7,11 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.INTEGER,
           primaryKey: true,
           autoIncrement: true,
-        },
+      },
+      authorId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
       message: {
           type: DataTypes.STRING,
           defaultValue: ""
@@ -19,23 +23,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Message.associate = models => {
-        Message.hasOne(models.User, {
-            foreignKey: {
-                name: "authorId",
-                allowNull: false
-            }
-        });
+        Message.belongsTo(models.Chat); //Messages should know which chat they are apart of
 
-        Message.hasOne(models.Chat, {
-            foreignKey: {
-                name: "chatId",
-                allowNull: false
-            }
-        });
     };
-
-    
-
 
     return Message;
   };

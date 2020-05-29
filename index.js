@@ -23,6 +23,8 @@ if (process.env.NODE_ENV === "production") {
 
 //including API routes here, passes server and db through to routes
 require("./routes/apiRoutes")(app, db);
+//including Chat Routes
+require("./routes/chatRoutes")(app, db);
 //including authentication routes here
 require("./routes/authenticationRoute.js")(app);
 

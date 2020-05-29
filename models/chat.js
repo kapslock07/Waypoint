@@ -7,17 +7,16 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.INTEGER,
           primaryKey: true,
           autoIncrement: true,
-        },
-      //Users involved
-      users: {
-          type: DataTypes.STRING,
-          allowNull: false
-      }
+        }
     });
 
     Chat.associate = models => {
-        Chat.hasMany(models.Message);
+        Chat.hasMany(models.Message, {
+            onDelete: "cascade"
+        });
+
+        Chat.hasMany(models.User);
     }
-    
+
     return Chat;
   };
