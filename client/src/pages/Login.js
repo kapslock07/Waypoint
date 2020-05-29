@@ -17,23 +17,23 @@ const Login = () => {
         });
     }
 
-    async const onClickHandler = () => {
-        const res = await axios.get("http://localhost:3001/auth/google");
-        console.log('res ', res)
-        if (res) {
-            console.log('inside if ')
-            if (res.status === 200) {
-                console.log('status is 200')
-                setState({ isLogined: true });
-            }
-        }
-    }
+    // async const onClickHandler = () => {
+    //     const res = await axios.get("http://localhost:3001/auth/google");
+    //     console.log('res ', res)
+    //     if (res) {
+    //         console.log('inside if ')
+    //         if (res.status === 200) {
+    //             console.log('status is 200')
+    //             setState({ isLogined: true });
+    //         }
+    //     }
+    // }
 
-    console.log('state ', state.isLogined)
-    if (state.isLogined) {
-        console.log("we are going home")
-        return <Redirect to={{ pathname: "/home" }} />;
-    }
+    // console.log('state ', state.isLogined)
+    // if (state.isLogined) {
+    //     console.log("we are going home")
+    //     return <Redirect to={{ pathname: "/home" }} />;
+    // }
 
     return (
         <MDBContainer>
@@ -70,15 +70,14 @@ const Login = () => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-                                            onclick={}
+                                            href
                                         >
                                             Log in
                                             </MDBBtn>
-                                        <MDBBtn
-                                            onClick={onClickHandler}
-                                        >
-                                            Sign in with Google
-                                        </MDBBtn>
+
+                                        <a href="http://localhost:3001/auth/google" target="popup" onclick="window.open('http://localhost:3001/auth/google','name','width=600,height=400')">
+                                            <MDBBtn> Sign In With Google </MDBBtn>
+                                        </a>
 
                                     </div>
                                 </MDBCol>

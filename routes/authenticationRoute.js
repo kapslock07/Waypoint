@@ -34,7 +34,8 @@ module.exports = app => {
     app.get('/auth/google',
         passport.authenticate('google', {
             scope: ['https://www.googleapis.com/auth/userinfo.email',
-                'https://www.googleapis.com/auth/userinfo.profile']
+                'https://www.googleapis.com/auth/userinfo.profile'],
+            display: 'popup'
         }))
 
     // GET /auth/google/callback
@@ -45,7 +46,7 @@ module.exports = app => {
     app.get('/auth/google/callback',
         passport.authenticate('google', { failureRedirect: '/auth/failure' }),
         function (req, res) {
-            res.send(200)
+            res.redirect("http://localhost:3000/home")
         })
 
     app.get('/auth/failure', function (req, res) {
