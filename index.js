@@ -21,6 +21,17 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+//This is for instant messaging funcitonality
+const chatServer = require('http').createServer(app);
+const io = require('socket.io')(chatServer);
+io.on('connection', () => {
+
+
+   /* … */ 
+  
+});
+chatServer.listen(3002);
+
 //including API routes here, passes server and db through to routes
 require("./routes/apiRoutes")(app, db);
 //including Chat Routes
