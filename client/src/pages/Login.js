@@ -100,7 +100,7 @@ const Login = () => {
                                                                 <form>
                                                                     <div className="grey-text">
                                                                         <MDBInput
-                                                                            label="Your name"
+                                                                            label="Your username"
                                                                             icon="user"
                                                                             group
                                                                             type="text"
