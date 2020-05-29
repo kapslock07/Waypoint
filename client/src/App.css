@@ -4,14 +4,21 @@ body {
   color: rgb(216, 215, 215); */
   background-image: linear-gradient(to bottom, white, #a8a8a8);
   background-repeat: no-repeat;
-  padding-top: 200px; 
+  /* padding-top: 200px;  */
   background-size: cover;
   min-height: 100%;
-
 }
 
 html {
   min-height: 100%;
+}
+
+.homeComponent, .noMatchComponent, .profileComponent {
+    padding-top: 200px; 
+}
+
+.chatComponent {
+  padding-top: 210px; 
 }
 
 .myConsoles, .myGames {

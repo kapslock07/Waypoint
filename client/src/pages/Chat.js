@@ -7,11 +7,13 @@ function Chat() {
     return (
         <Container fluid>
             <Nav />
-            <Row style={{ bottom: "60px", position: "relative" }}>
-                <Col xs={12}>
-                    <Messenger />
-                </Col>
-            </Row>
+            <div className="chatComponent">
+                <Row style={{ bottom: "60px", position: "relative" }}>
+                    <Col xs={12}>
+                        <Messenger />
+                    </Col>
+                </Row>
+            </div>
         </Container>
     );
 }
