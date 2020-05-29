@@ -16,7 +16,8 @@ module.exports = app => {
     app.post("/api/signup", function (req, res) {
         db.User.create({
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            userName: req.body.username,
         })
             .then(function () {
                 res.redirect(307, "/api/login");
@@ -31,9 +32,14 @@ module.exports = app => {
             res.json({
                 success: true,
                 message: "User has successfully authenticated",
-                user: req.user,
+                user: {
+                    id: req.user[0].id,
+                    googleId: req.user[0].googleId,
+                    email: req.user[0].email
+                },
                 cookies: req.cookies
             });
+
         }
     });
 
