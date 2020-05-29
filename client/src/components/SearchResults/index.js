@@ -15,7 +15,7 @@ function SearchResults() {
     }, []);
 
 
-    function loadUsers(){
+    function loadUsers(){ //uses API util to loadUsers from our express server
         API.getUsers().then(res => {
             setUsers(res.data);
         })
@@ -30,7 +30,6 @@ function SearchResults() {
                         <Header name={"Users"} />
                     </MDBAnimation>
                     <MDBAnimation type="fadeInUp">
-
                         { users.length !== 0 ? users.map(e => {
                             return  <SearchResultsBox key={e.id} username={e.userName} image={"https://image.flaticon.com/icons/svg/1880/1880988.svg"} favoriteGames={["Final Fantasy 80", "Uniracers", "Duck Hunt"]} favoriteConsoles={["Xbox 360", "Nintendo Switch"]} />
                         }) : <h1>No Users Found</h1> }
