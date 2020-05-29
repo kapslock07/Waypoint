@@ -49,7 +49,7 @@ passport.use(new GoogleStrategy({
     function (accessToken, refreshToken, profile, done) {
         console.log(profile)
         console.log("Email is ", profile.emails[0].value)
-        db.User.findOrCreate({ where: { googleId: profile.id }, defaults: { googleId: profile.id, email: profile.emails[0].value } })
+        db.User.findOrCreate({ where: { googleId: profile.id }, defaults: { googleId: profile.id, email: profile.emails[0].value, userName: profile.displayName } })
             .then(dbUser => {
                 console.log("The user object is ", dbUser);
                 return done(null, dbUser)
