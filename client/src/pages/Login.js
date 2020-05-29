@@ -4,11 +4,17 @@ import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn, MDBInput, M
 import Carousel from "../components/Carousel"
 import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import axios from "axios"
+import Auth from "../utils/Auth";
 
 
 const Login = () => {
 
     const [state, setState] = useState({ modal: false })
+    const [signUp, setSignup] = useState({
+        userName: "",
+        password: "",
+        email: ""
+    })
 
     const toggle = () => {
         setState({
@@ -17,23 +23,21 @@ const Login = () => {
         });
     }
 
-    // async const onClickHandler = () => {
-    //     const res = await axios.get("http://localhost:3001/auth/google");
-    //     console.log('res ', res)
-    //     if (res) {
-    //         console.log('inside if ')
-    //         if (res.status === 200) {
-    //             console.log('status is 200')
-    //             setState({ isLogined: true });
-    //         }
-    //     }
-    // }
+    const handleInputChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        setState({ ...signUp, [name]: value })
 
-    // console.log('state ', state.isLogined)
-    // if (state.isLogined) {
-    //     console.log("we are going home")
-    //     return <Redirect to={{ pathname: "/home" }} />;
-    // }
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const userName = signUp.userName;
+        const email = signUp.email;
+        const password = signUp.password;
+        Auth.signUp(email, password, userName)
+            .then(res => res.send(200))
+    }
 
     return (
         <MDBContainer>
@@ -70,7 +74,6 @@ const Login = () => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-                                            href
                                         >
                                             Log in
                                             </MDBBtn>
@@ -100,13 +103,15 @@ const Login = () => {
                                                                 <form>
                                                                     <div className="grey-text">
                                                                         <MDBInput
-                                                                            label="Your name"
+                                                                            label="Your username"
                                                                             icon="user"
                                                                             group
                                                                             type="text"
                                                                             validate
                                                                             error="wrong"
                                                                             success="right"
+                                                                            name="username"
+                                                                            onChange={handleInputChange}
                                                                         />
                                                                         <MDBInput
                                                                             label="Your email"
@@ -116,6 +121,8 @@ const Login = () => {
                                                                             validate
                                                                             error="wrong"
                                                                             success="right"
+                                                                            name="email"
+                                                                            onChange={handleInputChange}
                                                                         />
                                                                         <MDBInput
                                                                             label="Confirm your email"
@@ -132,10 +139,14 @@ const Login = () => {
                                                                             group
                                                                             type="password"
                                                                             validate
+                                                                            name="password"
+                                                                            onChange={handleInputChange}
                                                                         />
                                                                     </div>
                                                                     <div className="text-center py-4 mt-3">
-                                                                        <MDBBtn color="cyan" type="submit">
+                                                                        <MDBBtn color="cyan" type="submit"
+                                                                            onClick={handleSubmit}
+                                                                        >
                                                                             Register
                   </MDBBtn>
                                                                     </div>
