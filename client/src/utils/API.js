@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export default {
+    //Get All Users
+    getUsers: function(){
+        return axios.get("/api/users");
+    },
     //Get All Games
     getGames: function(){
         return axios.get("/api/games");
