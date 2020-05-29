@@ -1,19 +1,39 @@
 import React, { state, useState, toggle } from "react";
-import Logo from "../assets/images/freeLogo.jpeg"
+import Logo from "../assets/images/mainLogo.jpeg"
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
 import Carousel from "../components/Carousel"
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import axios from "axios"
 
 
 const Login = () => {
-
 
     const [state, setState] = useState({ modal: false })
 
     const toggle = () => {
         setState({
-            ...state, modal: !state.modal
+            ...state, modal: !state.modal,
+            isLogined: false // <-- initialize the signup state as false
         });
     }
+
+    // async const onClickHandler = () => {
+    //     const res = await axios.get("http://localhost:3001/auth/google");
+    //     console.log('res ', res)
+    //     if (res) {
+    //         console.log('inside if ')
+    //         if (res.status === 200) {
+    //             console.log('status is 200')
+    //             setState({ isLogined: true });
+    //         }
+    //     }
+    // }
+
+    // console.log('state ', state.isLogined)
+    // if (state.isLogined) {
+    //     console.log("we are going home")
+    //     return <Redirect to={{ pathname: "/home" }} />;
+    // }
 
     return (
         <MDBContainer>
@@ -28,10 +48,10 @@ const Login = () => {
                                 <img src={Logo} style={{ width: "50%", paddingBottom: "15px" }} />
                             </MDBRow>
                             <MDBRow className="d-flex justify-content-center">
-                                <h3> WayPoint Messenger </h3>
+                                <h3> WayPoint </h3>
                             </MDBRow>
                             <MDBRow className="d-flex justify-content-center">
-                                <h3 style={{ paddingTop: "15px" }}> A place where Gamers meet! </h3>
+                                <h3 style={{ paddingTop: "15px", fontFamily: "Nature Spirit Regular" }}> A place where Gamers meet! </h3>
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
@@ -50,10 +70,15 @@ const Login = () => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-                                            href="/auth/google"
+                                            href
                                         >
                                             Log in
-                                        </MDBBtn>
+                                            </MDBBtn>
+
+                                        <a href="http://localhost:3001/auth/google" target="popup" onclick="window.open('http://localhost:3001/auth/google','name','width=600,height=400')">
+                                            <MDBBtn> Sign In With Google </MDBBtn>
+                                        </a>
+
                                     </div>
                                 </MDBCol>
                                 <MDBCol md="7" className="d-flex justify-content-end">
@@ -121,8 +146,7 @@ const Login = () => {
                                                 </MDBRow>
                                             </MDBModalBody>
                                             <MDBModalFooter>
-                                                <MDBBtn color="secondary" onClick={toggle}>Close</MDBBtn>
-                                                <MDBBtn color="primary">Save changes</MDBBtn>
+                                                <MDBBtn color="primary" onClick={toggle}>Close</MDBBtn>
                                             </MDBModalFooter>
                                         </MDBModal>
                                     </p>
