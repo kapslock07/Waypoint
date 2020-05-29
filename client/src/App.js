@@ -16,7 +16,7 @@ function App() {
     name: "",
     error: null,
     isAuthenticated: false
-  })
+  });
 
   return (
     <Router>
