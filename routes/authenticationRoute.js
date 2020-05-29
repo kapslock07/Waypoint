@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+require(dotenv).config();
 
 module.exports = app => {
     // Using the passport.authenticate middleware with our local strategy.
@@ -26,6 +27,17 @@ module.exports = app => {
             });
     });
 
+    app.get("/login/success", (req, res) => {
+        if (req.user) {
+            res.json({
+                success: true,
+                message: "user has successfully authenticated",
+                user: req.user,
+                cookies: req.cookies
+            });
+        }
+    });
+
     // GET /auth/google
     //   Use passport.authenticate() as route middleware to authenticate the
     //   request.  The first step in Google authentication will involve redirecting
@@ -45,7 +57,7 @@ module.exports = app => {
     app.get('/auth/google/callback',
         passport.authenticate('google', { failureRedirect: '/auth/failure' }),
         function (req, res) {
-            res.send(200)
+            res.redirect("http://localhost:3000/home")
         })
 
     app.get('/auth/failure', function (req, res) {
@@ -55,7 +67,7 @@ module.exports = app => {
     // Route for logging user out
     app.get("/logout", function (req, res) {
         req.logout();
-        res.send(200);
+        res.redirect("http://localhost:3000/");
     });
 
     // Route for getting some data about our user to be used client side
