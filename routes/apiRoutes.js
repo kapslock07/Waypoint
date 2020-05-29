@@ -14,6 +14,12 @@ module.exports = (server, db) => {
 
     */
 
+    server.get("/api/users", (req, res) => {
+        db.User.findAll({}).then(data => {
+            res.json(data);
+        });
+    })
+
     //add a user to a game
     server.post("/api/games", (req, res) => { 
 

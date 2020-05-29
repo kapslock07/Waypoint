@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
             onDelete: "cascade"
         });
 
-        Chat.hasMany(models.User);
+        Chat.belongsToMany(models.User, { through: 'UserChats' });
     }
 
     return Chat;
