@@ -7,7 +7,7 @@ function Trending() {
         <Container fluid className="trendingContainer">
             <Row>
                 <Col xs={12}>
-                    <div className="trending text-center p-4     z-depth-2">
+                    <div className="trending text-center p-4 z-depth-2">
                         <h3 className="mb-4"><strong>Trending Games</strong></h3>
                         <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg" alt="trending1" width="100" height="100"></img>
                         <p>Animal Crossing</p>

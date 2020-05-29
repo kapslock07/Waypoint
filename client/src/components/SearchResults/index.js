@@ -20,7 +20,8 @@ function SearchResults() {
                         <SearchResultsBox username={"JimBob22"} image={"https://www.kodefork.com/static/users/images/user.png"} favoriteGames={["Rocket League", "Madden 20", "Fortnite"]} favoriteConsoles={["Playstation 4", "PC"]} />
                         <SearchResultsBox username={"GoofyName234"} image={"https://image.flaticon.com/icons/svg/1880/1880988.svg"} favoriteGames={["Final Fantasy 80", "Uniracers", "Duck Hunt"]} favoriteConsoles={["Xbox 360", "Nintendo Switch"]} />
                         <SearchResultsBox username={"IamMe33"} image={"https://www.nawrb.com/wp-content/uploads/2016/04/user-307993_960_720.png"} favoriteGames={["Donkey Kong Country", "Mario Kart", "Zelda"]} favoriteConsoles={["PC", "Nintendo Switch"]} />
-                        <SearchResultsBox username={"JimBob22"} image={"https://www.kodefork.com/static/users/images/user.png"} favoriteGames={["Rocket League", "Madden 20", "Fortnite"]} favoriteConsoles={["Playstation 4", "PC"]} />                </MDBAnimation>
+                        <SearchResultsBox username={"JimBob22"} image={"https://www.kodefork.com/static/users/images/user.png"} favoriteGames={["Rocket League", "Madden 20", "Fortnite"]} favoriteConsoles={["Playstation 4", "PC"]} />
+                    </MDBAnimation>
                 </Col>
             </Row>
         </Container>
