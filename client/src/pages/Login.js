@@ -2,17 +2,37 @@ import React, { state, useState, toggle } from "react";
 import Logo from "../assets/images/mainLogo.jpeg"
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
 import Carousel from "../components/Carousel"
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import axios from "axios"
 
 
 const Login = () => {
-
 
     const [state, setState] = useState({ modal: false })
 
     const toggle = () => {
         setState({
-            ...state, modal: !state.modal
+            ...state, modal: !state.modal,
+            isLogined: false // <-- initialize the signup state as false
         });
+    }
+
+    async const onClickHandler = () => {
+        const res = await axios.get("http://localhost:3001/auth/google");
+        console.log('res ', res)
+        if (res) {
+            console.log('inside if ')
+            if (res.status === 200) {
+                console.log('status is 200')
+                setState({ isLogined: true });
+            }
+        }
+    }
+
+    console.log('state ', state.isLogined)
+    if (state.isLogined) {
+        console.log("we are going home")
+        return <Redirect to={{ pathname: "/home" }} />;
     }
 
     return (
@@ -50,10 +70,16 @@ const Login = () => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-                                            href="/auth/google"
+                                            onclick={}
                                         >
                                             Log in
+                                            </MDBBtn>
+                                        <MDBBtn
+                                            onClick={onClickHandler}
+                                        >
+                                            Sign in with Google
                                         </MDBBtn>
+
                                     </div>
                                 </MDBCol>
                                 <MDBCol md="7" className="d-flex justify-content-end">
