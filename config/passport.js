@@ -48,7 +48,8 @@ passport.use(new GoogleStrategy({
 },
     function (accessToken, refreshToken, profile, done) {
         console.log(profile)
-        db.GoogleUser.findOrCreate({ where: { googleId: profile.id }, defaults: { googleId: profile.id } })
+        console.log("Email is ", profile.emails[0].value)
+        db.User.findOrCreate({ where: { googleId: profile.id }, defaults: { googleId: profile.id, email: profile.emails[0].value } })
             .then(dbUser => {
                 console.log("The user object is ", dbUser);
                 return done(null, dbUser)

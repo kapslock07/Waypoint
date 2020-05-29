@@ -1,7 +1,6 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-require(dotenv).config();
 
 module.exports = app => {
     // Using the passport.authenticate middleware with our local strategy.
@@ -27,11 +26,11 @@ module.exports = app => {
             });
     });
 
-    app.get("/login/success", (req, res) => {
+    app.get("/auth/success", (req, res) => {
         if (req.user) {
             res.json({
                 success: true,
-                message: "user has successfully authenticated",
+                message: "User has successfully authenticated",
                 user: req.user,
                 cookies: req.cookies
             });

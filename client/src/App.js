@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login"
@@ -7,11 +7,17 @@ import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import NoMatch from "./pages/NoMatch";
 
-
 import "./App.css";
 
 
 function App() {
+
+  const [state, setState] = useState({
+    name: "",
+    error: null,
+    isAuthenticated: false
+  })
+
   return (
     <Router>
       <div>
