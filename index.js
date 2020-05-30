@@ -24,8 +24,8 @@ const io = require('socket.io')(chatServer);
 io.on('connection', () => {
 
 
-   /* … */ 
-  
+  /* … */
+
 });
 chatServer.listen(3002);
 
@@ -41,7 +41,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync().then(function () {
   //syncs our models to database, remove 'force: true' in production so we dont destroy our data
   app.listen(PORT, function () {
     console.log("🚀  API server now on port", PORT);
