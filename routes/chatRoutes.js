@@ -8,13 +8,33 @@ module.exports = (server, db) => {
 
     //https://sequelize.org/master/manual/creating-with-associations.html  <-- refrence theses docs when creating this
 
-    server.get("/chats", (req, res) => {
-        let id = req.body.id;
+    server.post("/api/chat", (req, res) => {
+        let data = req.body.data;
+
+            
+            db.Chat.findOrCreate({
+                where: {
+                    creatorId: data.user1,
+                    joineeId: data.user2
+                },
+                defaults: {
+                    creatorId: data.user1,
+                    joineeId: data.user2  
+                }
+            }).then(data => {
+                console.log(data);
+            })
+    });
+
+    server.get("/api/chat/:id", (req,res) => {
+        let creatorId = req.params.id;
 
         db.Chat.findAll({
             where: {
-                
+                creatorId: creatorId
             }
+        }).then(data => {
+            res.json(data);
         })
     });
 

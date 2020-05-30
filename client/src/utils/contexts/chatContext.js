@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useContext } from "react";
 import io from "socket.io";
 import chatActions from "./chatActions";
+import API from "../API";
 
 const ChatContext = createContext();
 const { Provider } = ChatContext;
@@ -8,7 +9,8 @@ const { Provider } = ChatContext;
 const reducer = (state, action) => {
     switch(action.type){
         case(chatActions.CREATE_CHAT):
-            console.log("Create Chat!");
+            console.log("Create Chat with " + action.userId);
+            createChat(1,2);
             break;
         case(chatActions.SEND_CHAT):
             console.log("Send chat!");
@@ -29,6 +31,15 @@ const ChatProvider = ({ userObj = [], ...props}) => {
 
 const useChatContext = () => {
     return useContext(ChatContext);
+}
+
+function createChat(user1,user2){
+    let data = {
+        user1: user1,
+        user2: user2
+    }
+
+    API.createChat(data);
 }
 
 
