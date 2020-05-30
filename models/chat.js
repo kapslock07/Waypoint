@@ -7,6 +7,12 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.INTEGER,
           primaryKey: true,
           autoIncrement: true,
+        },
+        creatorId: {
+            type: DataTypes.INTEGER
+        },
+        joineeId: {
+            type: DataTypes.INTEGER
         }
     });
 

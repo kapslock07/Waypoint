@@ -31,8 +31,8 @@ function SearchResults() {
                     </MDBAnimation>
                     <MDBAnimation type="fadeInUp">
                         {users.length !== 0 ? users.map(e => {
-                            return <SearchResultsBox key={e.id} username={e.userName} image={"https://image.flaticon.com/icons/svg/1880/1880988.svg"} favoriteGames={["Final Fantasy 80", "Uniracers", "Duck Hunt"]} favoriteConsoles={["Xbox 360", "Nintendo Switch"]} />
-                        }) : <h1 className="text-center">No Users Found</h1>}
+                            return <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={"https://image.flaticon.com/icons/svg/1880/1880988.svg"} favoriteGames={["Final Fantasy 80", "Uniracers", "Duck Hunt"]} favoriteConsoles={["Xbox 360", "Nintendo Switch"]} />
+                        }) : <h1>No Users Found</h1>}
                     </MDBAnimation>
                 </Col>
             </Row>
