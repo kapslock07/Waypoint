@@ -10,12 +10,12 @@ function ProfileSummary(props) {
                 <Col xs={12} className="mb-5" >
                     <div className="text-center p-4 profileSummary z-depth-2">
                         <h3 className="mb-4"><strong>Profile Summary</strong></h3>
-                        <h4>Favorite Consoles</h4>
+                        <h4>Favorite Platforms</h4>
                         <div className="mt-2">
-                            {props.favConsolesImgs.map((favConsoleImg, i) => (
+                            {props.favPlatformsImgs.map((favPlatformImg, i) => (
                                 <div>
-                                    <div className="myConsoles mt-3">
-                                        <img className="consoleImg" src={favConsoleImg} alt="platform1" width="100" height="100"></img>
+                                    <div className="myPlatforms mt-3">
+                                        <img className="platformImg" src={favPlatformImg} alt="platform1" width="100" height="100"></img>
                                     </div>
                                 </div>
                             ))}

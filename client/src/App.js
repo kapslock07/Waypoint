@@ -6,9 +6,9 @@ import "./App.css";
 function App() {
 
   return (
-          <Router>
-            <AuthRoute />
-          </Router>
+    <Router>
+      <AuthRoute />
+    </Router>
   );
 }
 
