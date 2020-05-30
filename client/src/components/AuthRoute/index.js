@@ -20,8 +20,6 @@ function AuthRoute() {
     })
 
     useEffect(() => {
-        console.log("HI EVAN!")
-        console.log(state)
         axios.get('/auth/success')
             .then(res => {
                 console.log(res.data.user)

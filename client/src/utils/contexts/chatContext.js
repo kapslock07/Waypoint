@@ -26,9 +26,9 @@ const reducer = (state, action) => {
     }
 }
 
-const ChatProvider = ({ userObj = [], ...props}) => {
+const ChatProvider = ({ userObj = {}, ...props}) => {
     const [state, dispatch] = useReducer(reducer, { user: userObj });
-
+    console.log("BAM")
     if(props.startChat){
         loadSocket();
     }
@@ -51,6 +51,7 @@ function createChat(creatorId,joineeId){
 
 
 function loadSocket(){ //connects to socket on server whoo!
+    console.log("LOAD SOCKET!")
     const socket = io.connect('http://localhost:3002');
     socket.on('test', (data) => { //catches 'test' event
       console.log(data);
