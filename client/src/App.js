@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login"
-import Options from "./pages/Options"
+import Onboarding from "./pages/Onboarding"
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import NoMatch from "./pages/NoMatch";
@@ -23,7 +23,7 @@ function App() {
       <div>
         <Switch>
           <Route exact path={["/", "/login"]} component={Login} />
-          <Route exact path="/options" component={Options} />
+          <Route exact path="/onboarding" component={Onboarding} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/profile" >

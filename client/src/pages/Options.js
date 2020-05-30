@@ -1,7 +1,24 @@
 import React from "react";
 import { Container, Row, Col, Form } from 'react-bootstrap';
+// import API from "../../utils/API";
 
-function Options() {
+
+function Onboarding() {
+
+    // let [games, setGames] = React.useState([]); //state for games
+
+    // React.useEffect(() => { //grabs games
+    //     loadGames();
+    // }, []);
+
+
+    // function loadGames() { //uses API util to loadGames from our express server
+    //     API.getGames().then(res => {
+    //         setGames(res.data);
+    //     })
+    //         .catch(err => console.log(err));
+    // }
+
     return (
         <Container fluid>
             <div className="mt-5">
@@ -49,4 +66,4 @@ function Options() {
     );
 }
 
-export default Options;
+export default Onboarding;
