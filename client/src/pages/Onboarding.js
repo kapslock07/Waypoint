@@ -6,6 +6,12 @@ import { Container, Row, Col, Form } from 'react-bootstrap';
 function Onboarding() {
 
     // let [games, setGames] = React.useState([]); //state for games
+    // let [platforms, setPlatforms] = React.useState([]); //state for platforms
+    // let [avatars, setAvatars] = React.useState([]); //state for avatars
+
+    // const handleSubmit = e => {
+    //     e.preventDefault();
+    // };
 
     // React.useEffect(() => { //grabs games
     //     loadGames();
@@ -26,7 +32,7 @@ function Onboarding() {
                     <Col lg={6}>
                         <div className="text-center">
                             <Form>
-                                <h3 className="mb-4">Choose Your Favorite Consoles</h3>
+                                <h3 className="mb-4">Choose Your Favorite Platforms</h3>
                                 {['console 1', 'console 2', 'console 3'].map((game) => (
                                     <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check

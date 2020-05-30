@@ -34,16 +34,16 @@ function Profile(props) {
                     </Col>
                     <Col lg={4} className="text-center mb-5">
                         <div>
-                            <h3>Favorite Consoles</h3>
+                            <h3>Favorite Platforms</h3>
                             <div className="mt-2">
-                                {props.favConsolesImgs.map((favConsoleImg, i) => (
+                                {props.favPlatformsImgs.map((favPlatformImg, i) => (
                                     <div>
-                                        <div className="myConsoles mt-3">
-                                            <img className="consoleImg" src={favConsoleImg} alt="platform1" width="100" height="100"></img>
+                                        <div className="myPlatforms mt-3">
+                                            <img className="PlatformImg" src={favPlatformImg} alt="platform1" width="100" height="100"></img>
                                             <MDBBtn
                                                 rounded
                                                 type="button"
-                                                className="removeConsoleBtn z-depth-1a aqua-gradient"
+                                                className="removePlatformBtn z-depth-1a aqua-gradient"
 
 
                                             >

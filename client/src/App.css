@@ -21,11 +21,11 @@ html {
   padding-top: 210px; 
 }
 
-.myConsoles, .myGames {
+.myPlatforms, .myGames {
   display:inline-block;
   position:relative;
  }
-.removeConsoleBtn, .removeGameBtn {
+.removePlatformBtn, .removeGameBtn {
   position: absolute;
   right:0;
   color:white;
