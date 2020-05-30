@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Row, Col, Form, Image } from 'react-bootstrap';
 import API from "../utils/API";
 import { MDBBtn } from "mdbreact";
 
@@ -66,6 +66,7 @@ function Onboarding() {
                                                     name="game"
                                                     label={game.title}
                                                 />
+
                                             </div>
                                         ))}
 
@@ -77,11 +78,13 @@ function Onboarding() {
                                             <h3 className="mb-4">Choose Your Avatar</h3>
                                             {avatars.map((avatar, i) => (
                                                 <div key={avatar.id} className="mb-3 avatarOptions">
+                                                    <Image src={avatar.src} thumbnail width="100" height="100" />
                                                     <Form.Check
                                                         type='checkbox'
                                                         id={avatar.id}
                                                         label={avatar.title}
                                                     />
+
                                                 </div>
                                             ))}
                                         </div>
