@@ -21,11 +21,17 @@ if (process.env.NODE_ENV === "production") {
 //This is for instant messaging funcitonality
 const chatServer = require('http').createServer(app);
 const io = require('socket.io')(chatServer);
-io.on('connection', () => {
+io.on('connection', (socket) => {
 
 
-  /* … */
+  console.log("Client Connected");
+  io.emit('test', { test: 'hello world!' }); //emits a test event 
 
+
+  socket.on('disconnect', () => { //handles disconnect
+    io.emit('user disconnected');
+    console.log("Client Disconnected");
+  });
 });
 chatServer.listen(3002);
 
