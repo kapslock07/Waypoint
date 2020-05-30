@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
+import io from "socket.io";
 import chatActions from "./chatActions";
 
 const ChatContext = createContext();
@@ -6,8 +7,11 @@ const { Provider } = ChatContext;
 
 const reducer = (state, action) => {
     switch(action.type){
+        case(chatActions.CREATE_CHAT):
+            console.log("Create Chat!");
+            break;
         case(chatActions.SEND_CHAT):
-            console.log("send chat!");
+            console.log("Send chat!");
             break;
         case(chatActions.GET_CHATS):
             console.log("Get chats!");
@@ -25,6 +29,15 @@ const ChatProvider = ({ userObj = [], ...props}) => {
 
 const useChatContext = () => {
     return useContext(ChatContext);
+}
+
+
+function loadSocket(){ //boiler plate code for now
+    const socket = io.connect('http://localhost:3002');
+    socket.on('news', (data) => {
+      console.log(data);
+      socket.emit('my other event', { my: 'data' });
+    });
 }
 
 export { ChatProvider, useChatContext };
