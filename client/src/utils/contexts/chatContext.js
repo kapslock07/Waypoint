@@ -9,8 +9,8 @@ const { Provider } = ChatContext;
 const reducer = (state, action) => {
     switch(action.type){
         case(chatActions.CREATE_CHAT):
-            console.log("Create Chat with " + action.userId);
-            createChat(1,2);
+            console.log("Create Chat with " + action.creatorId + " and " + action.joineeId);
+            createChat(action.creatorId,action.joineeId);
             break;
         case(chatActions.SEND_CHAT):
             console.log("Send chat!");
@@ -33,10 +33,10 @@ const useChatContext = () => {
     return useContext(ChatContext);
 }
 
-function createChat(user1,user2){
+function createChat(creatorId,joineeId){
     let data = {
-        user1: user1,
-        user2: user2
+        creatorId: creatorId,
+        joineeId: joineeId
     }
 
     API.createChat(data);

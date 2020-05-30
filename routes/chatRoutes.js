@@ -14,16 +14,17 @@ module.exports = (server, db) => {
             
             db.Chat.findOrCreate({
                 where: {
-                    creatorId: data.user1,
-                    joineeId: data.user2
+                    creatorId: data.creatorId,
+                    joineeId: data.joineeId
                 },
                 defaults: {
-                    creatorId: data.user1,
-                    joineeId: data.user2  
+                    creatorId: data.creatorId,
+                    joineeId: data.joineeId  
                 }
             }).then(data => {
                 console.log(data);
-            })
+                res.status(200).end();
+            });
     });
 
     server.get("/api/chat/:id", (req,res) => {
@@ -35,7 +36,7 @@ module.exports = (server, db) => {
             }
         }).then(data => {
             res.json(data);
-        })
+        });
     });
 
 
