@@ -1,4 +1,10 @@
 import React from 'react'
+import Home from "../../pages/Home";
+import Login from "../../pages/Login"
+import Options from "../../pages/Options"
+import Chat from "../../pages/Chat";
+import Profile from "../../pages/Profile";
+import NoMatch from "../../pages/NoMatch";
 
 function Wrapper() {
 
