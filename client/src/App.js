@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login"
@@ -11,18 +11,19 @@ import "./App.css";
 
 //importing context for chat
 import { ChatProvider } from "./utils/contexts/chatContext";
+import actions from "./utils/contexts/chatActions";
 
 
 function App() {
 
-  const [state, setState] = useState({
+  const [state1, setState1] = useState({
     name: "",
     error: null,
     isAuthenticated: false
   });
 
   return (
-    <ChatProvider>
+    <ChatProvider startChat={true} userObj={[]}>
       <Router>
         <div>
           <Switch>
