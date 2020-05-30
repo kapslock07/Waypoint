@@ -10,14 +10,6 @@ import Auth from "../utils/Auth";
 const Login = () => {
 
     const [modal, setModal] = useState(false)
-
-    const [login, setLogin] = useState({
-        email: "",
-        password: "",
-        emailValid: ""
-    })
-
-
     const [signUp, setSignup] = useState({
         userName: "",
         password: "",
@@ -30,7 +22,6 @@ const Login = () => {
 
     const handleInputChange = (event) => {
         event.preventDefault();
-        value = email.target
         const { name, value } = event.target;
         setSignup({ ...signUp, [name]: value })
 
