@@ -22,6 +22,11 @@ export default {
             titles: titles,
             userId: userId
         });
+    },
+    createChat: function(data){
+        return axios.post("/api/chat", {
+            data: data
+        });
     }
 };
 
