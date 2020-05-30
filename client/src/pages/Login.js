@@ -9,7 +9,7 @@ import Auth from "../utils/Auth";
 
 const Login = () => {
 
-    const [state, setState] = useState({ modal: false })
+    const [modal, setModal] = useState(false)
     const [signUp, setSignup] = useState({
         userName: "",
         password: "",
@@ -17,26 +17,24 @@ const Login = () => {
     })
 
     const toggle = () => {
-        setState({
-            ...state, modal: !state.modal,
-            isLogined: false // <-- initialize the signup state as false
-        });
+        setModal(!modal);
     }
 
     const handleInputChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
-        setState({ ...signUp, [name]: value })
+        setSignup({ ...signUp, [name]: value })
 
     }
 
     const handleSubmit = event => {
         event.preventDefault();
+        console.log("INITIALIZING")
         const userName = signUp.userName;
         const email = signUp.email;
         const password = signUp.password;
         Auth.signUp(email, password, userName)
-            .then(res => res.send(200))
+        toggle();
     }
 
     return (
@@ -93,7 +91,7 @@ const Login = () => {
                                         >
                                             Sign up
                     </a>
-                                        <MDBModal isOpen={state.modal} toggle={toggle}>
+                                        <MDBModal isOpen={modal} toggle={toggle}>
                                             <MDBModalHeader toggle={toggle}>Sign Up </MDBModalHeader>
                                             <MDBModalBody>
                                                 <MDBRow>
@@ -110,7 +108,7 @@ const Login = () => {
                                                                             validate
                                                                             error="wrong"
                                                                             success="right"
-                                                                            name="username"
+                                                                            name="userName"
                                                                             onChange={handleInputChange}
                                                                         />
                                                                         <MDBInput

@@ -17,10 +17,10 @@ module.exports = app => {
         db.User.create({
             email: req.body.email,
             password: req.body.password,
-            userName: req.body.username,
+            userName: req.body.userName,
         })
             .then(function () {
-                res.redirect(307, "/api/login");
+                res.redirect(307, "http://localhost:3000/home");
             })
             .catch(function (err) {
                 res.status(401).json(err);

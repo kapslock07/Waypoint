@@ -2,13 +2,15 @@ import axios from 'axios';
 
 export default {
     isLoggedIn: () => {
-        axios.get('http://localhost:3001/auth/success')
+        return axios.get('/auth/success')
     },
     signUp: (email, password, userName) => {
-        axios.post('http://localhost:3001/api/signup', {
+        console.log("ARE YOU WORKING?")
+        console.log(email, password, userName)
+        return axios.post('/api/signup', {
             email: email,
             password: password,
             userName: userName
-        });
+        }).then(res => console.log(res))
     }
 }
