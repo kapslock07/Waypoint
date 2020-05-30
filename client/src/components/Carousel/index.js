@@ -62,6 +62,7 @@ const Container = styled("div")`
     width: 100%;
     height: 100%;
     clear: both;
+    margin-left: 0;
   }
   max-width: 100%;
 `;
