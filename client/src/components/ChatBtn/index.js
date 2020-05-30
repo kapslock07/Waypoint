@@ -18,7 +18,8 @@ function ChatBtn(props) {
             type="button"
             className="chatBtn z-depth-2 aqua-gradient mt-3"
             size="sm"
-            onClick={() => {dispatch({ type: actions.CREATE_CHAT, creatorId: 'userWhoCLicketButton', joineeId: 'userWhoWasOnDisplay' })}}
+            href="/chat"
+            onClick={() => {dispatch({ type: actions.CREATE_CHAT, creatorId: 'userWhoCLicketButton', joineeId: props.joineeId })}}
         >
             Chat
         </MDBBtn>

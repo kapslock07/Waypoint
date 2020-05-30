@@ -18,7 +18,7 @@ function searchResultsBox(props) {
                                     <h5>{props.username}</h5>
                                     <img src={props.image} alt="User Image" width="25%"></img>
                                 </div>
-                                <ChatBtn />
+                                <ChatBtn joineeId={props.id} />
                             </Col>
                             <Col lg={4}>
                                 <h5><strong>Favorite Consoles</strong></h5>
