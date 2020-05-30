@@ -49,7 +49,7 @@ function Nav() {
                 </form> */}
 
         <div className="navbar-nav justify-content-end ml-auto text-light">
-          <div className="navBtn">
+          <div className="navBtn text-center mb-3">
             <i
               type="button"
               className="fa mx-4 text-center fa-2x fa-search pt-3 animated pulse infinite"
