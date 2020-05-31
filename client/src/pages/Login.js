@@ -9,7 +9,13 @@ import Auth from "../utils/Auth";
 
 const Login = () => {
 
+    const [login, setLogin] = useState({
+        emailLogin: "",
+        passwordLogin: ""
+    })
+
     const [modal, setModal] = useState(false)
+
     const [signUp, setSignup] = useState({
         userName: "",
         password: "",
@@ -24,12 +30,15 @@ const Login = () => {
         event.preventDefault();
         const { name, value } = event.target;
         setSignup({ ...signUp, [name]: value })
+        setLogin({ ...login, [name]: value })
 
     }
 
     const handleSubmit = event => {
         event.preventDefault();
         console.log("INITIALIZING")
+        const emailLogin = login.email;
+        const passwordLogin = login.password;
         const userName = signUp.userName;
         const email = signUp.email;
         const password = signUp.password;
@@ -57,13 +66,17 @@ const Login = () => {
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
-                            <MDBInput label="Your email" group type="text" validate />
+                            <MDBInput label="Your email" group type="text" validate className="needs-validation"
+                                onChange={handleInputChange}
+                            />
                             <MDBInput
                                 label="Your password"
                                 group
                                 type="password"
                                 validate
                                 containerClass="mb-0"
+                                onChange={handleInputChange}
+
                             />
                             <MDBRow className="d-flex align-items-center mb-4 mt-5">
                                 <MDBCol md="5" className="d-flex align-items-start">
