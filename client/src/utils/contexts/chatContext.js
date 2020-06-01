@@ -6,6 +6,8 @@ import API from "../API";
 const ChatContext = createContext();
 const { Provider } = ChatContext;
 
+let socket;
+
 const reducer = (state, action) => {
     switch(action.type){
         case(chatActions.LOAD_IO):
@@ -46,18 +48,27 @@ function createChat(creatorId,joineeId){
     }
 
     API.createChat(data);
+
+    socket.emit("created_chat", {
+        creatorId: creatorId,
+        joineeId: joineeId
+    });
 }
 
 
 function loadSocket(state){ //connects to socket on server whoo!
     console.log("LOAD SOCKET!")
-    let socket = io('http://localhost:3002');
-
+    socket = io('http://localhost:3002');
+    
     socket.emit("user_connect", state.user.id);
 
     socket.on("user_connect", (data) => { //Listen from server
         console.log("HEARD SOMETHING FROM SERVER");
       console.log("Connected to Chat Server with Id of ", data);
+    });
+
+    socket.on("created_chat", data => {
+        console.log(`user with id ${data.creatorId} wants to chat!`);
     });
 }
 

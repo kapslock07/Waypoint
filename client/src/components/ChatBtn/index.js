@@ -11,7 +11,6 @@ function ChatBtn(props) {
 
     const [state, dispatch] = useChatContext();
 
-
     return (
         <MDBBtn
             rounded
