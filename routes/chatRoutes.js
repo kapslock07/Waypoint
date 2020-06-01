@@ -1,5 +1,6 @@
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const sequelize = require("sequelize");
+const chatController = require("../controllers/chatController");
 
 
 module.exports = (server, db) => {
@@ -9,22 +10,7 @@ module.exports = (server, db) => {
     //https://sequelize.org/master/manual/creating-with-associations.html  <-- refrence theses docs when creating this
 
     server.post("/api/chat", (req, res) => {
-        let data = req.body.data;
-
-            
-            db.Chat.findOrCreate({
-                where: {
-                    creatorId: data.creatorId,
-                    joineeId: data.joineeId
-                },
-                defaults: {
-                    creatorId: data.creatorId,
-                    joineeId: data.joineeId  
-                }
-            }).then(data => {
-               // console.log(data);
-                res.status(200).end();
-            });
+        chatController.createChat(req, res);
     });
 
     server.get("/api/chat/:id", (req,res) => {
@@ -34,7 +20,7 @@ module.exports = (server, db) => {
             where: {
                 creatorId: creatorId
             },
-            include: [db.Message]
+            include: [db.Message, db.User]
         }).then(data => {
             res.json(data);
         });

@@ -21,6 +21,8 @@ export default function Messenger(props) {
  const getConversations = () => {
    API.getChats(state.user.id).then(res => {
      //parse chat and message data here
+     console.log(res.data)
+     setConversations([...conversations, ...res.data]);
 
 
    });

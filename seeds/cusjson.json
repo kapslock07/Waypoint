@@ -1,1 +1,199 @@
-[{"title":"FIFA 19","platforms":["PC","Xbox One","PlayStation 4","Nintendo Switch","Xbox 360","PlayStation 3"],"image":"https://media.rawg.io/media/games/189/18933f79997aa974dc029ad0aa511a33.jpg","short_screenshots":[{"id":-1,"image":"https://media.rawg.io/media/games/189/18933f79997aa974dc029ad0aa511a33.jpg"},{"id":778698,"image":"https://media.rawg.io/media/screenshots/033/0336c4c18eb8a6a77686a5047f54881b.jpg"}],"genres":["Simulation","Sports"]},{"title":"Tom Clancy's Rainbow Six Siege","platforms":["PC","Xbox One","PlayStation 4"],"image":"https://media.rawg.io/media/games/b34/b3419c2706f8f8dbe40d08e23642ad06.jpg","short_screenshots":[{"id":-1,"image":"https://media.rawg.io/media/games/b34/b3419c2706f8f8dbe40d08e23642ad06.jpg"},{"id":60047,"image":"https://media.rawg.io/media/screenshots/cde/cde4694574a78e355478cf6e438106ac.jpg"}],"genres":["Shooter","Action"]},{"title":"Fortnite: Save The World","platforms":["PC","Xbox One","PlayStation 4","Nintendo Switch","iOS"],"image":"https://media.rawg.io/media/games/d97/d97f663b752a6484df105993f17abb49.jpg","short_screenshots":[{"id":-1,"image":"https://media.rawg.io/media/games/d97/d97f663b752a6484df105993f17abb49.jpg"},{"id":269149,"image":"https://media.rawg.io/media/screenshots/4f9/4f9cc8bb70ac0f19e07491acd2c26ebe.jpg"}],"genres":["Shooter","Strategy","Action"]},{"title":"Call of Duty: Warzone","platforms":["PC","Xbox One","PlayStation 4"],"image":"https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg","short_screenshots":[{"id":-1,"image":"https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg"},{"id":2313639,"image":"https://media.rawg.io/media/screenshots/1e5/1e5bb01930db2db0a1ff409cb5ceec5e.jpg"}],"genres":["Shooter"]},{"title":"League of Legends","platforms":["PC","macOS"],"image":"https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg","short_screenshots":[{"id":-1,"image":"https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg"},{"id":505293,"image":"https://media.rawg.io/media/screenshots/3f2/3f2e6056b40accc27214f50f9630a6a8.jpg"}],"genres":["Strategy","Action","RPG"]},{"title":"Overwatch","platforms":["PC","Xbox One","PlayStation 4","Nintendo Switch"],"image":"https://media.rawg.io/media/games/4ea/4ea507ceebeabb43edbc09468f5aaac6.jpg","short_screenshots":[{"id":-1,"image":"https://media.rawg.io/media/games/4ea/4ea507ceebeabb43edbc09468f5aaac6.jpg"},{"id":621981,"image":"https://media.rawg.io/media/screenshots/879/8794242f393b3258e97b690a4138d056.jpg"}],"genres":["Casual","Shooter","Massively Multiplayer","Action"]},{"title":"Rocket League","platforms":["PC","Xbox One","PlayStation 4","Nintendo Switch","macOS","Linux"],"image":"https://media.rawg.io/media/games/88c/88c5b4d7c80276c03ff62aebb1a99ad4.jpg","short_screenshots":[{"id":-1,"image":"https://media.rawg.io/media/games/88c/88c5b4d7c80276c03ff62aebb1a99ad4.jpg"},{"id":29880,"image":"https://media.rawg.io/media/screenshots/6a0/6a0745d9dcd0f7a368d372260baf91aa.jpg"}],"genres":["Racing","Indie","Action","Sports"]},{"title":"Counter-Strike: Global Offensive","platforms":["PC","Xbox 360","PlayStation 3"],"image":"https://media.rawg.io/media/games/64b/64bb90ca6b1df8a36d710f6542111142.jpg","short_screenshots":[{"id":-1,"image":"https://media.rawg.io/media/games/64b/64bb90ca6b1df8a36d710f6542111142.jpg"},{"id":81644,"image":"https://media.rawg.io/media/screenshots/ff1/ff16661bb15f7969b44f6c4118870e44.jpg"}],"genres":["Shooter","Action"]}]
+[
+    {
+        "title": "FIFA 19",
+        "platforms": [
+            "PC",
+            "Xbox One",
+            "PlayStation 4",
+            "Nintendo Switch",
+            "Xbox 360",
+            "PlayStation 3"
+        ],
+        "image": "https://media.rawg.io/media/games/189/18933f79997aa974dc029ad0aa511a33.jpg",
+        "short_screenshots": [
+            {
+                "id": -1,
+                "image": "https://media.rawg.io/media/games/189/18933f79997aa974dc029ad0aa511a33.jpg"
+            },
+            {
+                "id": 778698,
+                "image": "https://media.rawg.io/media/screenshots/033/0336c4c18eb8a6a77686a5047f54881b.jpg"
+            }
+        ],
+        "genres": [
+            "Simulation",
+            "Sports"
+        ]
+    },
+    {
+        "title": "Tom Clancy's Rainbow Six Siege",
+        "platforms": [
+            "PC",
+            "Xbox One",
+            "PlayStation 4"
+        ],
+        "image": "https://media.rawg.io/media/games/b34/b3419c2706f8f8dbe40d08e23642ad06.jpg",
+        "short_screenshots": [
+            {
+                "id": -1,
+                "image": "https://media.rawg.io/media/games/b34/b3419c2706f8f8dbe40d08e23642ad06.jpg"
+            },
+            {
+                "id": 60047,
+                "image": "https://media.rawg.io/media/screenshots/cde/cde4694574a78e355478cf6e438106ac.jpg"
+            }
+        ],
+        "genres": [
+            "Shooter",
+            "Action"
+        ]
+    },
+    {
+        "title": "Fortnite: Save The World",
+        "platforms": [
+            "PC",
+            "Xbox One",
+            "PlayStation 4",
+            "Nintendo Switch",
+            "iOS"
+        ],
+        "image": "https://media.rawg.io/media/games/d97/d97f663b752a6484df105993f17abb49.jpg",
+        "short_screenshots": [
+            {
+                "id": -1,
+                "image": "https://media.rawg.io/media/games/d97/d97f663b752a6484df105993f17abb49.jpg"
+            },
+            {
+                "id": 269149,
+                "image": "https://media.rawg.io/media/screenshots/4f9/4f9cc8bb70ac0f19e07491acd2c26ebe.jpg"
+            }
+        ],
+        "genres": [
+            "Shooter",
+            "Strategy",
+            "Action"
+        ]
+    },
+    {
+        "title": "Call of Duty: Warzone",
+        "platforms": [
+            "PC",
+            "Xbox One",
+            "PlayStation 4"
+        ],
+        "image": "https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg",
+        "short_screenshots": [
+            {
+                "id": -1,
+                "image": "https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg"
+            },
+            {
+                "id": 2313639,
+                "image": "https://media.rawg.io/media/screenshots/1e5/1e5bb01930db2db0a1ff409cb5ceec5e.jpg"
+            }
+        ],
+        "genres": [
+            "Shooter"
+        ]
+    },
+    {
+        "title": "League of Legends",
+        "platforms": [
+            "PC",
+            "macOS"
+        ],
+        "image": "https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg",
+        "short_screenshots": [
+            {
+                "id": -1,
+                "image": "https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg"
+            },
+            {
+                "id": 505293,
+                "image": "https://media.rawg.io/media/screenshots/3f2/3f2e6056b40accc27214f50f9630a6a8.jpg"
+            }
+        ],
+        "genres": [
+            "Strategy",
+            "Action",
+            "RPG"
+        ]
+    },
+    {
+        "title": "Overwatch",
+        "platforms": [
+            "PC",
+            "Xbox One",
+            "PlayStation 4",
+            "Nintendo Switch"
+        ],
+        "image": "https://media.rawg.io/media/games/4ea/4ea507ceebeabb43edbc09468f5aaac6.jpg",
+        "short_screenshots": [
+            {
+                "id": -1,
+                "image": "https://media.rawg.io/media/games/4ea/4ea507ceebeabb43edbc09468f5aaac6.jpg"
+            },
+            {
+                "id": 621981,
+                "image": "https://media.rawg.io/media/screenshots/879/8794242f393b3258e97b690a4138d056.jpg"
+            }
+        ],
+        "genres": [
+            "Casual",
+            "Shooter",
+            "Massively Multiplayer",
+            "Action"
+        ]
+    },
+    {
+        "title": "Rocket League",
+        "platforms": [
+            "PC",
+            "Xbox One",
+            "PlayStation 4",
+            "Nintendo Switch",
+            "macOS",
+            "Linux"
+        ],
+        "image": "https://media.rawg.io/media/games/88c/88c5b4d7c80276c03ff62aebb1a99ad4.jpg",
+        "short_screenshots": [
+            {
+                "id": -1,
+                "image": "https://media.rawg.io/media/games/88c/88c5b4d7c80276c03ff62aebb1a99ad4.jpg"
+            },
+            {
+                "id": 29880,
+                "image": "https://media.rawg.io/media/screenshots/6a0/6a0745d9dcd0f7a368d372260baf91aa.jpg"
+            }
+        ],
+        "genres": [
+            "Racing",
+            "Indie",
+            "Action",
+            "Sports"
+        ]
+    },
+    {
+        "title": "Counter-Strike: Global Offensive",
+        "platforms": [
+            "PC",
+            "Xbox 360",
+            "PlayStation 3"
+        ],
+        "image": "https://media.rawg.io/media/games/64b/64bb90ca6b1df8a36d710f6542111142.jpg",
+        "short_screenshots": [
+            {
+                "id": -1,
+                "image": "https://media.rawg.io/media/games/64b/64bb90ca6b1df8a36d710f6542111142.jpg"
+            },
+            {
+                "id": 81644,
+                "image": "https://media.rawg.io/media/screenshots/ff1/ff16661bb15f7969b44f6c4118870e44.jpg"
+            }
+        ],
+        "genres": [
+            "Shooter",
+            "Action"
+        ]
+    }
+]
