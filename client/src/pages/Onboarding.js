@@ -17,6 +17,8 @@ function Onboarding() {
 
     React.useEffect(() => { //grabs games
         loadGames();
+        // loadPlatforms();
+        // loadAvatars();
     }, []);
 
 
@@ -27,6 +29,22 @@ function Onboarding() {
         })
             .catch(err => console.log(err));
     }
+
+    // function loadPlatforms() { //uses API util to loadPlatforms from our express server
+    //     API.getPlatforms().then(res => {
+    //         setPlatforms(res.data);
+    //         console.log(res.data)
+    //     })
+    //         .catch(err => console.log(err));
+    // }
+
+    // function loadAvatars() { //uses API util to loadAvatars from our express server
+    //     API.getAvatars().then(res => {
+    //         setAvatars(res.data);
+    //         console.log(res.data)
+    //     })
+    //         .catch(err => console.log(err));
+    // }
 
 
 
@@ -80,7 +98,7 @@ function Onboarding() {
                                                 <div key={avatar.id} className="mb-3 avatarOptions">
                                                     <Image src={avatar.src} thumbnail width="100" height="100" />
                                                     <Form.Check
-                                                        type='checkbox'
+                                                        type='radio'
                                                         id={avatar.id}
                                                         label={avatar.title}
                                                     />

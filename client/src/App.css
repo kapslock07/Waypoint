@@ -38,6 +38,10 @@ html {
  .avatarOptions {
    display: inline-block
  }
+
+ .platformOptions {
+  display: inline-block
+}
  
  .onboarding {
   background-color: white;
