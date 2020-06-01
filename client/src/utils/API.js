@@ -16,7 +16,7 @@ export default {
     },
     //Get Avatars(local)
     getAvatars: function(){
-        
+        return axios.get("/api/avatars");
     },
     //Search Games by Title
     searchGamesT: function(title){

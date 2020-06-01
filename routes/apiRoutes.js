@@ -52,11 +52,17 @@ module.exports = (server, db) => {
 
   //return all platforms
   server.get("/api/platforms", (req,res) => {
-
     db.Platform.findAll({}).then(data => {
       res.json(data);
     });
   });
+
+    //return all avatars
+    server.get("/api/avatars", (req,res) => {
+      db.Avatar.findAll({}).then(data => {
+        res.json(data);
+      });
+    });
 
   //returns all games by title
   server.get("/api/games/:title", (req, res) => {

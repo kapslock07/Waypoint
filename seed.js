@@ -1,6 +1,7 @@
 let db = require("./models");
 let json = require("./seeds/cusjson.json");
 let platJson = require("./seeds/platforms.json");
+let avatarJson = require("./seeds/userImage.json");
 
 
 function fillDatabase(){
@@ -18,6 +19,15 @@ function fillDatabase(){
         console.log(".");
     });
     console.log("DONE!");
+
+    console.log("Importing Avatars...");
+    avatarJson.forEach(e => {
+        db.Avatar.create(e);
+        console.log(".");
+    });
+    console.log("DONE!");
+
+    return;
 }
 
 

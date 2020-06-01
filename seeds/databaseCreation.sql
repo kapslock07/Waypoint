@@ -7,5 +7,4 @@ SELECT * FROM chats;
 SELECT * FROM games;
 SELECT * FROM users;
 SELECT * FROM platforms;
-SELECT * FROM users;
-
+SELECT * FROM avatars;

@@ -40,8 +40,8 @@ function Onboarding() {
 
      function loadAvatars() { //uses API util to loadAvatars from our express server
         API.getAvatars().then(res => {
-            setAvatars(res);
-            console.log(res)
+            setAvatars(res.data);
+            console.log(res.data)
          })
         .catch(err => console.log(err));
      }
