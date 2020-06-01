@@ -37,13 +37,14 @@ const Login = () => {
     const handleSubmit = event => {
         event.preventDefault();
         console.log("INITIALIZING")
-        const emailLogin = login.email;
-        const passwordLogin = login.password;
+        const emailLogin = login.emailLogin;
+        const passwordLogin = login.passwordLogin;
         const userName = signUp.userName;
         const email = signUp.email;
         const password = signUp.password;
         Auth.signUp(email, password, userName)
         toggle();
+        event.target.className += ' was-validated'
     }
 
     return (
@@ -53,16 +54,17 @@ const Login = () => {
                     <Carousel />
                 </MDBCol>
                 <MDBCol lg="6" style={{ paddingLeft: "50px" }}>
-                    <MDBCard>
+                    <MDBCard onSubmit={handleSubmit}
+                    >
                         <div className="header pt-3 grey-gradient">
                             <MDBRow className="d-flex justify-content-center">
                                 <img src={Logo} style={{ width: "50%", paddingBottom: "15px" }} />
                             </MDBRow>
                             <MDBRow className="d-flex justify-content-center">
-                                <h3> WayPoint </h3>
+                                <h3 style={{ fontFamily: "Uni Sans Caps" }}> WayPoint </h3>
                             </MDBRow>
                             <MDBRow className="d-flex justify-content-center">
-                                <h3 style={{ paddingTop: "15px", fontFamily: "Nature Spirit Regular" }}> A place where Gamers meet! </h3>
+                                <h3 style={{ paddingTop: "15px", fontFamily: "Uni Sans" }}> A place where Gamers meet! </h3>
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
@@ -85,6 +87,7 @@ const Login = () => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
+                                            onSubmit={handleSubmit}
                                         >
                                             Log in
                                             </MDBBtn>

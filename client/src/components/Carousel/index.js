@@ -1,16 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Image1 from "../../assets/images/animalcrossing.jpg"
 import Image2 from "../../assets/images/halo.jpg"
 import Image3 from "../../assets/images/fifa20.jpeg"
-import Image4 from "../../assets/images/callofduty.jpg"
+import Image4 from "../../assets/images/callofduty.png"
 import Image5 from "../../assets/images/rocketleague.jpg"
 import Image6 from "../../assets/images/overwatch.jpg"
 import Image7 from "../../assets/images/NBA.jpg"
-import Image8 from "../../assets/images/fortnite.jpeg"
+import Image8 from "../../assets/images/fortnite.jpg"
 import Image9 from "../../assets/images/destiny2.jpg"
 
-import { jsx } from "@emotion/core";
 import styled from "@emotion/styled";
 import { Transition, animated } from "react-spring/renderprops";
 
@@ -81,7 +79,7 @@ class Carousel extends React.Component {
         var self = this
         setTimeout(function () {
             self.toggle()
-        }, 10000)
+        }, 8000)
         return (
             <div style={{ height: "100vh" }}>
                 <Container >
