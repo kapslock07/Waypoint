@@ -9,39 +9,39 @@ import { useChatContext } from "../../utils/contexts/chatContext";
 
 function SearchResults() {
 
-    let [users, setUsers] = React.useState([]); //state for users
-    const [state] = useChatContext();
-    console.log(state)
+    // let [users, setUsers] = React.useState([]); //state for users
+    // const [state] = useChatContext();
+    // console.log(state)
 
-    React.useEffect(() => { //grabs users
-        loadGames();
-    }, []);
-
-    
+    // React.useEffect(() => { //grabs users
+    //     loadGames();
+    // }, []);
 
 
-    function loadGames() { //uses API util to loadUsers from our express server
-        API.getUsers().then(res => {
-            setUsers(res.data);
-        })
-            .catch(err => console.log(err));
-    }
+
+
+    // function loadGames() { //uses API util to loadUsers from our express server
+    //     API.getUsers().then(res => {
+    //         setUsers(res.data);
+    //     })
+    //         .catch(err => console.log(err));
+    // }
 
     return (
         <Container fluid>
-            <Row>
+            {/* <Row>
                 <Col xs={12}>
                     <MDBAnimation type="fadeInDown">
                         <Header name={"Users"} />
                     </MDBAnimation>
                     <MDBAnimation type="fadeInUp">
                         {users.length !== 0 ? users.map(e => {
-                            if(e.id !== state.user.id)
+                            if (e.id !== state.user.id)
                                 return <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={"https://image.flaticon.com/icons/svg/1880/1880988.svg"} favoriteGames={["Final Fantasy 80", "Uniracers", "Duck Hunt"]} favoriteConsoles={["Xbox 360", "Nintendo Switch"]} />
                         }) : <h1>No Users Found</h1>}
                     </MDBAnimation>
                 </Col>
-            </Row>
+            </Row> */}
         </Container>
 
 

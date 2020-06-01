@@ -18,7 +18,7 @@ function AuthRoute() {
         id: "",
         error: null,
         isAuthenticated: false,
-        onClick: value => setUser({ ...user, isAuthenticated: value })
+        changeState: value => setUser({ ...user, isAuthenticated: value })
     })
 
     const [loading, setLoading] = useState(true)
@@ -32,8 +32,7 @@ function AuthRoute() {
                         ...user,
                         id: res.data.user.id,
                         isAuthenticated: true,
-                    })
-                    setLoading(false)
+                    });
                 } else {
                     setLoading(false)
                 }
@@ -42,10 +41,10 @@ function AuthRoute() {
 
     return (
         <Switch>
-
+            {/* {loading ? <Loading /> : */}
             {user.isAuthenticated ? (
                 <div>
-                    <Route exact path="/options" component={Options} />
+                    {/* <Route exact path="/onboarding" component={Onboarding} /> */}
                     <Route exact path={["/", "/home"]} component={Home} />
                     <Route exact path="/chat" component={Chat} />
                     <Route exact path="/profile">
@@ -53,7 +52,7 @@ function AuthRoute() {
                     </Route>
                 </div>)
                 : (
-                    <Route><Login isLogged={user.isAuthenticated} authentication={user.onClick} /></Route>
+                    <Route><Login isAuthenticated={user.isAuthenticated} changeState={user.changeState} /></Route>
                 )}
             <Route>
                 <NoMatch />
