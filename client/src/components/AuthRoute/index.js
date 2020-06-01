@@ -8,8 +8,7 @@ import Profile from "../../pages/Profile";
 import NoMatch from "../../pages/NoMatch";
 import Loading from "../../pages/Loading"
 import Auth from "../../utils/Auth";
-import axios from 'axios'
-import UserContext from '../../utils/UserContext';
+// import UserContext from '../../utils/UserContext';
 import { ChatProvider } from "../../utils/contexts/chatContext";
 
 function AuthRoute() {
@@ -24,7 +23,12 @@ function AuthRoute() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        console.log(state.isAuthenticated)
+        console.log("At useEffect, authentication is ", state.isAuthenticated)
+        checkAuthentication()
+    }, [state.isAuthenticated])
+
+    const checkAuthentication = () => {
+        console.log("AUTHENTICATING")
         Auth.isLoggedIn()
             .then(res => {
                 console.log(res.data.user)
@@ -34,11 +38,16 @@ function AuthRoute() {
                         id: res.data.user.id,
                         isAuthenticated: true,
                     });
+                    setLoading(false)
                 } else {
+                    setState({
+                        ...state,
+                        isAuthenticated: false
+                    })
                     setLoading(false)
                 }
             })
-    }, [state.isAuthenticated])
+    }
 
     return (
         <Switch>
