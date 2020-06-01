@@ -29,13 +29,13 @@ module.exports = app => {
     });
 
     app.get("/auth/success", (req, res) => {
-        //console.log("The user object is ", req.user)
+        console.log("The user object is ", req.user)
         if (req.user) {
             res.json({
                 success: true,
                 message: "User has successfully authenticated",
                 user: {
-                    id: req.user[0].id
+                    id: req.user.id
                 },
                 cookies: req.cookies
             });

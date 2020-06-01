@@ -49,6 +49,7 @@ const Login = (props) => {
 
     const handleLogInSubmit = event => {
         event.preventDefault();
+        console.log("Change state is ", props.changeState)
         console.log("User logging in")
         Auth.LogIn(loggedIn.email, loggedIn.password)
             .then(res => {
