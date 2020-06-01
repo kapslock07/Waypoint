@@ -1,6 +1,19 @@
 var db = require("../models");
 
 module.exports = {
+
+    getChat: function(req, res){
+        let creatorId = req.params.id;
+    
+        db.Chat.findAll({
+            where: {
+                creatorId: creatorId
+            },
+            include: [db.Message, db.User]
+        }).then(data => {
+            res.json(data);
+        });
+    },
     createChat: function(req, res){
         let data = req.body.data;
         
@@ -9,7 +22,6 @@ module.exports = {
                 id: data.creatorId
             }
         }).then(creatorData => {
-            console.log("USER CHECK ", creatorData instanceof db.User)
             db.User.findOne({
                 where: {
                     id: data.joineeId
@@ -22,16 +34,6 @@ module.exports = {
                 })
                 newChat.addUsers([creatorData, joineeData]);
 
-                db.Chat.findOne({
-                    where: {
-                        id: newChat.id
-                    },
-                    include: [db.Message, db.User]
-                }).then(data => {
-                    console.log(data);
-                })
-                
-    
                 res.status(200).end();
             })
         });

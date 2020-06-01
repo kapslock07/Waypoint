@@ -14,16 +14,7 @@ module.exports = (server, db) => {
     });
 
     server.get("/api/chat/:id", (req,res) => {
-        let creatorId = req.params.id;
-    
-        db.Chat.findAll({
-            where: {
-                creatorId: creatorId
-            },
-            include: [db.Message, db.User]
-        }).then(data => {
-            res.json(data);
-        });
+        chatController.getChat(req,res);
     });
 
 

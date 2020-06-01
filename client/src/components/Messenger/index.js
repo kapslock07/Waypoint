@@ -20,24 +20,25 @@ export default function Messenger(props) {
 
  const getConversations = () => {
    API.getChats(state.user.id).then(res => {
-     //parse chat and message data here
-     console.log(res.data)
-     setConversations([...conversations, ...res.data]);
 
+    let chats = res.data;
+    let convoUsers = [];
 
+    chats.forEach(chat => { //for every chat we have
+      //get the user thats not us
+      let userThatsNotMe = chat.Users.filter(user => user.id != state.user.id);
+      
+      //push a shortened object version of them to convoUsers
+      convoUsers.push({
+            id: userThatsNotMe[0].id,
+            name: userThatsNotMe[0].userName,
+            photo: userThatsNotMe[0].profileImage,
+            chatId: userThatsNotMe[0].UserChats.ChatId
+          });
+    });
+    setConversations(convoUsers);//set the convoUsers to state
    });
-  /*  axios.get('https://randomuser.me/api/?results=20').then(response => {
-        let newConversations = response.data.results.map(result => {
-          return {
-            photo: result.picture.large,
-            name: `${result.name.first} ${result.name.last}`,
-            text: 'Hello '
-          };
-        });
-        setConversations([...conversations, ...newConversations])
-    });*/
   }
-
 
   return (
     <div className="messenger">
@@ -52,7 +53,7 @@ export default function Messenger(props) {
       />
 
       <div className="scrollable sidebar">
-        <ConversationList conversations={[]}/>
+        <ConversationList conversations={conversations}/>
       </div>
 
       <div className="scrollable content">
