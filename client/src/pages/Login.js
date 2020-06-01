@@ -91,10 +91,11 @@ const Login = () => {
                                         >
                                             Log in
                                             </MDBBtn>
-                                            {/* Removed the following code from this a tag */}
-                                            {/* target="popup" onClick={() => window.open('http://localhost:3001/auth/google','name','width=600,height=400')}*/}
+
+                                        {/* Removed the following code from this a tag */}
+                                        {/* target="popup" onClick={() => window.open('http://localhost:3001/auth/google','name','width=600,height=400')}*/}
                                         <a href="http://localhost:3001/auth/google">
-                                            <MDBBtn> Sign In With Google </MDBBtn>
+                                            <MDBBtn className="z-depth-2 aqua-gradient"> Sign In With Google </MDBBtn>
                                         </a>
 
                                     </div>
