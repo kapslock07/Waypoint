@@ -9,7 +9,13 @@ import Auth from "../utils/Auth";
 
 const Login = () => {
 
+    const [login, setLogin] = useState({
+        emailLogin: "",
+        passwordLogin: ""
+    })
+
     const [modal, setModal] = useState(false)
+
     const [signUp, setSignup] = useState({
         userName: "",
         password: "",
@@ -24,17 +30,21 @@ const Login = () => {
         event.preventDefault();
         const { name, value } = event.target;
         setSignup({ ...signUp, [name]: value })
+        setLogin({ ...login, [name]: value })
 
     }
 
     const handleSubmit = event => {
         event.preventDefault();
         console.log("INITIALIZING")
+        const emailLogin = login.emailLogin;
+        const passwordLogin = login.passwordLogin;
         const userName = signUp.userName;
         const email = signUp.email;
         const password = signUp.password;
         Auth.signUp(email, password, userName)
         toggle();
+        event.target.className += ' was-validated'
     }
 
     return (
@@ -44,26 +54,31 @@ const Login = () => {
                     <Carousel />
                 </MDBCol>
                 <MDBCol lg="6" style={{ paddingLeft: "50px" }}>
-                    <MDBCard>
+                    <MDBCard onSubmit={handleSubmit}
+                    >
                         <div className="header pt-3 grey-gradient">
                             <MDBRow className="d-flex justify-content-center">
                                 <img src={Logo} style={{ width: "50%", paddingBottom: "15px" }} />
                             </MDBRow>
                             <MDBRow className="d-flex justify-content-center">
-                                <h3> WayPoint </h3>
+                                <h3 style={{ fontFamily: "Uni Sans Caps" }}> WayPoint </h3>
                             </MDBRow>
                             <MDBRow className="d-flex justify-content-center">
-                                <h3 style={{ paddingTop: "15px", fontFamily: "Nature Spirit Regular" }}> A place where Gamers meet! </h3>
+                                <h3 style={{ paddingTop: "15px", fontFamily: "Uni Sans" }}> A place where Gamers meet! </h3>
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
-                            <MDBInput label="Your email" group type="text" validate />
+                            <MDBInput label="Your email" group type="text" validate className="needs-validation"
+                                onChange={handleInputChange}
+                            />
                             <MDBInput
                                 label="Your password"
                                 group
                                 type="password"
                                 validate
                                 containerClass="mb-0"
+                                onChange={handleInputChange}
+
                             />
                             <MDBRow className="d-flex align-items-center mb-4 mt-5">
                                 <MDBCol md="5" className="d-flex align-items-start">
@@ -72,6 +87,7 @@ const Login = () => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
+                                            onSubmit={handleSubmit}
                                         >
                                             Log in
                                             </MDBBtn>

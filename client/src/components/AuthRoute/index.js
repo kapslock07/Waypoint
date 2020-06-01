@@ -6,6 +6,7 @@ import Onboarding from "../../pages/Onboarding"
 import Chat from "../../pages/Chat";
 import Profile from "../../pages/Profile";
 import NoMatch from "../../pages/NoMatch";
+import Loading from "../../pages/Loading"
 import Auth from "../../utils/Auth";
 import axios from 'axios'
 import { ChatProvider } from "../../utils/contexts/chatContext";
@@ -43,7 +44,7 @@ function AuthRoute() {
         <div>
             <Switch>
                 {state.loading} ? (
-{/* <LOADING COMPONENT /> */}
+<Route exact path="/loading" component={Loading} />
                 ) :
                 {state.isAuthenticated ? (
                     <ChatProvider startChat={true} userObj={{ id: state.id }}>
