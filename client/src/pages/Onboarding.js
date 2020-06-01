@@ -39,11 +39,11 @@ function Onboarding() {
      }
 
      function loadAvatars() { //uses API util to loadAvatars from our express server
-        API.getAvatars() /*.then(res => {
-             setAvatars(res.data);
-             console.log(res.data)
+        API.getAvatars().then(res => {
+            setAvatars(res);
+            console.log(res)
          })
-             .catch(err => console.log(err));*/
+        .catch(err => console.log(err));
      }
 
 
