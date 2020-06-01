@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login"
 import Onboarding from "../../pages/Onboarding"
@@ -20,8 +20,6 @@ function AuthRoute() {
     })
 
     useEffect(() => {
-        console.log("HI EVAN!")
-        console.log(state)
         axios.get('/auth/success')
             .then(res => {
                 console.log(res.data.user)

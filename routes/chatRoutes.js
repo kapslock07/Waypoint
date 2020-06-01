@@ -22,7 +22,7 @@ module.exports = (server, db) => {
                     joineeId: data.joineeId  
                 }
             }).then(data => {
-                console.log(data);
+               // console.log(data);
                 res.status(200).end();
             });
     });
