@@ -9,7 +9,7 @@ const { Provider } = ChatContext;
 const reducer = (state, action) => {
     switch(action.type){
         case(chatActions.LOAD_IO):
-            loadSocket();
+            loadSocket(state);
             break;
         case(chatActions.CREATE_CHAT):
             console.log("Create Chat with " + action.creatorId + " and " + action.joineeId);
@@ -28,9 +28,8 @@ const reducer = (state, action) => {
 
 const ChatProvider = ({ userObj = {}, ...props}) => {
     const [state, dispatch] = useReducer(reducer, { user: userObj });
-    console.log("BAM")
     if(props.startChat){
-        loadSocket();
+        loadSocket(state);
     }
 
     return <Provider value={[state, dispatch]} {...props} />;
@@ -50,11 +49,15 @@ function createChat(creatorId,joineeId){
 }
 
 
-function loadSocket(){ //connects to socket on server whoo!
+function loadSocket(state){ //connects to socket on server whoo!
     console.log("LOAD SOCKET!")
-    const socket = io.connect('http://localhost:3002');
-    socket.on('test', (data) => { //catches 'test' event
-      console.log(data);
+    let socket = io('http://localhost:3002');
+
+    socket.emit("user_connect", state.user.id);
+
+    socket.on("user_connect", (data) => { //Listen from server
+        console.log("HEARD SOMETHING FROM SERVER");
+      console.log("Connected to Chat Server with Id of ", data);
     });
 }
 
