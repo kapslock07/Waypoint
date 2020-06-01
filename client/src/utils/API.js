@@ -1,13 +1,22 @@
 import axios from "axios";
 
+
+
 export default {
     //Get All Users
     getUsers: function(){
         return axios.get("/api/users");
     },
+    getPlatforms: function(){
+        return axios.get("/api/platforms");
+    },
     //Get All Games
     getGames: function(){
         return axios.get("/api/games");
+    },
+    //Get Avatars(local)
+    getAvatars: function(){
+        return axios.get("/api/avatars");
     },
     //Search Games by Title
     searchGamesT: function(title){
@@ -27,6 +36,9 @@ export default {
         return axios.post("/api/chat", {
             data: data
         });
+    },
+    getChats: function(id){
+        return axios.get(`/api/chat/${id}`);
     }
 };
 
