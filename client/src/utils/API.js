@@ -1,4 +1,7 @@
 import axios from "axios";
+import fs from "fs";
+import path from "path";
+const userImageDirectory = path.join(__dirname + "../assets/userImages");
 
 export default {
     //Get All Users
@@ -11,6 +14,16 @@ export default {
     //Get All Games
     getGames: function(){
         return axios.get("/api/games");
+    },
+    //Get Avatars(local)
+    getAvatars: function(){
+        fs.readdir(userImageDirectory, (err, files) => {
+            if(err){
+                throw new Error(err);
+            }
+
+            console.log(files);
+        });
     },
     //Search Games by Title
     searchGamesT: function(title){
