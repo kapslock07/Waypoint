@@ -8,7 +8,7 @@ import Nav from "../components/Nav";
 import { MDBAnimation } from "mdbreact";
 
 
-function Home() {
+function Home(props) {
     return (
         <Container fluid>
             <Nav />

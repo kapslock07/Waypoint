@@ -28,14 +28,11 @@ module.exports = (app) => {
                 console.log("One user not online")
             }
             else {
-                io.to(socketId).emit("created_chat", {
+                io.to(socketId).emit("created_chat", { //have this feature either send if online, or instead just add chat notification in db?
                     creatorId: data.creatorId
                 });
             }
         });
-    
-    
-      
     
     
     });
