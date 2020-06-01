@@ -5,6 +5,9 @@ export default {
     getUsers: function(){
         return axios.get("/api/users");
     },
+    getPlatforms: function(){
+        return axios.get("/api/platforms");
+    },
     //Get All Games
     getGames: function(){
         return axios.get("/api/games");

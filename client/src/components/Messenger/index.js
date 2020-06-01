@@ -19,7 +19,11 @@ export default function Messenger(props) {
   },[])
 
  const getConversations = () => {
-   API.getChats(state.user.id).then(res => console.log(res));
+   API.getChats(state.user.id).then(res => {
+     //parse chat and message data here
+
+
+   });
   /*  axios.get('https://randomuser.me/api/?results=20').then(response => {
         let newConversations = response.data.results.map(result => {
           return {
