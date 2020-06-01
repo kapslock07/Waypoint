@@ -27,24 +27,24 @@ function Onboarding() {
             setGames(res.data);
             console.log(res.data)
         })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
     function loadPlatforms() { //uses API util to loadPlatforms from our express server
-         API.getPlatforms().then(res => {
-             setPlatforms(res.data);
-             console.log(res.data)
-         })
-        .catch(err => console.log(err));
-     }
+        API.getPlatforms().then(res => {
+            setPlatforms(res.data);
+            console.log(res.data)
+        })
+            .catch(err => console.log(err));
+    }
 
-     function loadAvatars() { //uses API util to loadAvatars from our express server
+    function loadAvatars() { //uses API util to loadAvatars from our express server
         API.getAvatars().then(res => {
             setAvatars(res.data);
             console.log(res.data)
-         })
-        .catch(err => console.log(err));
-     }
+        })
+            .catch(err => console.log(err));
+    }
 
 
 
@@ -60,34 +60,34 @@ function Onboarding() {
                             <div className="onboarding p-4">
                                 <Row>
                                     <Col lg={6}>
-                                        <h3 className="mb-4">Choose Your Favorite Platforms</h3>
-                                        {platforms.map((platform, i) => (
-                                            <div key={platform.id} className="mb-3 platformOptions">
-                                                <Form.Check
-                                                    type='checkbox'
-                                                    id={platform.id}
-                                                    label={platform.title}
-                                                />
-                                            </div>
-                                        ))}
-
+                                        <div className="ml-5">
+                                            <h3 className="mb-4">Choose Your Favorite Platforms</h3>
+                                            {platforms.map((platform, i) => (
+                                                <div key={platform.id} className="mb-3 platformOptions">
+                                                    <Form.Check
+                                                        type='checkbox'
+                                                        id={platform.id}
+                                                        label={platform.title}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
                                     </Col>
                                     <Col lg={6}>
+                                        <div className="ml-5">
+                                            <h3 className="mb-4">Choose Your Favorite Games</h3>
+                                            {games.map((game, i) => (
+                                                <div key={game.id} className="mb-3 gameOptions">
+                                                    <Form.Check
+                                                        type='checkbox'
+                                                        id={game.id}
+                                                        name="game"
+                                                        label={game.title}
+                                                    />
 
-                                        <h3 className="mb-4">Choose Your Favorite Games</h3>
-
-                                        {games.map((game, i) => (
-                                            <div key={game.id} className="mb-3 gameOptions">
-                                                <Form.Check
-                                                    type='checkbox'
-                                                    id={game.id}
-                                                    name="game"
-                                                    label={game.title}
-                                                />
-
-                                            </div>
-                                        ))}
-
+                                                </div>
+                                            ))}
+                                        </div>
                                     </Col>
                                 </Row>
                                 <Row>
@@ -95,11 +95,12 @@ function Onboarding() {
                                         <div className="text-center mt-5">
                                             <h3 className="mb-4">Choose Your Avatar</h3>
                                             {avatars.map((avatar, i) => (
-                                                <div key={avatar.id} className="mb-3 avatarOptions">
+                                                <div key={avatar.id} className="mb-3 mx-2 avatarOptions">
                                                     <Image src={avatar.src} thumbnail width="100" height="100" />
                                                     <Form.Check
                                                         type='radio'
                                                         id={avatar.id}
+                                                        name="avatar"
                                                         label={avatar.title}
                                                     />
 
