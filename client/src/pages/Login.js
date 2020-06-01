@@ -9,11 +9,6 @@ import Auth from "../utils/Auth";
 
 const Login = (props) => {
 
-    const [login, setLogin] = useState({
-        emailLogin: "",
-        passwordLogin: ""
-    })
-
     const [modal, setModal] = useState(false)
 
     const [signUp, setSignup] = useState({
@@ -47,8 +42,6 @@ const Login = (props) => {
     const handleSignUpSubmit = event => {
         event.preventDefault();
         console.log("INITIALIZING")
-        const emailLogin = login.emailLogin;
-        const passwordLogin = login.passwordLogin;
         const userName = signUp.userName;
         const email = signUp.email;
         const password = signUp.password;

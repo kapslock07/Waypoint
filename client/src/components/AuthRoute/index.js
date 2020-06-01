@@ -24,6 +24,7 @@ function AuthRoute() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        console.log(state.isAuthenticated)
         Auth.isLoggedIn()
             .then(res => {
                 console.log(res.data.user)

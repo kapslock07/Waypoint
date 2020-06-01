@@ -4,7 +4,7 @@ const UserContext = createContext({
     id: "",
     error: null,
     isAuthenticated: false,
-    onClick: () => undefined
+    changeState: () => undefined
 });
 
 export default UserContext;
