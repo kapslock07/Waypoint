@@ -11,7 +11,6 @@ function ChatBtn(props) {
 
     const [state, dispatch] = useChatContext();
 
-
     return (
         <MDBBtn
             rounded
@@ -19,7 +18,7 @@ function ChatBtn(props) {
             className="chatBtn z-depth-2 aqua-gradient mt-3"
             size="sm"
             href="/chat"
-            onClick={() => {dispatch({ type: actions.CREATE_CHAT, creatorId: 'userWhoCLicketButton', joineeId: props.joineeId })}}
+            onClick={() => {dispatch({ type: actions.CREATE_CHAT, creatorId: state.user.id, joineeId: props.joineeId })}}
         >
             Chat
         </MDBBtn>

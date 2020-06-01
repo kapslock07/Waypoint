@@ -91,8 +91,9 @@ const Login = () => {
                                         >
                                             Log in
                                             </MDBBtn>
-
-                                        <a href="http://localhost:3001/auth/google" target="popup" onclick="window.open('http://localhost:3001/auth/google','name','width=600,height=400')">
+                                            {/* Removed the following code from this a tag */}
+                                            {/* target="popup" onClick={() => window.open('http://localhost:3001/auth/google','name','width=600,height=400')}*/}
+                                        <a href="http://localhost:3001/auth/google">
                                             <MDBBtn> Sign In With Google </MDBBtn>
                                         </a>
 

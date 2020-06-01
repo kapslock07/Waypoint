@@ -6,16 +6,18 @@ import API from "../API";
 const ChatContext = createContext();
 const { Provider } = ChatContext;
 
+let socket;
+
 const reducer = (state, action) => {
     switch(action.type){
         case(chatActions.LOAD_IO):
-            loadSocket();
+            loadSocket(state);
             break;
         case(chatActions.CREATE_CHAT):
             console.log("Create Chat with " + action.creatorId + " and " + action.joineeId);
             createChat(action.creatorId,action.joineeId);
             break;
-        case(chatActions.SEND_CHAT):
+        case(chatActions.SEND_MESSAGE):
             console.log("Send chat!");
             break;
         case(chatActions.GET_CHATS):
@@ -26,11 +28,10 @@ const reducer = (state, action) => {
     }
 }
 
-const ChatProvider = ({ userObj = [], ...props}) => {
+const ChatProvider = ({ userObj = {}, ...props}) => {
     const [state, dispatch] = useReducer(reducer, { user: userObj });
-
     if(props.startChat){
-        loadSocket();
+        loadSocket(state);
     }
 
     return <Provider value={[state, dispatch]} {...props} />;
@@ -47,13 +48,27 @@ function createChat(creatorId,joineeId){
     }
 
     API.createChat(data);
+
+    socket.emit("created_chat", {
+        creatorId: creatorId,
+        joineeId: joineeId
+    });
 }
 
 
-function loadSocket(){ //connects to socket on server whoo!
-    const socket = io.connect('http://localhost:3002');
-    socket.on('test', (data) => { //catches 'test' event
-      console.log(data);
+function loadSocket(state){ //connects to socket on server whoo!
+    console.log("LOAD SOCKET!")
+    socket = io('http://localhost:3002');
+    
+    socket.emit("user_connect", state.user.id);
+
+    socket.on("user_connect", (data) => { //Listen from server
+        console.log("HEARD SOMETHING FROM SERVER");
+      console.log("Connected to Chat Server with Id of ", data);
+    });
+
+    socket.on("created_chat", data => {
+        console.log(`user with id ${data.creatorId} wants to chat!`);
     });
 }
 
