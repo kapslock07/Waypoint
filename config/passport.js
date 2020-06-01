@@ -47,8 +47,8 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:3001/auth/google/callback"
 },
     function (accessToken, refreshToken, profile, done) {
-        console.log(profile)
-        console.log("Email is ", profile.emails[0].value)
+        //console.log(profile)
+        //console.log("Email is ", profile.emails[0].value)
         db.User.findOrCreate({ where: { googleId: profile.id }, defaults: { googleId: profile.id, email: profile.emails[0].value, userName: profile.displayName } })
             .then(dbUser => {
                 return done(null, dbUser)

@@ -22,18 +22,19 @@ module.exports = (server, db) => {
                     joineeId: data.joineeId  
                 }
             }).then(data => {
-                console.log(data);
+               // console.log(data);
                 res.status(200).end();
             });
     });
 
     server.get("/api/chat/:id", (req,res) => {
         let creatorId = req.params.id;
-
+    
         db.Chat.findAll({
             where: {
                 creatorId: creatorId
-            }
+            },
+            include: [db.Message]
         }).then(data => {
             res.json(data);
         });

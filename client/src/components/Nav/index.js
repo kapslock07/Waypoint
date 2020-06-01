@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Navbar, Modal, Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Navbar, Modal, Form, Image } from "react-bootstrap";
 import SampleImg from "../../assets/images/mainLogo.jpeg";
 import API from "../../utils/API";
 import "./style.css";
@@ -10,16 +10,31 @@ function Nav() {
 
   const [show, setShow] = useState(false);
   const [games, setGames] = useState([]);
+  // let [platforms, setPlatforms] = React.useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    API.getGames().then((res) => {
-      console.log(res);
-      setGames(res.data);
-    });
+  React.useEffect(() => { //grabs games
+    loadGames();
+    // loadPlatforms();
   }, []);
+
+  function loadGames() { //uses API util to loadGames from our express server
+    API.getGames().then(res => {
+      setGames(res.data);
+      console.log(res.data)
+    })
+      .catch(err => console.log(err));
+  }
+
+  // function loadPlatforms() { //uses API util to loadGames from our express server
+  //   API.getPlatforms().then(res => {
+  //     setPlatforms(res.data);
+  //     console.log(res.data)
+  //   })
+  //     .catch(err => console.log(err));
+  // }
 
   return (
     <nav className="navbar fixed-top navbar-expand-lg mb-4 z-depth-2 navbar-light">
@@ -49,7 +64,7 @@ function Nav() {
                 </form> */}
 
         <div className="navbar-nav justify-content-end ml-auto text-light">
-          <div className="navBtn">
+          <div className="navBtn text-center mb-3">
             <i
               type="button"
               className="fa mx-4 text-center fa-2x fa-search pt-3 animated pulse infinite"
@@ -61,26 +76,50 @@ function Nav() {
               <Modal.Title>Game Search</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+
+
               <form className="form-inline md-form mb-4 mx-auto justify-content-center">
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                  {/* <Form.Label>Example select</Form.Label> */}
-                  <Form.Control as="select">
-                    <option>Game 1</option>
-                    <option>Game 2</option>
-                    <option>Game 3</option>
-                    <option>Game 4</option>
-                    <option>Game 5</option>
-                    {games.map((game) => (
-                      <option>{game.title}</option>
-                    ))}
-                  </Form.Control>
-                </Form.Group>
-                {/* <input
-                  class="form-control mr-sm-2"
-                  type="text"
-                  placeholder="Search For Games"
-                  aria-label="Search"
-                ></input> */}
+                <Container>
+                  <Row>
+                    <Col lg={12}>
+                      <h5 className="mb-2">Choose A Game</h5>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col lg={12}>
+                      <Form>
+                        <Form.Group controlId="gameSearchForm.ControlSelect1">
+                          <Form.Control as="select">
+                            {games.map((game, i) => (
+                              <option key={game.id}>{game.title}</option>
+                            ))}
+                          </Form.Control>
+                        </Form.Group>
+                      </Form>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col lg={12}>
+                      {/* <div>
+                        <h5 className="mb-2 mt-4">Choose A Platform</h5>
+                        {platforms.map((platform, i) => (
+                          <div key={i} className="mb-3 mx-4 platformOptions justify-content-center">
+                            <Image src={platform.src} thumbnail width="100" height="100" />
+                            <Form.Check
+                              type='radio'
+                              id={platform.id}
+                              label={platform.name}
+                            />
+
+                          </div>
+                        ))}
+
+                      </div> */}
+                    </Col>
+
+                  </Row>
+                </Container>
               </form>
             </Modal.Body>
             <Modal.Footer>
@@ -136,7 +175,7 @@ function Nav() {
             </div>
           </Link>
         </div>
-      </div>
+      </div >
     </nav >
   );
 }
