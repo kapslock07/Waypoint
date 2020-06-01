@@ -27,6 +27,9 @@ export default {
         return axios.post("/api/chat", {
             data: data
         });
+    },
+    getChats: function(id){
+        return axios.get(`/api/chat/${id}`);
     }
 };
 
