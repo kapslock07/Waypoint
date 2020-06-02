@@ -29,9 +29,15 @@ const Login = () => {
     const handleInputChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
+        console.log('we r typing!!', event.target.value)
         setSignup({ ...signUp, [name]: value })
-        setLogin({ ...login, [name]: value })
+    }
 
+    const handleLoginChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        console.log('we r typing!!', event.target.value)
+        setLogin({ ...login, [name]: value })
     }
 
     const handleSubmit = event => {
@@ -45,6 +51,23 @@ const Login = () => {
         Auth.signUp(email, password, userName)
         toggle();
         event.target.className += ' was-validated'
+    }
+
+    const handleLoginSubmit = event => {
+        event.preventDefault();
+
+        const emailLogin = login.emailLogin;
+        const passwordLogin = login.passwordLogin;
+
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log('IS EMAIL VALID!!', re.test(emailLogin));
+
+        if (re.test(emailLogin) === true && passwordLogin.length > 7) {
+            console.log('save to BE!!')
+        } else {
+            alert('invalid email/pass')
+        }
+
     }
 
     return (
@@ -68,8 +91,8 @@ const Login = () => {
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
-                            <MDBInput label="Your email" group type="text" validate className="needs-validation"
-                                onChange={handleInputChange}
+                            <MDBInput name="emailLogin" label="Your email" group type="text" validate className="needs-validation"
+                                onChange={handleLoginChange}
                             />
                             <MDBInput
                                 label="Your password"
@@ -77,7 +100,8 @@ const Login = () => {
                                 type="password"
                                 validate
                                 containerClass="mb-0"
-                                onChange={handleInputChange}
+                                name="passwordLogin"
+                                onChange={handleLoginChange}
 
                             />
                             <MDBRow className="d-flex align-items-center mb-4 mt-5">
@@ -87,12 +111,12 @@ const Login = () => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-                                            onSubmit={handleSubmit}
+                                            onClick={handleLoginSubmit}
                                         >
                                             Log in
                                             </MDBBtn>
-                                            {/* Removed the following code from this a tag */}
-                                            {/* target="popup" onClick={() => window.open('http://localhost:3001/auth/google','name','width=600,height=400')}*/}
+                                        {/* Removed the following code from this a tag */}
+                                        {/* target="popup" onClick={() => window.open('http://localhost:3001/auth/google','name','width=600,height=400')}*/}
                                         <a href="http://localhost:3001/auth/google">
                                             <MDBBtn> Sign In With Google </MDBBtn>
                                         </a>
