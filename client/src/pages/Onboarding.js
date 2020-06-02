@@ -2,10 +2,11 @@ import React from "react";
 import { Container, Row, Col, Form, Image } from 'react-bootstrap';
 import API from "../utils/API";
 import { MDBBtn } from "mdbreact";
+import Auth from "../utils/Auth";
 
 
 
-function Onboarding() {
+function Onboarding(props) {
 
     let [games, setGames] = React.useState([]); //state for games
     let [platforms, setPlatforms] = React.useState([]); //state for platforms
@@ -13,6 +14,9 @@ function Onboarding() {
 
     const handleSubmit = e => {
         e.preventDefault();
+        const id = props.id
+        Auth.onboarded(id)
+        props.changeState("onboard", true)
     };
 
     React.useEffect(() => { //grabs games
@@ -117,6 +121,7 @@ function Onboarding() {
                                                 rounded
                                                 type="button"
                                                 className="submitOnboarding z-depth-1a aqua-gradient"
+                                                onClick={handleSubmit}
 
 
                                             >

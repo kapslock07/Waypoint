@@ -2,9 +2,19 @@ import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import Nav from "../components/Nav";
 import { MDBBtn } from "mdbreact";
-
+import Auth from "../utils/Auth";
+import { Redirect } from "react-router-dom";
 
 function Profile(props) {
+
+    const logout = () => {
+        Auth.Logout()
+            .then(() => {
+                props.changeState("isAuthenticated", false)
+                return <Redirect to='/' push={true} />
+            })
+    }
+
     return (
         <Container fluid>
             <Nav />
@@ -25,6 +35,7 @@ function Profile(props) {
                                         rounded
                                         type="button"
                                         className="z-depth-1a aqua-gradient mt-5"
+                                        onClick={logout}
                                     >
                                         <strong><u> Logout</u></strong>
                                     </MDBBtn>
