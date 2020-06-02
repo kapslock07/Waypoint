@@ -56,7 +56,13 @@ module.exports = function (sequelize, DataTypes) {
 
 
   User.associate = models => {
-    User.belongsToMany(models.Games, { through: 'UserGames' });
+    User.hasMany(models.UserGame, {
+      ondelete: "cascade"
+    });
+    User.hasMany(models.UserPlatform, {
+      ondelete: "cascade"
+    });
+
     User.belongsToMany(models.Chat, { through: 'UserChats' });
   };
   return User;
