@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col, Form, Image } from 'react-bootstrap';
 import API from "../utils/API";
 import { MDBBtn } from "mdbreact";
+import Auth from "../utils/Auth";
 
 
 
@@ -13,6 +14,9 @@ function Onboarding(props) {
 
     const handleSubmit = e => {
         e.preventDefault();
+        const id = props.id
+        Auth.onboarded(id)
+        props.changeState("onboard", true)
     };
 
     React.useEffect(() => { //grabs games
@@ -116,6 +120,7 @@ function Onboarding(props) {
                                                 rounded
                                                 type="button"
                                                 className="submitOnboarding z-depth-1a aqua-gradient"
+                                                onClick={handleSubmit}
 
 
                                             >

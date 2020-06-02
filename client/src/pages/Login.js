@@ -1,4 +1,4 @@
-import React, { state, useState, toggle, useContext } from "react";
+import React, { useState, } from "react";
 import Logo from "../assets/images/mainLogo.jpeg"
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
 import Carousel from "../components/Carousel"

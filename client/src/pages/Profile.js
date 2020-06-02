@@ -3,15 +3,15 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Nav from "../components/Nav";
 import { MDBBtn } from "mdbreact";
 import Auth from "../utils/Auth";
+import { Redirect } from "react-router-dom";
 
 function Profile(props) {
 
     const logout = () => {
-        console.log("User logging out")
         Auth.Logout()
             .then(() => {
-                console.log("Log out successful?")
                 props.changeState("isAuthenticated", false)
+                return <Redirect to='/' push={true} />
             })
     }
 
