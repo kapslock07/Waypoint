@@ -45,6 +45,16 @@ const Login = (props) => {
         const email = signUp.email;
         const password = signUp.password;
         Auth.signUp(email, password, userName)
+            .then(res => {
+                console.log(res)
+                if (res.status === 200) {
+                    console.log("Is it 200??")
+                    //update state of authentication to true
+                    //change window location to where it needs to go
+                    alert("Sign up complete. Please log in to continue.")
+                    toggle()
+                }
+            })
     }
 
     const handleLogInSubmit = event => {
@@ -58,7 +68,7 @@ const Login = (props) => {
                     console.log("Is it 200??")
                     //update state of authentication to true
                     //change window location to where it needs to go
-                    props.changeState(true);
+                    props.changeState("isAuthenticated", true);
                     console.log("After log in, user authentication is ", props.isAuthenticated)
                 }
             })

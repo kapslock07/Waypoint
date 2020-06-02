@@ -20,8 +20,8 @@ module.exports = app => {
             password: req.body.password,
             userName: req.body.userName,
         })
-            .then(function () {
-                res.redirect(307, "http://localhost:3000/home");
+            .then(user => {
+                res.status(200).json(user);
             })
             .catch(function (err) {
                 res.status(401).json(err);
@@ -35,7 +35,8 @@ module.exports = app => {
                 success: true,
                 message: "User has successfully authenticated",
                 user: {
-                    id: req.user.id
+                    id: req.user.id,
+                    onboard: req.user.onboard
                 },
                 cookies: req.cookies
             });
@@ -47,6 +48,14 @@ module.exports = app => {
             })
         }
     });
+
+    app.put("/api/users/:id", (req, res) => {
+        const id = req.params.id;
+        db.User.update(
+            { onboard: req.body.onboard },
+            { where: { id: id } })
+            .then(updated => res.json(updated))
+    })
 
     // GET /auth/google
     //   Use passport.authenticate() as route middleware to authenticate the

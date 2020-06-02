@@ -11,7 +11,7 @@ function Profile(props) {
         Auth.Logout()
             .then(() => {
                 console.log("Log out successful?")
-                props.changeState(false)
+                props.changeState("isAuthenticated", false)
             })
     }
 

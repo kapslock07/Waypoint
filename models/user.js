@@ -40,7 +40,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     onboard: {
-      types: DataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       defaultValue: 0
     }
   });
