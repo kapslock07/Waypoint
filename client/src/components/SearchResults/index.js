@@ -19,15 +19,24 @@ function SearchResults() {
     //grabs users
     loadGames();
   }, []);
+  let [users, setUsers] = React.useState([]); //state for users
+  const [state] = useChatContext();
+  console.log(state)
 
-  function loadGames() {
-    //uses API util to loadUsers from our express server
-    API.getUsers()
-      .then((res) => {
-        setUsers(res.data);
-      })
-      .catch((err) => console.log(err));
+  React.useEffect(() => { //grabs users
+    loadGames();
+  }, []);
+
+
+
+
+  function loadGames() { //uses API util to loadUsers from our express server
+    API.getUsers().then(res => {
+      setUsers(res.data);
+    })
+      .catch(err => console.log(err));
   }
+
 
 
 

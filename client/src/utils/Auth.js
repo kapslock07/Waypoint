@@ -12,5 +12,11 @@ export default {
             password: password,
             userName: userName
         }).then(res => console.log(res))
+    },
+    LogIn: (email, password) => {
+        return axios.post('/api/login', {
+            email: email,
+            password: password
+        })
     }
 }
