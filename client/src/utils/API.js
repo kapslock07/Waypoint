@@ -18,6 +18,9 @@ export default {
     getAvatars: function(){
         return axios.get("/api/avatars");
     },
+    putOnboardData: function(data){
+        return axios.put("/api/users", data)
+    },
     //Search Games by Title
     searchGamesT: function(title){
         return axios.get(`/api/games/${title}`);

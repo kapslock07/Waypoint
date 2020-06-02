@@ -2,7 +2,6 @@
 
 module.exports = (app) => {
 
-
     const chatServer = require('http').createServer(app);
     let io = require('socket.io')(chatServer);
 

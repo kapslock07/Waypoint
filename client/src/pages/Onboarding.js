@@ -11,13 +11,44 @@ function Onboarding(props) {
     let [games, setGames] = React.useState([]); //state for games
     let [platforms, setPlatforms] = React.useState([]); //state for platforms
     let [avatars, setAvatars] = React.useState([]); //state for avatars
+    //====
+
+    let [userPlatforms, setUserPlatforms] = React.useState([]);
+    let [userGames, setUserGames] = React.useState([]);
+    let [userAvatar, setUserAvatar] = React.useState("");
 
     const handleSubmit = e => {
         e.preventDefault();
-        const id = props.id
-        Auth.onboarded(id)
-        props.changeState("onboard", true)
+        const id = props.id;
+        //==================
+        putUserData(id);
+
+
+        Auth.onboarded(id);
+        props.changeState("onboard", true);
     };
+
+    function addPlatform(title){
+        setUserPlatforms([ ...userPlatforms, title ]);
+    }
+
+    function addGame(title){
+        setUserGames([ ...userGames, title ]);
+    }
+
+    function addAvatar(src){
+        setUserAvatar(src);
+    }
+
+    function putUserData(userId){
+        //get data from inputs here
+        console.log({userAvatar, userGames, userPlatforms});
+
+
+
+
+      //  API.putOnboardData()
+    }
 
     React.useEffect(() => { //grabs games
         loadGames();
@@ -29,28 +60,23 @@ function Onboarding(props) {
     function loadGames() { //uses API util to loadGames from our express server
         API.getGames().then(res => {
             setGames(res.data);
-            console.log(res.data)
         })
-            .catch(err => console.log(err));
+        .catch(err => console.log(err));
     }
 
     function loadPlatforms() { //uses API util to loadPlatforms from our express server
         API.getPlatforms().then(res => {
             setPlatforms(res.data);
-            console.log(res.data)
         })
-            .catch(err => console.log(err));
+        .catch(err => console.log(err));
     }
 
     function loadAvatars() { //uses API util to loadAvatars from our express server
         API.getAvatars().then(res => {
             setAvatars(res.data);
-            console.log(res.data)
         })
-            .catch(err => console.log(err));
+        .catch(err => console.log(err));
     }
-
-
 
     return (
         <Container fluid>
@@ -71,6 +97,7 @@ function Onboarding(props) {
                                                     type='checkbox'
                                                     id={platform.id}
                                                     label={platform.title}
+                                                    onClick={() => addPlatform(platform.title)}
                                                 />
                                             </div>
                                         ))}
@@ -87,6 +114,7 @@ function Onboarding(props) {
                                                     id={game.id}
                                                     name="game"
                                                     label={game.title}
+                                                    onClick={() => addGame(game.title)}
                                                 />
 
                                             </div>
@@ -105,6 +133,8 @@ function Onboarding(props) {
                                                         type='radio'
                                                         id={avatar.id}
                                                         label={avatar.title}
+                                                        name={"avatar"}
+                                                        onClick={() => addAvatar(avatar.src)}
                                                     />
 
                                                 </div>
