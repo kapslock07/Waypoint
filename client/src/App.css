@@ -7,6 +7,9 @@ body {
   /* padding-top: 200px;  */
   background-size: cover;
   min-height: 100%;
+    /* font-family: 'Red Hat Text', sans-serif; */
+  /* font-family: 'Spinnaker', sans-serif; */
+  font-family: 'Telex', sans-serif;
 }
 
 html {

@@ -17,8 +17,8 @@ function Onboarding() {
 
     React.useEffect(() => { //grabs games
         loadGames();
-        // loadPlatforms();
-        // loadAvatars();
+        loadPlatforms();
+        loadAvatars();
     }, []);
 
 
@@ -27,24 +27,24 @@ function Onboarding() {
             setGames(res.data);
             console.log(res.data)
         })
-            .catch(err => console.log(err));
+        .catch(err => console.log(err));
     }
 
-    // function loadPlatforms() { //uses API util to loadPlatforms from our express server
-    //     API.getPlatforms().then(res => {
-    //         setPlatforms(res.data);
-    //         console.log(res.data)
-    //     })
-    //         .catch(err => console.log(err));
-    // }
+    function loadPlatforms() { //uses API util to loadPlatforms from our express server
+         API.getPlatforms().then(res => {
+             setPlatforms(res.data);
+             console.log(res.data)
+         })
+        .catch(err => console.log(err));
+     }
 
-    // function loadAvatars() { //uses API util to loadAvatars from our express server
-    //     API.getAvatars().then(res => {
-    //         setAvatars(res.data);
-    //         console.log(res.data)
-    //     })
-    //         .catch(err => console.log(err));
-    // }
+     function loadAvatars() { //uses API util to loadAvatars from our express server
+        API.getAvatars().then(res => {
+            setAvatars(res.data);
+            console.log(res.data)
+         })
+        .catch(err => console.log(err));
+     }
 
 
 

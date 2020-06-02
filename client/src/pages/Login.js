@@ -83,11 +83,15 @@ const Login = () => {
                             <MDBRow className="d-flex justify-content-center">
                                 <img src={Logo} style={{ width: "50%", paddingBottom: "15px" }} />
                             </MDBRow>
-                            <MDBRow className="d-flex justify-content-center">
-                                <h3 style={{ fontFamily: "Uni Sans Caps" }}> WayPoint </h3>
-                            </MDBRow>
-                            <MDBRow className="d-flex justify-content-center">
-                                <h3 style={{ paddingTop: "15px", fontFamily: "Uni Sans" }}> A place where Gamers meet! </h3>
+                            {/* <MDBRow className="d-flex justify-content-center"> */}
+                            {/* <h3> WayPoint </h3> */}
+                            {/* removed h3 font */}
+                            {/*  style={{ fontFamily: "Uni Sans Caps" }} */}
+                            {/* </MDBRow> */}
+                            <MDBRow className="d-flex justify-content-center mt-5">
+                                <h3> A place where Gamers meet! </h3>
+                                {/* removed h3 font */}
+                                {/*  style={{ fontFamily: "Uni Sans Caps" }} */}
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
@@ -115,15 +119,23 @@ const Login = () => {
                                         >
                                             Log in
                                             </MDBBtn>
+                                    </div>
+
+                                </MDBCol>
+                                <MDBCol md="7" className="d-flex justify-content-end p-1">
+                                    <div className="text-center">
+
                                         {/* Removed the following code from this a tag */}
                                         {/* target="popup" onClick={() => window.open('http://localhost:3001/auth/google','name','width=600,height=400')}*/}
+                                        {/* This is the logo for Sign in with Google */}
+                                        {/* <img src="https://avatars1.githubusercontent.com/u/7328930?v=4" alt="google" height="30" length="30"></img> */}
                                         <a href="http://localhost:3001/auth/google">
-                                            <MDBBtn> Sign In With Google </MDBBtn>
+                                            <MDBBtn className="z-depth-2 aqua-gradient"><img className="mr-1" src="https://avatars1.githubusercontent.com/u/7328930?v=4" alt="google" height="30" length="30"></img> Sign In With Google </MDBBtn>
                                         </a>
 
                                     </div>
                                 </MDBCol>
-                                <MDBCol md="7" className="d-flex justify-content-end">
+                                <MDBCol md="12" className="d-flex justify-content-center">
                                     <p className="font-small grey-text mt-3">
                                         Don't have an account?
                     <a
