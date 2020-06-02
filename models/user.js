@@ -52,7 +52,7 @@ module.exports = function (sequelize, DataTypes) {
 
 
   User.associate = models => {
-    User.belongsToMany(models.Games, { through: 'UserGames'});
+    User.belongsToMany(models.Games, { through: 'UserGames' });
     User.belongsToMany(models.Chat, { through: 'UserChats' });
   };
   return User;

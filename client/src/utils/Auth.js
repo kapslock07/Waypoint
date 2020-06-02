@@ -18,5 +18,6 @@ export default {
             email: email,
             password: password
         })
-    }
+    },
+    Logout: () => axios.get('/logout')
 }
