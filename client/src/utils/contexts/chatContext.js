@@ -18,7 +18,7 @@ const reducer = (state, action) => {
             createChat(action.creatorId,action.joineeId);
             break;
         case(chatActions.SEND_MESSAGE):
-            console.log("Send chat!");
+            sendMessage();
             break;
         case(chatActions.GET_CHATS):
             console.log("Get chats!");
@@ -67,9 +67,14 @@ function loadSocket(state){ //connects to socket on server whoo!
           console.log("Connected to Chat Server with Id of ", data);
         });
     
-        socket.on("created_chat", data => {
+        socket.on("created_chat", data => { //Listen from server
             console.log(`user with id ${data.creatorId} wants to chat!`);
         });
+}
+
+
+function sendMessage(message){
+
 }
 
 export { ChatProvider, useChatContext };

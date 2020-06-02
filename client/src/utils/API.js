@@ -39,6 +39,9 @@ export default {
     },
     getChats: function(id){
         return axios.get(`/api/chat/${id}`);
+    },
+    getMessages: function(chatId){
+        return axios.get(`/api/chat/messages/${chatId}`)
     }
 };
 

@@ -18,7 +18,7 @@ module.exports = (app) => {
                 uId: data
             });
 
-            console.log("Total Users Online", connectedUsers.size);
+         //   console.log("Total Users Online", connectedUsers.size);
             socket.emit("user_connect", connectedUsers.get(data).sId);
         });
 
@@ -26,7 +26,7 @@ module.exports = (app) => {
             //get client who will recieve chat notification!
             let reciever = connectedUsers.get(data.joineeId);
             
-            if(reciever.sId === undefined){
+            if(reciever === undefined){
                 console.log("One user not online")
             }
             else {

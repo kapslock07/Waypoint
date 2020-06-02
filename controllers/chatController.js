@@ -37,5 +37,17 @@ module.exports = {
                 res.status(200).end();
             })
         });
+    },
+    getMessages: function(req, res){
+        let chatId = req.params.id;
+
+        db.Chat.findOne({
+            where: {
+                id: chatId
+            },
+            include: [db.Message]
+        }).then(chatData => {
+            console.log(chatData);
+        });
     }
 }

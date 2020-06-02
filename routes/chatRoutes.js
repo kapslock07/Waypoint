@@ -17,5 +17,9 @@ module.exports = (server, db) => {
         chatController.getChat(req,res);
     });
 
+    server.get("/api/chat/messages/:id", (req, res) => {
+        chatController.getMessages(req, res);
+    });
+
 
 }

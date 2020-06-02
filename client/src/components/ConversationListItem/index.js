@@ -9,7 +9,7 @@ export default function ConversationListItem(props) {
   })
   
     return (
-      <div className="conversation-list-item">
+      <div className="conversation-list-item" onClick={() => props.getMessages(props.data.chatId)}>
         <img className="conversation-photo" src={props.data.photo} alt="..." />
         <div className="conversation-info">
           <h1 className="conversation-title">{props.data.name}</h1>

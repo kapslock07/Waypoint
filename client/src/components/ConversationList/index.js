@@ -26,6 +26,7 @@ export default function ConversationList(props) {
             <ConversationListItem
               key={conversation.name}
               data={conversation}
+              getMessages={props.getMessages}
             />
           )
         }

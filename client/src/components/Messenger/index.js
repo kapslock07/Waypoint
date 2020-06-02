@@ -11,12 +11,18 @@ import './Messenger.css';
 export default function Messenger(props) {
 
   const [conversations, setConversations] = useState([]);
+  const [messages, setMessages] = useState([]);
   const [state, dispatch] = useChatContext();
 
 
   useEffect(() => {
     getConversations()
   },[])
+  
+
+  const getMessages = (chatId) => {
+    API.getMessages(chatId);
+  }
 
  const getConversations = () => {
    API.getChats(state.user.id).then(res => {
@@ -53,7 +59,7 @@ export default function Messenger(props) {
       />
 
       <div className="scrollable sidebar">
-        <ConversationList conversations={conversations}/>
+        <ConversationList conversations={conversations} getMessages={getMessages}/>
       </div>
 
       <div className="scrollable content">
