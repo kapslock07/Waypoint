@@ -21,7 +21,22 @@ export default function Messenger(props) {
   
 
   const getMessages = (chatId) => {
-    API.getMessages(chatId);
+    API.getMessages(chatId).then(res => {
+
+      let msgData = res.data;
+
+      if(msgData.length == 0){
+        setMessages([{
+          id: 1,
+          author: state.user.id,
+          message: 'There are currently no Messages',
+          timestamp: new Date().getTime()
+        }])
+      }
+      else {
+        setMessages(msgData);
+      }
+    })
   }
 
  const getConversations = () => {
@@ -63,7 +78,7 @@ export default function Messenger(props) {
       </div>
 
       <div className="scrollable content">
-        <MessageList messages={[]} MY_USER_ID={state.user.id}/>
+        <MessageList messages={messages} MY_USER_ID={state.user.id}/>
       </div>
     </div>
   );

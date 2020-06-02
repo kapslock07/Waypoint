@@ -47,7 +47,7 @@ module.exports = {
             },
             include: [db.Message]
         }).then(chatData => {
-            console.log(chatData);
+            res.json(chatData.Messages);
         });
     }
 }
