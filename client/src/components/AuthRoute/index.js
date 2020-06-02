@@ -49,9 +49,9 @@ function AuthRoute() {
     const checkOnboarding = async id => {
         await Auth.onboardStatus(id)
             .then(res => {
+                console.log("Onboard status:", res.data.onboard)
                 setOnboard(res.data.onboard)
-            }
-            )
+            })
     }
 
 

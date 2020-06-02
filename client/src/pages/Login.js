@@ -63,13 +63,10 @@ const Login = (props) => {
         console.log("User logging in")
         Auth.LogIn(loggedIn.email, loggedIn.password)
             .then(res => {
-                console.log("Logged in: ", res.data)
                 if (res.status === 200) {
-                    console.log("Is it 200??")
                     //update state of authentication to true
                     //change window location to where it needs to go
                     props.changeState("isAuthenticated", true);
-                    console.log("After log in, user authentication is ", props.isAuthenticated)
                 }
             })
     }
