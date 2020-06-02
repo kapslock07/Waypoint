@@ -3,13 +3,15 @@ import ConversationSearch from '../ConversationSearch';
 import ConversationListItem from '../ConversationListItem';
 import Toolbar from '../Toolbar';
 import ToolbarButton from '../ToolbarButton';
+import { MDBCol } from 'mdbreact'
 
 import './ConversationList.css';
 
 export default function ConversationList(props) {
 
 
-    return (
+  return (
+    <MDBCol md="4">
       <div className="conversation-list">
         <Toolbar
           title="Messenger"
@@ -21,6 +23,7 @@ export default function ConversationList(props) {
           ]}
         />
         <ConversationSearch />
+
         {
           props.conversations.map(conversation =>
             <ConversationListItem
@@ -30,5 +33,6 @@ export default function ConversationList(props) {
           )
         }
       </div>
-    );
+    </MDBCol>
+  );
 }
