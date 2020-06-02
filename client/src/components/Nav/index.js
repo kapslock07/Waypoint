@@ -1,31 +1,61 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Container, Row, Col, Navbar, Modal, Form, Image } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Navbar,
+  Modal,
+  Form,
+  Image,
+} from "react-bootstrap";
 import SampleImg from "../../assets/images/mainLogo.jpeg";
 import API from "../../utils/API";
+import { useParams } from "react-router-dom";
 import "./style.css";
+
 
 function Nav() {
   const location = useLocation();
 
+  const game = useParams();
+  const { platform } = useParams();
+  console.log({ game, platform })
+
   const [show, setShow] = useState(false);
   const [games, setGames] = useState([]);
-  // let [platforms, setPlatforms] = React.useState([]);
+  const [platforms, setPlatforms] = React.useState([]);
+
+  const [selectedPlatform, setSelectedPlatform] = useState("");
+  const [selectedGame, setSelectedGame] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  React.useEffect(() => { //grabs games
+  React.useEffect(() => {
+    //grabs games
     loadGames();
     // loadPlatforms();
   }, []);
 
-  function loadGames() { //uses API util to loadGames from our express server
-    API.getGames().then(res => {
-      setGames(res.data);
-      console.log(res.data)
-    })
-      .catch(err => console.log(err));
+  function loadGames() {
+    //uses API util to loadGames from our express server
+    API.getGames()
+      .then((res) => {
+        setGames(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function handleInputChange(event) {
+    //selectedGameOb === full object
+    //selectedGame === string of game title
+    let gameName = event.target.value;
+    let selectedGameOb = games.find((game) => game.title === gameName);
+    console.log(selectedGameOb);
+    setSelectedGame(gameName);
+    setPlatforms(selectedGameOb.platforms);
   }
 
   // function loadPlatforms() { //uses API util to loadGames from our express server
@@ -76,8 +106,6 @@ function Nav() {
               <Modal.Title>Game Search</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-
-
               <form className="form-inline md-form mb-4 mx-auto justify-content-center">
                 <Container>
                   <Row>
@@ -89,11 +117,34 @@ function Nav() {
                     <Col lg={12}>
                       <Form>
                         <Form.Group controlId="gameSearchForm.ControlSelect1">
-                          <Form.Control as="select">
+                          <Form.Control
+                            as="select"
+                            onChange={handleInputChange}
+                          >
                             {games.map((game, i) => (
                               <option key={game.id}>{game.title}</option>
                             ))}
                           </Form.Control>
+                        </Form.Group>
+                        <Form.Group>
+                          <div key={`default-radio`} className="mb-3">
+                            {platforms.map((platform, i) => (
+                              <div key={`default-radio`} className="mb-3">
+                                <Form.Check
+                                  key={i}
+                                  name="platform"
+                                  type="radio"
+                                  id={`default-radio-${i}`}
+                                  label={platform}
+                                  value={platform}
+                                  onClick={(event) =>
+                                    setSelectedPlatform(event.target.value)
+                                  }
+                                />
+                                <br />
+                              </div>
+                            ))}
+                          </div>
                         </Form.Group>
                       </Form>
                     </Col>
@@ -117,18 +168,21 @@ function Nav() {
 
                       </div> */}
                     </Col>
-
                   </Row>
                 </Container>
               </form>
             </Modal.Body>
             <Modal.Footer>
-              <button
-                className="btn aqua-gradient btn-rounded btn-sm my-0 text-light"
-                type="submit"
+              <Link
+                to={`/home?game=${selectedGame}&platform=${selectedPlatform}`}
               >
-                <strong>Search</strong>
-              </button>
+                <button
+                  className="btn aqua-gradient btn-rounded btn-sm my-0 text-light"
+                  type="submit"
+                >
+                  <strong>Search</strong>
+                </button>
+              </Link>
             </Modal.Footer>
           </Modal>
           <Link
@@ -175,8 +229,8 @@ function Nav() {
             </div>
           </Link>
         </div>
-      </div >
-    </nav >
+      </div>
+    </nav>
   );
 }
 

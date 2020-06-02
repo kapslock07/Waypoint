@@ -1,4 +1,4 @@
-import React, { state, useState, toggle, useContext } from "react";
+import React, { useState, } from "react";
 import Logo from "../assets/images/mainLogo.jpeg"
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
 import Carousel from "../components/Carousel"
@@ -53,20 +53,28 @@ const Login = (props) => {
         const email = signUp.email;
         const password = signUp.password;
         Auth.signUp(email, password, userName)
-    }
-
-    const handleLogInSubmit = event => {
-        event.preventDefault();
-        console.log("User logging in")
-        Auth.LogIn(loggedIn.email, loggedIn.password)
             .then(res => {
-                console.log("Logged in: ", res.data)
+                console.log(res)
                 if (res.status === 200) {
                     console.log("Is it 200??")
                     //update state of authentication to true
                     //change window location to where it needs to go
-                    props.changeState(true);
-                    console.log("After log in, user authentication is ", props.isAuthenticated)
+                    alert("Sign up complete. Please log in to continue.")
+                    toggle()
+                }
+            })
+    }
+
+    const handleLogInSubmit = event => {
+        event.preventDefault();
+        console.log("Change state is ", props.changeState)
+        console.log("User logging in")
+        Auth.LogIn(loggedIn.email, loggedIn.password)
+            .then(res => {
+                if (res.status === 200) {
+                    //update state of authentication to true
+                    //change window location to where it needs to go
+                    props.changeState("isAuthenticated", true);
                 }
             })
     }

@@ -20,8 +20,8 @@ module.exports = app => {
             password: req.body.password,
             userName: req.body.userName,
         })
-            .then(function () {
-                res.redirect(307, "http://localhost:3000/home");
+            .then(user => {
+                res.status(200).json(user);
             })
             .catch(function (err) {
                 res.status(401).json(err);
@@ -29,17 +29,31 @@ module.exports = app => {
     });
 
     app.get("/auth/success", (req, res) => {
-        //console.log("The user object is ", req.user)
+        console.log("The user object is ", req.user)
         if (req.user) {
-            res.json({
-                success: true,
-                message: "User has successfully authenticated",
-                user: {
-                    id: req.user[0].id
-                },
-                cookies: req.cookies
-            });
-
+            if (Array.isArray(req.user)) {
+                console.log("ARRAY!")
+                res.json({
+                    success: true,
+                    message: "User has successfully authenticated",
+                    user: {
+                        id: req.user[0].id,
+                        onboard: req.user[0].onboard
+                    },
+                    cookies: req.cookies
+                });
+            } else {
+                console.log("OBJECT!")
+                res.json({
+                    success: true,
+                    message: "User has successfully authenticated",
+                    user: {
+                        id: req.user.id,
+                        onboard: req.user.onboard
+                    },
+                    cookies: req.cookies
+                });
+            }
         } else {
             res.json({
                 success: false,
@@ -47,6 +61,20 @@ module.exports = app => {
             })
         }
     });
+
+    app.get("/api/users/:id", (req, res) => {
+        const id = req.params.id;
+        db.User.findOne({ where: { id: id } })
+            .then(data => res.json(data))
+    })
+
+    app.put("/api/users/:id", (req, res) => {
+        const id = req.params.id;
+        db.User.update(
+            { onboard: true },
+            { where: { id: id } })
+            .then(updated => res.json(updated))
+    })
 
     // GET /auth/google
     //   Use passport.authenticate() as route middleware to authenticate the
@@ -68,7 +96,7 @@ module.exports = app => {
     app.get('/auth/google/callback',
         passport.authenticate('google', { failureRedirect: '/auth/failure' }),
         function (req, res) {
-            res.redirect("http://localhost:3000/home")
+            res.redirect("http://localhost:3000/")
         })
 
     app.get('/auth/failure', function (req, res) {
