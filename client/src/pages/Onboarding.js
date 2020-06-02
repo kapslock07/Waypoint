@@ -2,10 +2,11 @@ import React from "react";
 import { Container, Row, Col, Form, Image } from 'react-bootstrap';
 import API from "../utils/API";
 import { MDBBtn } from "mdbreact";
+import Auth from "../utils/Auth";
 
 
 
-function Onboarding() {
+function Onboarding(props) {
 
     let [games, setGames] = React.useState([]); //state for games
     let [platforms, setPlatforms] = React.useState([]); //state for platforms
@@ -13,6 +14,9 @@ function Onboarding() {
 
     const handleSubmit = e => {
         e.preventDefault();
+        const id = props.id
+        Auth.onboarded(id)
+        props.changeState("onboard", true)
     };
 
     React.useEffect(() => { //grabs games
@@ -27,24 +31,24 @@ function Onboarding() {
             setGames(res.data);
             console.log(res.data)
         })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
     function loadPlatforms() { //uses API util to loadPlatforms from our express server
-         API.getPlatforms().then(res => {
-             setPlatforms(res.data);
-             console.log(res.data)
-         })
-        .catch(err => console.log(err));
-     }
+        API.getPlatforms().then(res => {
+            setPlatforms(res.data);
+            console.log(res.data)
+        })
+            .catch(err => console.log(err));
+    }
 
-     function loadAvatars() { //uses API util to loadAvatars from our express server
+    function loadAvatars() { //uses API util to loadAvatars from our express server
         API.getAvatars().then(res => {
             setAvatars(res.data);
             console.log(res.data)
-         })
-        .catch(err => console.log(err));
-     }
+        })
+            .catch(err => console.log(err));
+    }
 
 
 
@@ -116,6 +120,7 @@ function Onboarding() {
                                                 rounded
                                                 type="button"
                                                 className="submitOnboarding z-depth-1a aqua-gradient"
+                                                onClick={handleSubmit}
 
 
                                             >

@@ -38,6 +38,10 @@ module.exports = function (sequelize, DataTypes) {
     //user profile image - String for now ?? Discuss how to do this
     profileImage: {
       type: DataTypes.STRING
+    },
+    onboard: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: 0
     }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
@@ -52,7 +56,7 @@ module.exports = function (sequelize, DataTypes) {
 
 
   User.associate = models => {
-    User.belongsToMany(models.Games, { through: 'UserGames'});
+    User.belongsToMany(models.Games, { through: 'UserGames' });
     User.belongsToMany(models.Chat, { through: 'UserChats' });
   };
   return User;
