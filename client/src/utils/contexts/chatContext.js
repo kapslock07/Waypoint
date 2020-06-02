@@ -29,7 +29,8 @@ const reducer = (state, action) => {
 }
 
 const ChatProvider = ({ userObj = {}, ...props}) => {
-    const [state, dispatch] = useReducer(reducer, { user: userObj });
+    const [state, dispatch] = useReducer(reducer, { user: userObj, hasLoaded: false });
+
     if(props.startChat){
         loadSocket(state);
     }
@@ -57,19 +58,18 @@ function createChat(creatorId,joineeId){
 
 
 function loadSocket(state){ //connects to socket on server whoo!
-    console.log("LOAD SOCKET!")
-    socket = io('http://localhost:3002');
+ 
+        socket = io('http://localhost:3002');
     
-    socket.emit("user_connect", state.user.id);
-
-    socket.on("user_connect", (data) => { //Listen from server
-        console.log("HEARD SOMETHING FROM SERVER");
-      console.log("Connected to Chat Server with Id of ", data);
-    });
-
-    socket.on("created_chat", data => {
-        console.log(`user with id ${data.creatorId} wants to chat!`);
-    });
+        socket.emit("user_connect", state.user.id);
+    
+        socket.on("user_connect", (data) => { //Listen from server
+          console.log("Connected to Chat Server with Id of ", data);
+        });
+    
+        socket.on("created_chat", data => {
+            console.log(`user with id ${data.creatorId} wants to chat!`);
+        });
 }
 
 export { ChatProvider, useChatContext };
