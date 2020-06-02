@@ -1,18 +1,13 @@
-import React, { state, useState, toggle } from "react";
+import React, { state, useState, toggle, useContext } from "react";
 import Logo from "../assets/images/mainLogo.jpeg"
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
 import Carousel from "../components/Carousel"
 import { BrowserRouter as Router, Redirect } from "react-router-dom";
-import axios from "axios"
 import Auth from "../utils/Auth";
+// import UserContext from "../utils/UserContext";
 
 
-const Login = () => {
-
-    const [login, setLogin] = useState({
-        emailLogin: "",
-        passwordLogin: ""
-    })
+const Login = (props) => {
 
     const [modal, setModal] = useState(false)
 
@@ -21,30 +16,51 @@ const Login = () => {
         password: "",
         email: ""
     })
+    const [loggedIn, setLoggedIn] = useState({
+        email: "",
+        password: ""
+    })
+
+    // const authentication = useContext(UserContext)
 
     const toggle = () => {
         setModal(!modal);
     }
 
-    const handleInputChange = (event) => {
+    const handleInputSignUpChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
         setSignup({ ...signUp, [name]: value })
-        setLogin({ ...login, [name]: value })
-
     }
 
-    const handleSubmit = event => {
+    const handleInputLoggedInChange = (event) => {
         event.preventDefault();
-        console.log("INITIALIZING")
-        const emailLogin = login.emailLogin;
-        const passwordLogin = login.passwordLogin;
+        const { name, value } = event.target;
+        setLoggedIn({ ...loggedIn, [name]: value })
+    }
+
+    const handleSignUpSubmit = event => {
+        event.preventDefault();
         const userName = signUp.userName;
         const email = signUp.email;
         const password = signUp.password;
         Auth.signUp(email, password, userName)
-        toggle();
-        event.target.className += ' was-validated'
+    }
+
+    const handleLogInSubmit = event => {
+        event.preventDefault();
+        console.log("User logging in")
+        Auth.LogIn(loggedIn.email, loggedIn.password)
+            .then(res => {
+                console.log("Logged in: ", res.data)
+                if (res.status === 200) {
+                    console.log("Is it 200??")
+                    //update state of authentication to true
+                    //change window location to where it needs to go
+                    props.changeState(true);
+                    console.log("After log in, user authentication is ", props.isAuthenticated)
+                }
+            })
     }
 
     return (
@@ -54,8 +70,7 @@ const Login = () => {
                     <Carousel />
                 </MDBCol>
                 <MDBCol lg="6" style={{ paddingLeft: "50px" }}>
-                    <MDBCard onSubmit={handleSubmit}
-                    >
+                    <MDBCard>
                         <div className="header pt-3 grey-gradient">
                             <MDBRow className="d-flex justify-content-center">
                                 <img src={Logo} style={{ width: "50%", paddingBottom: "15px" }} />
@@ -72,8 +87,8 @@ const Login = () => {
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
-                            <MDBInput label="Your email" group type="text" validate className="needs-validation"
-                                onChange={handleInputChange}
+                            <MDBInput label="Your email" group type="text" validate className="needs-validation" name="email"
+                                onChange={handleInputLoggedInChange}
                             />
                             <MDBInput
                                 label="Your password"
@@ -81,8 +96,8 @@ const Login = () => {
                                 type="password"
                                 validate
                                 containerClass="mb-0"
-                                onChange={handleInputChange}
-
+                                name="password"
+                                onChange={handleInputLoggedInChange}
                             />
                             <MDBRow className="d-flex align-items-center mb-4 mt-5">
                                 <MDBCol md="5" className="d-flex align-items-start">
@@ -91,8 +106,7 @@ const Login = () => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-                                            onSubmit={handleSubmit}
-                                        >
+                                            onClick={handleLogInSubmit}                                        >
                                             Log in
                                             </MDBBtn>
                                     </div>
@@ -138,7 +152,7 @@ const Login = () => {
                                                                             error="wrong"
                                                                             success="right"
                                                                             name="userName"
-                                                                            onChange={handleInputChange}
+                                                                            onChange={handleInputSignUpChange}
                                                                         />
                                                                         <MDBInput
                                                                             label="Your email"
@@ -149,7 +163,7 @@ const Login = () => {
                                                                             error="wrong"
                                                                             success="right"
                                                                             name="email"
-                                                                            onChange={handleInputChange}
+                                                                            onChange={handleInputSignUpChange}
                                                                         />
                                                                         <MDBInput
                                                                             label="Confirm your email"
@@ -167,12 +181,12 @@ const Login = () => {
                                                                             type="password"
                                                                             validate
                                                                             name="password"
-                                                                            onChange={handleInputChange}
+                                                                            onChange={handleInputSignUpChange}
                                                                         />
                                                                     </div>
                                                                     <div className="text-center py-4 mt-3">
                                                                         <MDBBtn color="cyan" type="submit"
-                                                                            onClick={handleSubmit}
+                                                                            onClick={handleSignUpSubmit}
                                                                         >
                                                                             Register
                   </MDBBtn>
@@ -197,6 +211,5 @@ const Login = () => {
         </MDBContainer >
     );
 };
-
 export default Login;
 
