@@ -44,10 +44,11 @@ function Onboarding(props) {
         //get data from inputs here
         console.log({userAvatar, userGames, userPlatforms});
 
-
-
-
-      //  API.putOnboardData()
+        API.putOnboardData({
+            img: userAvatar,
+            userGames: userGames,
+            userPlatforms
+        });
     }
 
     React.useEffect(() => { //grabs games
