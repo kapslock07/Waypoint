@@ -16,6 +16,12 @@ const Login = (props) => {
         password: "",
         email: ""
     })
+
+    const [login, setLogin] = useState({
+        emailLogin: "",
+        passwordLogin: ""
+    })
+
     const [loggedIn, setLoggedIn] = useState({
         email: "",
         password: ""
@@ -34,18 +40,11 @@ const Login = (props) => {
         setSignup({ ...signUp, [name]: value })
     }
 
-<<<<<<< HEAD
     const handleLoginChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
         console.log('we r typing!!', event.target.value)
         setLogin({ ...login, [name]: value })
-=======
-    const handleInputLoggedInChange = (event) => {
-        event.preventDefault();
-        const { name, value } = event.target;
-        setLoggedIn({ ...loggedIn, [name]: value })
->>>>>>> 25c38ccd5f227f7457c36ddbc692017d5ef7b37f
     }
 
     const handleSignUpSubmit = event => {
@@ -107,19 +106,14 @@ const Login = (props) => {
                             {/*  style={{ fontFamily: "Uni Sans Caps" }} */}
                             {/* </MDBRow> */}
                             <MDBRow className="d-flex justify-content-center mt-5">
-                                <h3> A place where Gamers meet! </h3>
+                                <h3 style={{ fontFamily: "Uni Sans" }}> A place where Gamers meet! </h3>
                                 {/* removed h3 font */}
                                 {/*  style={{ fontFamily: "Uni Sans Caps" }} */}
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
-<<<<<<< HEAD
                             <MDBInput name="emailLogin" label="Your email" group type="text" validate className="needs-validation"
                                 onChange={handleLoginChange}
-=======
-                            <MDBInput label="Your email" group type="text" validate className="needs-validation" name="email"
-                                onChange={handleInputLoggedInChange}
->>>>>>> 25c38ccd5f227f7457c36ddbc692017d5ef7b37f
                             />
                             <MDBInput
                                 label="Your password"
@@ -127,14 +121,9 @@ const Login = (props) => {
                                 type="password"
                                 validate
                                 containerClass="mb-0"
-<<<<<<< HEAD
                                 name="passwordLogin"
                                 onChange={handleLoginChange}
 
-=======
-                                name="password"
-                                onChange={handleInputLoggedInChange}
->>>>>>> 25c38ccd5f227f7457c36ddbc692017d5ef7b37f
                             />
                             <MDBRow className="d-flex align-items-center mb-4 mt-5">
                                 <MDBCol md="5" className="d-flex align-items-start">
@@ -143,12 +132,8 @@ const Login = (props) => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-<<<<<<< HEAD
                                             onClick={handleLoginSubmit}
                                         >
-=======
-                                            onClick={handleLogInSubmit}                                        >
->>>>>>> 25c38ccd5f227f7457c36ddbc692017d5ef7b37f
                                             Log in
                                             </MDBBtn>
                                     </div>

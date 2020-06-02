@@ -11,28 +11,26 @@ export default function ConversationList(props) {
 
 
   return (
-    <MDBCol md="4">
-      <div className="conversation-list">
-        <Toolbar
-          title="Messenger"
-          leftItems={[
-            <ToolbarButton key="cog" icon="ion-ios-cog" />
-          ]}
-          rightItems={[
-            <ToolbarButton key="add" icon="ion-ios-add-circle-outline" />
-          ]}
-        />
-        <ConversationSearch />
+    <div className="conversation-list">
+      <Toolbar
+        title="Messenger"
+        leftItems={[
+          <ToolbarButton key="cog" icon="ion-ios-cog" />
+        ]}
+        rightItems={[
+          <ToolbarButton key="add" icon="ion-ios-add-circle-outline" />
+        ]}
+      />
+      <ConversationSearch />
 
-        {
-          props.conversations.map(conversation =>
-            <ConversationListItem
-              key={conversation.name}
-              data={conversation}
-            />
-          )
-        }
-      </div>
-    </MDBCol>
+      {
+        props.conversations.map(conversation =>
+          <ConversationListItem
+            key={conversation.name}
+            data={conversation}
+          />
+        )
+      }
+    </div>
   );
 }
