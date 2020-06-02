@@ -24,6 +24,7 @@ function AuthRoute() {
         axios.get('/auth/success')
             .then(res => {
                 console.log(res.data.user)
+                console.log(res.data)
                 if (res.data.success === true) {
                     setState({
                         ...state,

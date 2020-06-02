@@ -11,7 +11,7 @@ function SearchResults() {
   let [users, setUsers] = React.useState([]); //state for users
   const [state] = useChatContext();
   console.log(state);
-  const game = useParams();
+  const { game } = useParams();
   const { platform } = useParams();
   console.log({ game, platform });
 
@@ -28,6 +28,8 @@ function SearchResults() {
       })
       .catch((err) => console.log(err));
   }
+
+
 
   return (
     <Container fluid>
@@ -58,8 +60,8 @@ function SearchResults() {
                   );
               })
             ) : (
-              <h1>No Users Found</h1>
-            )}
+                <h1>No Users Found</h1>
+              )}
           </MDBAnimation>
         </Col>
       </Row>
