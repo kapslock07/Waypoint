@@ -5,7 +5,7 @@ import SampleImg from "../../assets/images/mainLogo.jpeg";
 import API from "../../utils/API";
 import "./style.css";
 
-function Nav() {
+function Nav(props) {
   const location = useLocation();
 
   const [show, setShow] = useState(false);
@@ -165,7 +165,7 @@ function Nav() {
             <div className="navBtn mx-4 text-center">
               {/* <i className="fa fa-2x fa-user-circle d-flex justify-content-center"></i> */}
               <img
-                src="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/2/2019/07/60698636_DATEBOOK_MER2018100515460770kahn0801.jpg"
+                src={props.img}
                 alt="User "
                 width="33"
                 height="33"

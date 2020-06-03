@@ -12,7 +12,7 @@ function Home(props) {
 
     return (
         <Container fluid>
-            <Nav />
+            <Nav img={props.navImg}/>
             <div className="homeComponent">
                 <Row>
                     <Col lg={3}>

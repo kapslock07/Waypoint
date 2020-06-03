@@ -3,10 +3,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Nav from "../components/Nav";
 import Messenger from "../components/Messenger"
 
-function Chat() {
+function Chat(props) {
     return (
         <Container fluid>
-            <Nav />
+            <Nav img={props.navImg} />
             <div className="chatComponent">
                 <Row style={{ bottom: "60px", position: "relative" }}>
                     <Col xs={12}>
