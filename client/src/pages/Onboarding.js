@@ -106,7 +106,7 @@ function Onboarding(props) {
 
                                     </Col>
                                     <Col lg={6}>
-
+                                        <div className="ml-5">
                                         <h3 className="mb-4">Choose Your Favorite Games</h3>
 
                                         {games.map((game, i) => (
@@ -121,7 +121,7 @@ function Onboarding(props) {
 
                                             </div>
                                         ))}
-
+                                        </div>
                                     </Col>
                                 </Row>
                                 <Row>
@@ -129,11 +129,12 @@ function Onboarding(props) {
                                         <div className="text-center mt-5">
                                             <h3 className="mb-4">Choose Your Avatar</h3>
                                             {avatars.map((avatar, i) => (
-                                                <div key={avatar.id} className="mb-3 avatarOptions">
+                                                <div key={avatar.id} className="mb-3 mx-2 avatarOptions">
                                                     <Image src={avatar.src} thumbnail width="100" height="100" />
                                                     <Form.Check
                                                         type='radio'
                                                         id={avatar.id}
+                                                        name="avatar"
                                                         label={avatar.title}
                                                         name={"avatar"}
                                                         onClick={() => addAvatar(avatar.src)}

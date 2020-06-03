@@ -10,8 +10,18 @@ import Loading from "../../pages/Loading"
 import Auth from "../../utils/Auth";
 // import UserContext from '../../utils/UserContext';
 import { ChatProvider } from "../../utils/contexts/chatContext";
+import GameContext from '../Context/GameContext';
+
 
 function AuthRoute() {
+    const [search, setSearch] = useState({
+        game: '',
+        platform: '',
+
+
+    });
+
+    // console.log(search.game, search.platform);
 
     const [loading, setLoading] = useState(true)
     const [userData, setUserData] = useState({
@@ -46,6 +56,7 @@ function AuthRoute() {
                         isAuthenticated: true,
                     });
                     await checkOnboarding(res.data.user.id)
+
                     setLoading(false);
                 };
                 setLoading(false)
@@ -86,7 +97,7 @@ function AuthRoute() {
                                 </Route>
                             </ChatProvider>)
                         : (
-                            <Route exact path={["/", "/onboarding"]} render={() => <Onboarding changeState={state.changeState} onboard={state.onboard} id={state.id} />} changeState={state.changeState} />
+                            <Route exact path={["/", "/onboarding"]} render={() => <Onboarding changeState={state.changeState} onboard={state.onboard} id={state.id} />} />
                         )
                     : (
                         <Route><Login isAuthenticated={state.isAuthenticated} changeState={state.changeState} /></Route>
