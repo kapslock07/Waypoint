@@ -14,25 +14,21 @@ function SearchResults(props) {
   // const { game } = useParams();
   // const { platform } = useParams();
   // console.log({ game, platform });
-
-  React.useEffect(() => {
-    //grabs users
+  
+  
+  React.useEffect(() => { //grabs users
     loadGames();
   }, []);
-  // let [users, setUsers] = React.useState([]); //state for users
-  // const [state] = useChatContext();
-  console.log(state);
 
 
-
-  function loadGames() {
-    //uses API util to loadUsers from our express server
-    API.getUsers()
-      .then((res) => {
-        setUsers(res.data);
-      })
-      .catch((err) => console.log(err));
+  function loadGames() { //uses API util to loadUsers from our express server
+    API.getUsers().then(res => {
+      setUsers(res.data);
+    })
+      .catch(err => console.log(err));
   }
+
+
 
   return (
     <Container fluid>

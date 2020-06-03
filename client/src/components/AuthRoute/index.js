@@ -50,6 +50,7 @@ function AuthRoute() {
                         isAuthenticated: true,
                     });
                     await checkOnboarding(res.data.user.id)
+
                     setLoading(false);
                 };
                 setLoading(false)
@@ -61,6 +62,7 @@ function AuthRoute() {
             .then(res => {
                 console.log("Onboard status:", res.data.onboard)
                 setOnboard(res.data.onboard)
+
             })
     }
 
@@ -86,7 +88,7 @@ function AuthRoute() {
                                 </Route>
                             </ChatProvider>)
                         : (
-                            <Route exact path={["/", "/onboarding"]} render={() => <Onboarding changeState={state.changeState} onboard={state.onboard} id={state.id} />} changeState={state.changeState} />
+                            <Route exact path={["/", "/onboarding"]} render={() => <Onboarding changeState={state.changeState} onboard={state.onboard} id={state.id} />} />
                         )
                     : (
                         <Route><Login isAuthenticated={state.isAuthenticated} changeState={state.changeState} /></Route>
