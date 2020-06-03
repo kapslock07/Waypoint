@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import ProfileSummary from "../components/ProfileSummary";
 import Feed from "../components/Feed";
@@ -9,9 +9,19 @@ import { MDBAnimation } from "mdbreact";
 
 
 function Home(props) {
+    const [search, setSearch] = useState({
+        game: "",
+        platform: "",
+        changeState: (game, platform) => setSearch({ ...search, game: game, platform: platform })
+
+    });
+
+    function changeSearch(game) {
+        setSearch(game);
+    }
     return (
         <Container fluid>
-            <Nav />
+            <Nav changeSearch={changeSearch} changeState={search.changeState} />
             <div className="homeComponent">
                 <Row>
                     <Col lg={3}>
@@ -21,7 +31,7 @@ function Home(props) {
                     </Col>
                     <Col lg={6}>
                         {/* <Feed /> */}
-                        <SearchResults />
+                        <SearchResults search={search} />
                     </Col>
                     <Col lg={3}>
                         <MDBAnimation type="slideInRight">
@@ -33,5 +43,4 @@ function Home(props) {
         </Container>
     );
 }
-
 export default Home;
