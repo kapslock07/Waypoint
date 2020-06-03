@@ -14,10 +14,6 @@ function SearchResults(props) {
     // const { game } = useParams();
     // const { platform } = useParams();
     // console.log({ game, platform });
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b2552ab09fb4867fa834a7afb51769646c2bbba
 
     React.useEffect(() => { //grabs users
         loadGames();

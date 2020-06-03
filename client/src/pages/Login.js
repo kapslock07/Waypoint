@@ -69,27 +69,20 @@ const Login = (props) => {
         event.preventDefault();
         console.log("Change state is ", props.changeState)
         console.log("User logging in")
-        Auth.LogIn(loggedIn.email, loggedIn.password)
-            .then(res => {
-                if (res.status === 200) {
-                    //update state of authentication to true
-                    //change window location to where it needs to go
-                    props.changeState("isAuthenticated", true);
-                }
-            })
-    }
-
-    const handleLoginSubmit = event => {
-        event.preventDefault();
-
-        const emailLogin = login.emailLogin;
-        const passwordLogin = login.passwordLogin;
-
+        const email = login.emailLogin;
+        const password = login.passwordLogin;
         const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        console.log('IS EMAIL VALID!!', re.test(emailLogin));
-
-        if (re.test(emailLogin) === true && passwordLogin.length > 7) {
+        console.log('IS EMAIL VALID!!', re.test(email));
+        if (re.test(email) === true && password.length > 7) {
             console.log('save to BE!!')
+            Auth.LogIn(email, password)
+                .then(res => {
+                    if (res.status === 200) {
+                        //update state of authentication to true
+                        //change window location to where it needs to go
+                        props.changeState("isAuthenticated", true);
+                    }
+                })
         } else {
             alert('invalid email/pass')
         }
@@ -139,7 +132,7 @@ const Login = (props) => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-                                            onClick={handleLoginSubmit}
+                                            onClick={handleLogInSubmit}
                                         >
                                             Log in
                                             </MDBBtn>
