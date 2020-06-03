@@ -28,12 +28,6 @@ function SearchResults(props) {
       .catch(err => console.log(err));
   }
 
-<<<<<<< HEAD
-    React.useEffect(() => { //grabs users
-        loadGames();
-    }, []);
-
-
 
 
     function loadGames() { //uses API util to loadUsers from our express server
@@ -62,46 +56,6 @@ function SearchResults(props) {
 
 
     );
-=======
->>>>>>> c2d83e495fbbe160f1023735bd0abdaca5f31ac9
-
-
-  return (
-    <Container fluid>
-      <Row>
-        <Col xs={12}>
-          <MDBAnimation type="fadeInDown">
-            <Header name={'Users'} />
-          </MDBAnimation>
-          <MDBAnimation type="fadeInUp">
-            {users.length !== 0 ? (
-              users.map((e) => {
-                if (e.id !== state.user.id)
-                  return (
-                    <SearchResultsBox
-                      key={e.id}
-                      id={e.id}
-                      username={e.userName}
-                      image={
-                        'https://image.flaticon.com/icons/svg/1880/1880988.svg'
-                      }
-                      favoriteGames={[
-                        'Final Fantasy 80',
-                        'Uniracers',
-                        'Duck Hunt',
-                      ]}
-                      favoriteConsoles={['Xbox 360', 'Nintendo Switch']}
-                    />
-                  );
-              })
-            ) : (
-                <h1>No Users Found</h1>
-              )}
-          </MDBAnimation>
-        </Col>
-      </Row>
-    </Container>
-  );
 }
 
 export default SearchResults;
