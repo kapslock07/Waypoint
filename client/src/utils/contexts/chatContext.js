@@ -16,10 +16,9 @@ const reducer = (state, action) => {
         case(chatActions.CREATE_CHAT):
             console.log("Create Chat with " + action.creatorId + " and " + action.joineeId);
             createChat(action.creatorId,action.joineeId);
-            break;
+            return [...state]
         case(chatActions.SELECT_USER):
-            state.chattingWith = action.userid;
-            break;
+            return { ...state, chattingWith: action.id }
         case(chatActions.SEND_MESSAGE):
             sendMessage();
             break;

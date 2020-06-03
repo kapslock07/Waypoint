@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Container,
@@ -11,19 +11,12 @@ import {
 } from 'react-bootstrap';
 import SampleImg from '../../assets/images/mainLogo.jpeg';
 import API from '../../utils/API';
-// import { useParams } from 'react-router-dom';
 import './style.css';
-// import GameContext from '../Context/GameContext';
+
 
 function Nav(props) {
 
-
-
   const location = useLocation();
-
-  // const game = useParams();
-  // const { platform } = useParams();
-  // console.log({ game, platform });
 
   const [show, setShow] = useState(false);
   const [games, setGames] = useState([]);

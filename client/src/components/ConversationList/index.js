@@ -25,7 +25,7 @@ export default function ConversationList(props) {
       {
         props.conversations.map(conversation =>
           <ConversationListItem
-            key={conversation.name}
+            key={conversation.id}
             data={conversation}
             getMessages={props.getMessages}
           />

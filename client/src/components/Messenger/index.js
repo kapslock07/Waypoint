@@ -3,6 +3,7 @@ import ConversationList from '../ConversationList';
 import MessageList from '../MessageList';
 import Toolbar from '../Toolbar';
 import ToolbarButton from '../ToolbarButton';
+import actions from "../../utils/contexts/chatActions";
 import { useChatContext } from "../../utils/contexts/chatContext";
 import API from "../../utils/API";
 
@@ -20,10 +21,11 @@ export default function Messenger(props) {
   },[])
   
 
-  const getMessages = (chatId) => {
+  const getMessages = (chatId, chatWithId) => {
     API.getMessages(chatId).then(res => {
 
       let msgData = res.data;
+      dispatch({type: actions.SELECT_USER, id: chatWithId})
 
       if(msgData.length === 0){
         setMessages([{
