@@ -14,10 +14,7 @@ function SearchResults(props) {
     // const { game } = useParams();
     // const { platform } = useParams();
     // console.log({ game, platform });
-<<<<<<< HEAD
 
-=======
->>>>>>> 4b2552ab09fb4867fa834a7afb51769646c2bbba
 
     React.useEffect(() => { //grabs users
         loadGames();
@@ -39,7 +36,7 @@ function SearchResults(props) {
                         <Header name={"Users"} />
                     </MDBAnimation>
                     <MDBAnimation type="fadeInUp">
-                        {users.length !== 0 ? users.map(e => {
+                        {users.length > 1 ? users.map(e => {
                             if (e.id !== state.user.id)
                                 return <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
                         }) : <h1>No Users Found</h1>}
@@ -47,8 +44,6 @@ function SearchResults(props) {
                 </Col>
             </Row>
         </Container>
-
-
     );
 }
 

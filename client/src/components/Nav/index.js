@@ -51,7 +51,6 @@ function Nav(props) {
     API.getGames()
       .then((res) => {
         setGames(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }

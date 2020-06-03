@@ -25,7 +25,7 @@ export default function Messenger(props) {
 
       let msgData = res.data;
 
-      if(msgData.length == 0){
+      if(msgData.length === 0){
         setMessages([{
           id: 1,
           author: state.user.id,
@@ -47,7 +47,7 @@ export default function Messenger(props) {
 
     chats.forEach(chat => { //for every chat we have
       //get the user thats not us
-      let userThatsNotMe = chat.Users.filter(user => user.id != state.user.id);
+      let userThatsNotMe = chat.Users.filter(user => user.id !== state.user.id);
       
       //push a shortened object version of them to convoUsers
       convoUsers.push({

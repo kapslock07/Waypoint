@@ -17,6 +17,9 @@ const reducer = (state, action) => {
             console.log("Create Chat with " + action.creatorId + " and " + action.joineeId);
             createChat(action.creatorId,action.joineeId);
             break;
+        case(chatActions.SELECT_USER):
+            state.chattingWith = action.userid;
+            break;
         case(chatActions.SEND_MESSAGE):
             sendMessage();
             break;
@@ -29,7 +32,7 @@ const reducer = (state, action) => {
 }
 
 const ChatProvider = ({ userObj = {}, ...props}) => {
-    const [state, dispatch] = useReducer(reducer, { user: userObj, hasLoaded: false });
+    const [state, dispatch] = useReducer(reducer, { user: userObj, chattingWith: 0 });
 
     if(props.startChat){
         loadSocket(state);
@@ -58,6 +61,7 @@ function createChat(creatorId,joineeId){
 
 
 function loadSocket(state){ //connects to socket on server whoo!
+    console.log(state);
  
         socket = io('http://localhost:3002');
     

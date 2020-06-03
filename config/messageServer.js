@@ -17,7 +17,7 @@ module.exports = (app) => {
                 uId: data
             });
 
-         //   console.log("Total Users Online", connectedUsers.size);
+            console.log("Total Users Online", connectedUsers.size);
             socket.emit("user_connect", connectedUsers.get(data).sId);
         });
 

@@ -79,7 +79,7 @@ const Login = (props) => {
             })
     }
 
-    const handleLoginSubmit = event => {
+  /*  const handleLoginSubmit = event => {
         event.preventDefault();
 
         const emailLogin = login.emailLogin;
@@ -93,7 +93,7 @@ const Login = (props) => {
         } else {
             alert('invalid email/pass')
         }
-    }
+    }*/
 
     return (
         <MDBContainer>
@@ -139,7 +139,7 @@ const Login = (props) => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-                                            onClick={handleLoginSubmit}
+                                            onClick={handleLogInSubmit}
                                         >
                                             Log in
                                             </MDBBtn>

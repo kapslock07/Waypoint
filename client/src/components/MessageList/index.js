@@ -70,12 +70,10 @@ export default function MessageList(props) {
       // Proceed to the next message.
       i += 1;
     }
-    console.log('this is TEMP MESSAGES to display!! should b 11 after we add 1', tempMessages)
 
     return tempMessages;
   }
 
-  console.log('THIS IS MESSSAGES STE!! -------', messages)
   return (
     <div className="message-list">
       <Toolbar
