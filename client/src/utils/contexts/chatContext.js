@@ -12,11 +12,11 @@ const reducer = (state, action) => {
     switch(action.type){
         case(chatActions.LOAD_IO):
             loadSocket(state);
-            break;
+            return {...state}
         case(chatActions.CREATE_CHAT):
             console.log("Create Chat with " + action.creatorId + " and " + action.joineeId);
             createChat(action.creatorId,action.joineeId);
-            return [...state]
+            return {...state}
         case(chatActions.SELECT_USER):
             return { ...state, chattingWith: action.id }
         case(chatActions.SEND_MESSAGE):
