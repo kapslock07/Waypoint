@@ -27,41 +27,33 @@ function SearchResults(props) {
       .catch(err => console.log(err));
   }
 
+
+
+  function loadGames() { //uses API util to loadUsers from our express server
+    API.getUsers().then(res => {
+      setUsers(res.data);
+    })
+      .catch(err => console.log(err));
+  }
+
   return (
     <Container fluid>
       <Row>
         <Col xs={12}>
           <MDBAnimation type="fadeInDown">
-            <Header name={'Users'} />
+            <Header name={"Users"} />
           </MDBAnimation>
           <MDBAnimation type="fadeInUp">
-            {users.length !== 0 ? (
-              users.map((e) => {
-                if (e.id !== state.user.id)
-                  return (
-                    <SearchResultsBox
-                      key={e.id}
-                      id={e.id}
-                      username={e.userName}
-                      image={
-                        'https://image.flaticon.com/icons/svg/1880/1880988.svg'
-                      }
-                      favoriteGames={[
-                        'Final Fantasy 80',
-                        'Uniracers',
-                        'Duck Hunt',
-                      ]}
-                      favoriteConsoles={['Xbox 360', 'Nintendo Switch']}
-                    />
-                  );
-              })
-            ) : (
-                <h1>No Users Found</h1>
-              )}
+            {users.length !== 0 ? users.map(e => {
+              if (e.id !== state.user.id)
+                return <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
+            }) : <h1>No Users Found</h1>}
           </MDBAnimation>
         </Col>
       </Row>
     </Container>
+
+
   );
 }
 
