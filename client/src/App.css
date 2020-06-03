@@ -43,7 +43,8 @@ html {
  }
 
  .ChoosePlatform {
-   width: 100%
+   width:300px;
+float: left
  }
 
  .platformChoice {

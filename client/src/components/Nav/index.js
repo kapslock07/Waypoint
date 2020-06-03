@@ -157,7 +157,7 @@ function Nav(props) {
                             onChange={handleInputChange}
                           // onChange={handleSearchInputChange}
                           >
-                            <option disabled selected value> -- select an game -- </option>
+                            <option disabled selected value> -- select a game -- </option>
                             {games.map((game, i) => (
                               <option key={game.id}>{game.title}</option>
                             ))}
@@ -169,6 +169,7 @@ function Nav(props) {
                           {platforms.map((platform, i) => (
                             <div key={`default-radio`} className="mb-3 mx-5 ChoosePlatforms">
                               <Form.Check
+                                style={{ width: 100 + "px" }}
                                 key={i}
                                 name="platform"
                                 type="radio"
