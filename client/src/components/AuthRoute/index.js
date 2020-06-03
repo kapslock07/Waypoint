@@ -69,7 +69,7 @@ function AuthRoute() {
                                 </Route>
                             </ChatProvider>)
                         : (
-                            <Route exact path={["/", "/onboarding"]} render={() => <Onboarding changeState={state.changeState} onboard={state.onboard} id={state.id} />} changeState={state.changeState} />
+                            <Route exact path={["/", "/onboarding"]} render={() => <Onboarding changeState={state.changeState} onboard={state.onboard} id={state.id} />} />
                         )
                     : (
                         <Route><Login isAuthenticated={state.isAuthenticated} changeState={state.changeState} /></Route>
