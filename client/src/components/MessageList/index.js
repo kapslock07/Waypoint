@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Compose from '../Compose';
 import Toolbar from '../Toolbar';
 import ToolbarButton from '../ToolbarButton';
@@ -6,8 +6,6 @@ import Message from '../Message';
 import moment from 'moment';
 
 import './MessageList.css';
-
-//THIS IS THE REAL
 
 export default function MessageList(props) {
 

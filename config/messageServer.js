@@ -38,9 +38,20 @@ module.exports = (app) => {
         socket.on("send_message", data => {
             let message = data.message;
             let sender = data.sender;
-            let reciever = data.reciever;
-            console.log(sender + " sent " + message + " to " + reciever);
 
+            let reciever = data.reciever;
+            let recSocket = connectedUsers.get(reciever);
+
+            if(recSocket === undefined){
+                console.log("One user not online to recieve message");
+            }
+            else{
+                console.log("Sending message from " + sender + " to " + reciever);
+                io.to(recSocket.sId).emit("recieve_message", { 
+                    authorId: sender,
+                    message: message
+                });
+            }
         });
 
         socket.on("disconnect", () => {

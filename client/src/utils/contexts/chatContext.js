@@ -72,6 +72,11 @@ function loadSocket(state){ //connects to socket on server whoo!
         socket.on("created_chat", data => { //Listen from server
             console.log(`user with id ${data.creatorId} wants to chat!`);
         });
+
+        socket.on("recieve_message", incomingMessage => {
+            console.log("INCOMING MESSAGE")
+            console.log(incomingMessage);
+        });
 }
 
 
