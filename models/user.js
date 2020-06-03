@@ -30,6 +30,26 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true,
       defaultValue: 'password'
     },
+    games: {
+      type: DataTypes.STRING, 
+      defaultValue: "[{}]",
+      get: function() {
+          return JSON.parse(this.getDataValue('games'));
+      }, 
+      set: function(val) {
+          return this.setDataValue('games', JSON.stringify(val));
+      }
+    },
+    platforms: {
+      type: DataTypes.STRING, 
+      defaultValue: "[{}]",
+      get: function() {
+          return JSON.parse(this.getDataValue('platforms'));
+      }, 
+      set: function(val) {
+          return this.setDataValue('platforms', JSON.stringify(val));
+      }
+    },
     // Username chosen 
     userName: {
       type: DataTypes.STRING,
@@ -56,13 +76,6 @@ module.exports = function (sequelize, DataTypes) {
 
 
   User.associate = models => {
-    User.hasMany(models.UserGame, {
-      ondelete: "cascade"
-    });
-    User.hasMany(models.UserPlatform, {
-      ondelete: "cascade"
-    });
-
     User.belongsToMany(models.Chat, { through: 'UserChats' });
   };
   return User;

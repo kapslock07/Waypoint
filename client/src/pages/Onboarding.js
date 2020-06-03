@@ -45,9 +45,10 @@ function Onboarding(props) {
         console.log({userAvatar, userGames, userPlatforms});
 
         API.putOnboardData({
+            id: userId,
             img: userAvatar,
             userGames: userGames,
-            userPlatforms
+            userPlatforms: userPlatforms
         });
     }
 

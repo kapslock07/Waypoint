@@ -20,17 +20,28 @@ module.exports = (server, db) => {
   })
 
   server.put("/api/users", (req, res) => {
-      let data = req.body;
-      console.log(data);
-  })
+
+    let data = req.body;
+    let userId = data.id;
+
+    db.User.findOne({
+      where: {
+        id: userId
+      }
+    }).then(async user => {
+      user.profileImage = data.img;
+      user.games = data.userGames;
+      user.platforms = data.userPlatforms;
+      await user.save();
+      res.status(200).end();
+    });
+  });
 
 
   //returns all games from db
   server.get("/api/games", (req, res) => {
     //return res.json(["mario or something"]);
-    db.Games.findAll({
-      include: [db.User],
-    }).then((data) => {
+    db.Games.findAll({}).then((data) => {
       res.json(data);
     });
   });
@@ -58,31 +69,11 @@ module.exports = (server, db) => {
           "LIKE",
           "%" + req.params.title + "%"
         ),
-      },
-      include: [db.User],
+      }
     }).then((data) => {
       res.json(data);
     });
   });
 
-  //returns all games by title and genre
-  server.get("/api/games/:platforms/:title", (req, res) => {
-    db.Games.findAll({
-      where: {
-        title: sequelize.where(
-          sequelize.fn("LOWER", sequelize.col("title")),
-          "LIKE",
-          "%" + req.params.title + "%"
-        ),
-        platforms: sequelize.where(
-          sequelize.fn("LOWER", sequelize.col("platforms")),
-          "LIKE",
-          "%" + req.params.platforms + "%"
-        ),
-      },
-      include: [db.User],
-    }).then((data) => {
-      res.json(data);
-    });
-  });
+
 };
