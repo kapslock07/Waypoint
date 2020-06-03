@@ -15,19 +15,9 @@ function SearchResults() {
   const { platform } = useParams();
   console.log({ game, platform });
 
-  React.useEffect(() => {
-    //grabs users
-    loadGames();
-  }, []);
-  let [users, setUsers] = React.useState([]); //state for users
-  const [state] = useChatContext();
-  console.log(state)
-
   React.useEffect(() => { //grabs users
     loadGames();
   }, []);
-
-
 
 
   function loadGames() { //uses API util to loadUsers from our express server
@@ -36,8 +26,6 @@ function SearchResults() {
     })
       .catch(err => console.log(err));
   }
-
-
 
 
   return (
