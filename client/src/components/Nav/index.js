@@ -63,23 +63,12 @@ function Nav(props) {
     const name = event.target.name;
     if (name === "game") {
       let selectedGameOb = games.find((game) => game.title === value);
-
+      setDisplay({ ...display, game: value })
       // console.log(selectedGameOb);
       // setSearch({ ...search, game: gameName });
       setPlatforms(selectedGameOb.platforms);
     }
     // console.log(search.game);
-    let game;
-    let platform;
-    switch (name) {
-      case "game":
-        game = value;
-      case "platform":
-        platform = value
-    }
-    props.changeState(game, platform)
-
-    console.log(name, value)
   }
 
 
@@ -220,6 +209,7 @@ function Nav(props) {
                 <button
                   className="btn aqua-gradient btn-rounded btn-sm my-0 text-light"
                   type="submit"
+                  onClick={() => props.changeState(display.game, display.platform)}
                 >
                   <strong>Search</strong>
                 </button>
@@ -272,7 +262,7 @@ function Nav(props) {
           </Link>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 }
 
