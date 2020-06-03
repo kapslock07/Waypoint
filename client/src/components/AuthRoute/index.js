@@ -40,6 +40,7 @@ function AuthRoute() {
                         isAuthenticated: true,
                     });
                     await checkOnboarding(res.data.user.id)
+
                     setLoading(false);
                 };
                 setLoading(false)
@@ -51,6 +52,7 @@ function AuthRoute() {
             .then(res => {
                 console.log("Onboard status:", res.data.onboard)
                 setOnboard(res.data.onboard)
+
             })
     }
 
