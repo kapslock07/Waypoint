@@ -11,6 +11,8 @@ import {
 } from 'react-bootstrap';
 import SampleImg from '../../assets/images/mainLogo.jpeg';
 import API from '../../utils/API';
+import { MDBContainer, MDBInput } from "mdbreact";
+
 // import { useParams } from 'react-router-dom';
 import './style.css';
 // import GameContext from '../Context/GameContext';
@@ -165,10 +167,10 @@ function Nav(props) {
                         </Form.Group>
                         <h5 className="my-2">Choose A Console</h5>
 
-                        <Form.Group>
+                        <MDBContainer className="mt-3">
                           {platforms.map((platform, i) => (
                             <div key={`default-radio`} className="mb-3 mx-5 ChoosePlatforms">
-                              <Form.Check
+                              <MDBInput
                                 style={{ width: 100 + "px" }}
                                 key={i}
                                 name="platform"
@@ -187,7 +189,7 @@ function Nav(props) {
                             </div>
                           ))}
                           {/* </div> */}
-                        </Form.Group>
+                        </MDBContainer>
                       </Form>
                     </Col>
                   </Row>
