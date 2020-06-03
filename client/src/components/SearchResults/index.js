@@ -15,38 +15,37 @@ function SearchResults(props) {
     // const { platform } = useParams();
     // console.log({ game, platform });
 
-
     React.useEffect(() => { //grabs users
         loadGames();
     }, []);
 
 
-    function loadGames() { //uses API util to loadUsers from our express server
-        API.getUsers().then(res => {
-            setUsers(res.data);
-        })
-            .catch(err => console.log(err));
-    }
+  function loadGames() { //uses API util to loadUsers from our express server
+    API.getUsers().then(res => {
+      setUsers(res.data);
+    })
+      .catch(err => console.log(err));
+  }
 
-    return (
-        <Container fluid>
-            <Row>
-                <Col xs={12}>
-                    <MDBAnimation type="fadeInDown">
-                        <Header name={"Users"} />
-                    </MDBAnimation>
-                    <MDBAnimation type="fadeInUp">
-                        {users.length !== 0 ? users.map(e => {
-                            if (e.id !== state.user.id)
-                                return <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
-                        }) : <h1>No Users Found</h1>}
-                    </MDBAnimation>
-                </Col>
-            </Row>
-        </Container>
+  return (
+    <Container fluid>
+      <Row>
+        <Col xs={12}>
+          <MDBAnimation type="fadeInDown">
+            <Header name={"Users"} />
+          </MDBAnimation>
+          <MDBAnimation type="fadeInUp">
+            {users.length !== 0 ? users.map(e => {
+              if (e.id !== state.user.id)
+                return <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
+            }) : <h1>No Users Found</h1>}
+          </MDBAnimation>
+        </Col>
+      </Row>
+    </Container>
 
 
-    );
+  );
 }
 
 export default SearchResults;

@@ -79,7 +79,7 @@ class Carousel extends React.Component {
         var self = this
         setTimeout(function () {
             self.toggle()
-        }, 8000)
+        }, 5000)
         return (
             <div style={{ height: "100vh" }}>
                 <Container >
