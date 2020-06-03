@@ -7,6 +7,7 @@ import moment from 'moment';
 
 import './MessageList.css';
 
+//THIS IS THE REAL
 
 export default function MessageList(props) {
  
