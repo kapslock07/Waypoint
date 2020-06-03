@@ -11,12 +11,9 @@ export default function Compose(props) {
           className="compose-input"
           placeholder="Type a message"
         />
-        <button style={{ width: 60 + "px", height: 60 + "px" }}>Send</button>
+        <button onClick={props.handleMessageSubmit}>Chat!</button>
+
       </form>
-
-
-
-      <button onClick={props.handleMessageSubmit}>Chat!</button>
 
       {
         props.rightItems

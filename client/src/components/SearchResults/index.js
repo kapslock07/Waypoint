@@ -11,9 +11,6 @@ function SearchResults(props) {
   let [users, setUsers] = React.useState([]); //state for users
   const [state] = useChatContext();
   console.log(state);
-  const { game } = useParams();
-  const { platform } = useParams();
-  console.log({ game, platform });
 
   React.useEffect(() => {
     loadGames();

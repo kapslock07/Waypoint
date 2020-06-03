@@ -17,12 +17,10 @@ export default function MessageList(props) {
   const renderMessages = () => {
 
     let i = 0;
-    console.log('WE R IN THE RENDER MESSAGE messages.length', messages.length)
     let messageCount = messages.length;
     let tempMessages = [];
 
     while (i < messageCount) {
-      console.log('inside the hwile loop!!!', i)
       let previous = messages[i - 1];
       let current = messages[i];
       let next = messages[i + 1];
@@ -91,7 +89,7 @@ export default function MessageList(props) {
 
       <div className="message-list-container">{renderMessages()}</div>
 
-      <Compose handleMessageSubmit={handleMessageSubmit} handleTyping={handleTyping} rightItems={[
+      <Compose rightItems={[
         <ToolbarButton key="photo" icon="ion-ios-camera" />,
         <ToolbarButton key="image" icon="ion-ios-image" />,
         <ToolbarButton key="audio" icon="ion-ios-mic" />,
