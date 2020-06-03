@@ -9,7 +9,7 @@ export default function Compose(props) {
         // className="compose-input"
         placeholder="Type a message, @name"
         onChange={props.handleTyping}
-
+        style={{ width: "72%" }}
       />
 
       <button onClick={props.handleMessageSubmit}>Chat!</button>

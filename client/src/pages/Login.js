@@ -93,7 +93,6 @@ const Login = (props) => {
         } else {
             alert('invalid email/pass')
         }
-
     }
 
     return (
