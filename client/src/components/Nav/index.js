@@ -104,7 +104,7 @@ function Nav(props) {
     <nav className="navbar fixed-top navbar-expand-lg mb-4 z-depth-2 navbar-light">
       <Navbar.Brand href="/home">
         <img
-          src={SampleImg}
+          src={props.img}
           width="75%"
           className="brandLogo d-inline-block align-top ml-5"
           alt="React Bootstrap logo"
@@ -261,7 +261,7 @@ function Nav(props) {
             <div className="navBtn mx-4 text-center">
               {/* <i className="fa fa-2x fa-user-circle d-flex justify-content-center"></i> */}
               <img
-                src="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/2/2019/07/60698636_DATEBOOK_MER2018100515460770kahn0801.jpg"
+                src={props.img}
                 alt="User "
                 width="33"
                 height="33"

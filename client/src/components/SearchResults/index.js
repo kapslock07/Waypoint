@@ -27,8 +27,6 @@ function SearchResults(props) {
       .catch(err => console.log(err));
   }
 
-
-
   return (
     <Container fluid>
       <Row>

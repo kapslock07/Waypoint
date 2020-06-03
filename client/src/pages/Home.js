@@ -9,6 +9,7 @@ import { MDBAnimation } from "mdbreact";
 
 
 function Home(props) {
+
     const [search, setSearch] = useState({
         game: "",
         platform: "",
@@ -21,7 +22,8 @@ function Home(props) {
     }
     return (
         <Container fluid>
-            <Nav changeSearch={changeSearch} changeState={search.changeState} />
+            <Nav changeSearch={changeSearch} changeState={search.changeState} img={props.navImg}/>
+
             <div className="homeComponent">
                 <Row>
                     <Col lg={3}>

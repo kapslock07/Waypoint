@@ -22,12 +22,12 @@ export default function ConversationList(props) {
         ]}
       />
       <ConversationSearch />
-
       {
         props.conversations.map(conversation =>
           <ConversationListItem
             key={conversation.name}
             data={conversation}
+            getMessages={props.getMessages}
           />
         )
       }

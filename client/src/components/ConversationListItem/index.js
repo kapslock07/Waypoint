@@ -7,15 +7,13 @@ export default function ConversationListItem(props) {
   useEffect(() => {
     shave('.conversation-snippet', 20);
   })
-
-    const { photo, name, text } = props.data;
-
+  
     return (
-      <div className="conversation-list-item">
-        <img className="conversation-photo" src={photo} alt="conversation" />
+      <div className="conversation-list-item" onClick={() => props.getMessages(props.data.chatId)}>
+        <img className="conversation-photo" src={props.data.photo} alt="..." />
         <div className="conversation-info">
-          <h1 className="conversation-title">{ name }</h1>
-          <p className="conversation-snippet">{ text }</p>
+          <h1 className="conversation-title">{props.data.name}</h1>
+          <p className="conversation-snippet">{""}</p>
         </div>
       </div>
     );
