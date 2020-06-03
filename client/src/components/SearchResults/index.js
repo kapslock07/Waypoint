@@ -24,15 +24,6 @@ function SearchResults(props) {
       .catch(err => console.log(err));
   }
 
-
-
-  function loadGames() { //uses API util to loadUsers from our express server
-    API.getUsers().then(res => {
-      setUsers(res.data);
-    })
-      .catch(err => console.log(err));
-  }
-
   return (
     <Container fluid>
       <Row>

@@ -157,33 +157,35 @@ function Nav(props) {
                             onChange={handleInputChange}
                           // onChange={handleSearchInputChange}
                           >
+                            <option disabled selected value> -- select an game -- </option>
                             {games.map((game, i) => (
                               <option key={game.id}>{game.title}</option>
                             ))}
                           </Form.Control>
                         </Form.Group>
+                        <h5 className="my-2">Choose A Console</h5>
+
                         <Form.Group>
-                          <div key={`default-radio`} className="mb-3">
-                            {platforms.map((platform, i) => (
-                              <div key={`default-radio`} className="mb-3">
-                                <Form.Check
-                                  key={i}
-                                  name="platform"
-                                  type="radio"
-                                  id={`default-radio-${i}`}
-                                  label={platform}
-                                  value={platform}
-                                  onClick={(event) =>
-                                    setDisplay({
-                                      ...display,
-                                      platform: event.target.value,
-                                    })
-                                  }
-                                />
-                                <br />
-                              </div>
-                            ))}
-                          </div>
+                          {platforms.map((platform, i) => (
+                            <div key={`default-radio`} className="mb-3 mx-5 ChoosePlatforms">
+                              <Form.Check
+                                key={i}
+                                name="platform"
+                                type="radio"
+                                id={`default-radio-${i}`}
+                                label={platform}
+                                value={platform}
+                                onClick={(event) =>
+                                  setDisplay({
+                                    ...display,
+                                    platform: event.target.value,
+                                  })
+                                }
+                              />
+                              <br />
+                            </div>
+                          ))}
+                          {/* </div> */}
                         </Form.Group>
                       </Form>
                     </Col>
