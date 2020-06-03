@@ -16,6 +16,12 @@ const Login = (props) => {
         password: "",
         email: ""
     })
+
+    const [login, setLogin] = useState({
+        emailLogin: "",
+        passwordLogin: ""
+    })
+
     const [loggedIn, setLoggedIn] = useState({
         email: "",
         password: ""
@@ -30,13 +36,15 @@ const Login = (props) => {
     const handleInputSignUpChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
+        console.log('we r typing!!', event.target.value)
         setSignup({ ...signUp, [name]: value })
     }
 
-    const handleInputLoggedInChange = (event) => {
+    const handleLoginChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
-        setLoggedIn({ ...loggedIn, [name]: value })
+        console.log('we r typing!!', event.target.value)
+        setLogin({ ...login, [name]: value })
     }
 
     const handleSignUpSubmit = event => {
@@ -71,6 +79,22 @@ const Login = (props) => {
             })
     }
 
+    const handleLoginSubmit = event => {
+        event.preventDefault();
+
+        const emailLogin = login.emailLogin;
+        const passwordLogin = login.passwordLogin;
+
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log('IS EMAIL VALID!!', re.test(emailLogin));
+
+        if (re.test(emailLogin) === true && passwordLogin.length > 7) {
+            console.log('save to BE!!')
+        } else {
+            alert('invalid email/pass')
+        }
+    }
+
     return (
         <MDBContainer>
             <MDBRow>
@@ -89,14 +113,14 @@ const Login = (props) => {
                             {/*  style={{ fontFamily: "Uni Sans Caps" }} */}
                             {/* </MDBRow> */}
                             <MDBRow className="d-flex justify-content-center mt-5">
-                                <h3> A place where Gamers meet! </h3>
+                                <h3 style={{ fontFamily: "Uni Sans" }}> A place where Gamers meet! </h3>
                                 {/* removed h3 font */}
                                 {/*  style={{ fontFamily: "Uni Sans Caps" }} */}
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
-                            <MDBInput label="Your email" group type="text" validate className="needs-validation" name="email"
-                                onChange={handleInputLoggedInChange}
+                            <MDBInput name="emailLogin" label="Your email" group type="text" validate className="needs-validation"
+                                onChange={handleLoginChange}
                             />
                             <MDBInput
                                 label="Your password"
@@ -104,8 +128,9 @@ const Login = (props) => {
                                 type="password"
                                 validate
                                 containerClass="mb-0"
-                                name="password"
-                                onChange={handleInputLoggedInChange}
+                                name="passwordLogin"
+                                onChange={handleLoginChange}
+
                             />
                             <MDBRow className="d-flex align-items-center mb-4 mt-5">
                                 <MDBCol md="5" className="d-flex align-items-start">
@@ -114,7 +139,8 @@ const Login = (props) => {
                                             rounded
                                             type="button"
                                             className="z-depth-2 aqua-gradient"
-                                            onClick={handleLogInSubmit}                                        >
+                                            onClick={handleLoginSubmit}
+                                        >
                                             Log in
                                             </MDBBtn>
                                     </div>
