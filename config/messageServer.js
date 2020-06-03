@@ -4,10 +4,11 @@ module.exports = (app) => {
 
     const chatServer = require('http').createServer(app);
     let io = require('socket.io')(chatServer);
+    const chatController = require("../controllers/chatController");
 
     let connectedUsers = new Map(); //this is where we store connected users
 
-
+    
     io.on('connection', (socket) => {
 
         socket.on("user_connect", (data) => { //when a client connects to the server
@@ -38,6 +39,7 @@ module.exports = (app) => {
         socket.on("send_message", data => {
             let message = data.message;
             let sender = data.sender;
+            let chatId = data.chatid;
 
             let reciever = data.reciever;
             let recSocket = connectedUsers.get(reciever);
@@ -47,9 +49,15 @@ module.exports = (app) => {
             }
             else{
                 console.log("Sending message from " + sender + " to " + reciever);
-                io.to(recSocket.sId).emit("recieve_message", { 
+
+                let chatData = { 
                     authorId: sender,
-                    message: message
+                    message: message,
+                    ChatId: chatId
+                }
+
+                chatController.createMessage(chatData).then(createdMessage => {
+                    io.to(recSocket.sId).emit("recieve_message", createdMessage);
                 });
             }
         });

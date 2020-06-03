@@ -49,5 +49,12 @@ module.exports = {
         }).then(chatData => {
             res.json(chatData.Messages);
         });
+    },
+    createMessage: function(data){
+       return db.Message.create({
+            authorId: data.authorId,
+            message: data.message,
+            ChatId: data.chatId
+        });
     }
 }

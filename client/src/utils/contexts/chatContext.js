@@ -18,7 +18,7 @@ const reducer = (state, action) => {
             createChat(action.creatorId,action.joineeId);
             return {...state}
         case(chatActions.SELECT_USER):
-            return { ...state, chattingWith: action.id }
+            return { ...state, chattingWith: action.id, currentChat: action.chatId }
         case(chatActions.SEND_MESSAGE):
             sendMessage(state, action.message);
             return {...state}
@@ -31,7 +31,7 @@ const reducer = (state, action) => {
 }
 
 const ChatProvider = ({ userObj = {}, ...props}) => {
-    const [state, dispatch] = useReducer(reducer, { user: userObj, chattingWith: 0 });
+    const [state, dispatch] = useReducer(reducer, { user: userObj, chattingWith: 0, currentChat: 0 });
 
     if(props.startChat){
         loadSocket(state);
@@ -84,6 +84,7 @@ function sendMessage(state, message){
 
     let outGoingMsg = {
         sender: state.user.id,
+        chatId: state.currentChat,
         message: message,
         reciever: state.chattingWith
     }
