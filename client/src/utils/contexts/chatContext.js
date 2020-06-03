@@ -20,8 +20,8 @@ const reducer = (state, action) => {
         case(chatActions.SELECT_USER):
             return { ...state, chattingWith: action.id }
         case(chatActions.SEND_MESSAGE):
-            sendMessage();
-            break;
+            sendMessage(state, action.message);
+            return {...state}
         case(chatActions.GET_CHATS):
             console.log("Get chats!");
             break;
@@ -60,7 +60,6 @@ function createChat(creatorId,joineeId){
 
 
 function loadSocket(state){ //connects to socket on server whoo!
-    console.log(state);
  
         socket = io('http://localhost:3002');
     
@@ -76,8 +75,15 @@ function loadSocket(state){ //connects to socket on server whoo!
 }
 
 
-function sendMessage(message){
+function sendMessage(state, message){
 
+    let outGoingMsg = {
+        sender: state.user.id,
+        message: message,
+        reciever: state.chattingWith
+    }
+
+    socket.emit("send_message", outGoingMsg);
 }
 
 export { ChatProvider, useChatContext };

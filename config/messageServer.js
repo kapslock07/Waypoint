@@ -35,6 +35,14 @@ module.exports = (app) => {
             }
         });
 
+        socket.on("send_message", data => {
+            let message = data.message;
+            let sender = data.sender;
+            let reciever = data.reciever;
+            console.log(sender + " sent " + message + " to " + reciever);
+
+        });
+
         socket.on("disconnect", () => {
             connectedUsers.forEach(e => {
                 if(e.sId == socket.id){
