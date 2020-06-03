@@ -104,7 +104,7 @@ function Nav(props) {
     <nav className="navbar fixed-top navbar-expand-lg mb-4 z-depth-2 navbar-light">
       <Navbar.Brand href="/home">
         <img
-          src={props.img}
+          src={SampleImg}
           width="75%"
           className="brandLogo d-inline-block align-top ml-5"
           alt="React Bootstrap logo"
