@@ -17,7 +17,7 @@ function Profile(props) {
 
     return (
         <Container fluid>
-            <Nav />
+            <Nav img={props.userImage} />
             <div className="profileComponent">
                 <Row className="mt-4">
                     <Col lg={4} className="text-center mb-5">
@@ -47,7 +47,7 @@ function Profile(props) {
                         <div>
                             <h3>Favorite Platforms</h3>
                             <div className="mt-2">
-                                {props.favPlatformsImgs.map((favPlatformImg, i) => (
+                                {props.favPlatforms.map((favPlatformImg, i) => (
                                     <div>
                                         <div className="myPlatforms mt-3">
                                             <img className="PlatformImg" src={favPlatformImg} alt="platform1" width="100" height="100"></img>
@@ -59,7 +59,7 @@ function Profile(props) {
 
                                             >
                                                 x
-                                    </MDBBtn>
+                                            </MDBBtn>
                                         </div>
                                     </div>
 
@@ -75,7 +75,7 @@ function Profile(props) {
                             <Col lg={7} className="mb-5">
                                 <h3>Favorite Games</h3>
                                 <div className="myGames mt-2">
-                                    {props.favGamesImgs.map((favGameImg, i) => (
+                                    {props.favGames.map((favGameImg, i) => (
                                         <div>
                                             <div className="mt-3">
                                                 <img className="gameImg" src={favGameImg} alt="platform1" width="100" height="100"></img>
