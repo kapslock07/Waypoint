@@ -29,11 +29,11 @@ function Onboarding(props) {
     };
 
     function addPlatform(title){
-        setUserPlatforms([ ...userPlatforms, title ]);
+        setUserPlatforms([ ...userPlatforms, { title } ]);
     }
 
     function addGame(title){
-        setUserGames([ ...userGames, title ]);
+        setUserGames([ ...userGames, { title } ]);
     }
 
     function addAvatar(src){
@@ -42,7 +42,7 @@ function Onboarding(props) {
 
     function putUserData(userId){
         //get data from inputs here
-        console.log({userAvatar, userGames, userPlatforms});
+      //  console.log({userAvatar, userGames, userPlatforms});
 
         API.putOnboardData({
             id: userId,
