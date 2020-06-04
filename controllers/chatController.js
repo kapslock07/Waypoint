@@ -32,11 +32,12 @@ module.exports = {
 
                 db.Chat.findOne({
                     where: sequelize.or(
-                        {creatorId: data.creatorId},
-                        {creatorId: data.joineeId}
+                        {creatorId: data.creatorId, joineeId: data.joineeId},
+                        {creatorId: data.joineeId, joineeId: data.creatorId}
                     )
                 }).then(async foundChat => {
                     if(foundChat === null){
+                        
                         let newChat = await db.Chat.create({
                             creatorId: data.creatorId,
                             joineeId: data.joineeId  
@@ -44,6 +45,7 @@ module.exports = {
                         await newChat.addUsers([creatorData, joineeData]);
                     }
                     else {
+                        console.log("FOUND CHAT WITH " + data.creatorId + " " + data.joineeId);
                         res.status(200).end();
                     }
                 });

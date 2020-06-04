@@ -9,9 +9,7 @@ export default function Friend(props){
 
     return (
         <MDBListGroupItem
-            href="#!"
-            className="d-flex justify-content-between p-2 border-light"
-            style={{ backgroundColor: state.chattingWith ? "#eeeeee" : "" }}
+            className={state.chattingWith === props.data.id ? "d-flex justify-content-between p-2 convoColor selected" : "d-flex justify-content-between p-2 convoColor" }
             onClick={() => props.getMessages(props.data.chatId, props.data.id, props.data.name)}
             
         >
