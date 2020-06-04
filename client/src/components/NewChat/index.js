@@ -13,6 +13,7 @@ import MessageList from "../MessageList";
 
 export default function NewChat(props){
 
+    const [title, setTitle] = useState("");
     const [conversations, setConversations] = useState([]);
     const [state, dispatch] = useChatContext();
 
@@ -21,11 +22,12 @@ export default function NewChat(props){
         getConversations()
     },[])
 
-    const getMessages = (chatId, chatWithId) => {
+    const getMessages = (chatId, chatWithId, nameOfChatter) => {
         API.getMessages(chatId).then(res => {
     
           let msgData = res.data;
           dispatch({type: actions.SELECT_USER, id: chatWithId, chatId: chatId, messages: msgData}) //select the user that was clicked
+          setTitle(nameOfChatter);
         });
       }
     
@@ -72,7 +74,7 @@ export default function NewChat(props){
                         <MDBCol md="6" xl="8" className="pl-md-3 mt-4 mt-md-0 px-lg-auto">
                             <div className="scrollable-chat">
                                 <MDBListGroup className="list-unstyled pl-3 pr-3">
-                                    <MessageList MY_USER_ID={state.user.id}/>
+                                    <MessageList MY_USER_ID={state.user.id} SelectedUser={title}/>
                                 </MDBListGroup>
                             </div>
                         </MDBCol>

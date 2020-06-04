@@ -83,7 +83,7 @@ export default function MessageList(props) {
   return (
     <div className="message-list">
       <Toolbar
-        title="Conversation Title"
+        title={props.SelectedUser ? props.SelectedUser : "Select a Conversation"}
         rightItems={[
           <ToolbarButton key="info" icon="ion-ios-information-circle-outline" />,
           <ToolbarButton key="video" icon="ion-ios-videocam" />,

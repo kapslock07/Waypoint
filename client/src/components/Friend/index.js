@@ -5,8 +5,6 @@ import "./index.css"
 
 export default function Friend(props){
     const [state] = useChatContext();
-
-    console.log(props.data)
     
 
     return (
@@ -14,7 +12,7 @@ export default function Friend(props){
             href="#!"
             className="d-flex justify-content-between p-2 border-light"
             style={{ backgroundColor: state.chattingWith ? "#eeeeee" : "" }}
-            onClick={() => props.getMessages(props.data.chatId, props.data.id)}
+            onClick={() => props.getMessages(props.data.chatId, props.data.id, props.data.name)}
             
         >
             <img className="conversation-photo" src={props.data.avatar} alt="..." />
