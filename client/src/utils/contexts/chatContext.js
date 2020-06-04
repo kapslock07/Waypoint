@@ -25,8 +25,8 @@ const reducer = (state, action) => {
         case(chatActions.GET_CHATS):
             console.log("Get chats!");
             break;
-        case(chatActions.SET_CHAT_FUNCTION):
-            return {...state, getMessages: action.func}
+        case("reload"):
+            return {...state, messages: action.msg}
         default:
             throw new Error(`invalid action type: ${action.type}`);
     }
@@ -36,7 +36,7 @@ const ChatProvider = ({ userObj = {}, ...props}) => {
     const [state, dispatch] = useReducer(reducer, { user: userObj, chattingWith: 0, currentChat: 0, messages: [], getMessages: {} });
 
     if(props.startChat){
-        loadSocket(state);
+        loadSocket(state, dispatch);
     }
 
     return <Provider value={[state, dispatch]} {...props} />;
@@ -61,7 +61,7 @@ function createChat(creatorId,joineeId){
 }
 
 
-function loadSocket(state){ //connects to socket on server whoo!
+function loadSocket(state, dispatch){ //connects to socket on server whoo!
  
         socket = io('http://localhost:3002');
     
@@ -77,8 +77,7 @@ function loadSocket(state){ //connects to socket on server whoo!
 
         socket.on("recieve_message", incomingChatId => {
             API.getMessages(incomingChatId).then(res => {
-                state.messages = res.data;
-                console.log(res)
+                dispatch({type: "reload", msg: res.data})
             });
         });
 }

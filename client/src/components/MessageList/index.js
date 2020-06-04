@@ -19,10 +19,13 @@ export default function MessageList(props) {
   useEffect(() => {
 
     setMessages(state.messages);
+    console.log("CHANGE")
 
   }, [state.messages])
 
   const renderMessages = () => {
+
+    console.log("RENDER")
 
     let i = 0;
     let messageCount = messages.length;
