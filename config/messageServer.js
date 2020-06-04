@@ -44,17 +44,20 @@ module.exports = (app) => {
             let reciever = data.reciever;
             let recSocket = connectedUsers.get(reciever);
 
+            let chatData = { 
+                authorId: sender,
+                message: message,
+                ChatId: chatId
+            }
+
             if(recSocket === undefined){
                 console.log("One user not online to recieve message");
+                chatController.createMessage(chatData).then(createdMessage => {
+                    socket.emit("call_send_message");
+                });
             }
             else{
                 console.log("Sending message from " + sender + " to " + reciever);
-
-                let chatData = { 
-                    authorId: sender,
-                    message: message,
-                    ChatId: chatId
-                }
 
                 socket.emit("call_send_message");
 

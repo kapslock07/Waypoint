@@ -11,14 +11,13 @@ export default function Compose(props) {
 
   const handleInputChange = e => {
     e.preventDefault();
-    let trimmedString = inputRef.current.value.trim();
-    setCompose(trimmedString);
+    setCompose(inputRef.current.value);
   }
 
   const handleSendMessage = e => {
     e.preventDefault();
-
-    dispatch({type: actions.SEND_MESSAGE, message: compose});
+    dispatch({type: actions.SEND_MESSAGE, message: compose.trim()});
+    setCompose("");
   }
 
 
