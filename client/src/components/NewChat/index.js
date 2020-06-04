@@ -16,7 +16,6 @@ export default function NewChat(props){
 
 
     useEffect(() => {
-        
         getConversations();
     },[])
 
@@ -30,6 +29,7 @@ export default function NewChat(props){
       }
     
      const getConversations = () => {
+         dispatch({ type: actions.RESET });
         API.getChats(state.user.id).then(res => {
     
             let chats = res.data;

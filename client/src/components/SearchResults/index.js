@@ -12,30 +12,20 @@ function SearchResults(props) {
     const [results, setResults] = React.useState([])
     const [state] = useChatContext();
     const { game, platform } = props.search;
-    console.log(game, platform)
-
-
 
     React.useEffect(() => { //grabs users
         loadGames();
     }, [props.search]);
 
-
     function loadGames() { //uses API util to loadUsers from our express server
         API.getUsers().then(res => {
-            console.log("The user data being returned from server is ", res.data)
             setUsers(res.data);
-            const userQuery = users.filter(user => {
-                console.log("IS USER MAP INTO RESULTS FIRING?")
-                if (user.games.includes(game) & user.platforms.includes(platform)) {
-                    console.log("AM I ADDING A USER TO RESULTS?")
-                    console.log("I AM ADDING ", user)
+            const userQuery = res.data.filter(user => {
+                if(user.games.some(g => g.title == game) && user.platforms.some(p => p.title == platform)){
                     return user
                 }
             })
-            console.log(userQuery);
             setResults(userQuery);
-            console.log("The state of results is ", results)
         })
             .catch(err => console.log(err));
     }
@@ -49,19 +39,16 @@ function SearchResults(props) {
                     </MDBAnimation>
                     <MDBAnimation type="fadeInUp">
 
-                        {results.length !== 0 ? results.map(e => {
-                            console.log("Inside result is ", e)
-                            console.log("Inside state.user is ", state.user)
-                            if (e.id !== state.user.id)
+                        {console.log(results), results.length !== 0 ? results.map(e => {
+                            if (e.id !== state.user.id && e.onboard === true)
                                 return (
-                                    <ul>
+                                    <ul key={e.id}>
                                         <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
                                     </ul>)
                         }) : users.length !== 0 ? users.map(e => {
-                            console.log("Users being mapped: ", e)
                             if (e.id !== state.user.id && e.onboard === true)
                                 return (
-                                    <ul>
+                                    <ul key={e.id}>
                                         <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
                                     </ul>
                                 )

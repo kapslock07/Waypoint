@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import Nav from "../components/Nav";
 import { MDBBtn } from "mdbreact";
 import Auth from "../utils/Auth";
+import API from "../utils/API";
 import { Redirect } from "react-router-dom";
 
 function Profile(props) {
 
+    const [profKey, setProfKey] = useState(new Map());
 
-    console.log("PROFILE PROPS ------------------------------")
-    console.log(props);
+    useEffect(() => {
+        getGameImages();
+    },[])
+
+    const getGameImages = () => {
+        API.getGames().then(res => {
+            let newMap = new Map();
+
+            res.data.map(e => {
+                return newMap.set(e.title, e.image);
+            });
+            setProfKey(newMap);
+        });
+    }
 
     const logout = () => {
         Auth.Logout()
@@ -18,7 +32,7 @@ function Profile(props) {
                 return <Redirect to='/' push={true} />
             })
     }
-
+    //<img className="PlatformImg" src={favPlatformImg} alt="platform1" width="100" height="100"></img>
     return (
         <Container fluid>
             <Nav img={props.userImage} />
@@ -54,16 +68,7 @@ function Profile(props) {
                                 {props.favPlatforms.map((favPlatformImg, i) => (
                                     <div>
                                         <div className="myPlatforms mt-3">
-                                            <img className="PlatformImg" src={favPlatformImg} alt="platform1" width="100" height="100"></img>
-                                            <MDBBtn
-                                                rounded
-                                                type="button"
-                                                className="removePlatformBtn z-depth-1a aqua-gradient"
-
-
-                                            >
-                                                x
-                                            </MDBBtn>
+                                            <h3 key={favPlatformImg.title}>{favPlatformImg.title}</h3>
                                         </div>
                                     </div>
 
@@ -82,17 +87,9 @@ function Profile(props) {
                                     {props.favGames.map((favGameImg, i) => (
                                         <div>
                                             <div className="mt-3">
-                                                <img className="gameImg" src={favGameImg} alt="platform1" width="100" height="100"></img>
-                                                <MDBBtn
-                                                    rounded
-                                                    type="button"
-                                                    className="removeGameBtn z-depth-1a aqua-gradient"
-                                                >
-                                                    x
-                                                </MDBBtn>
+                                                <img className="gameImg" src={profKey.get(favGameImg.title)} alt="games" id={favGameImg.title} width="100" height="100"></img>
                                             </div>
                                         </div>
-
                                     ))}
                                 </div>
                             </Col>
