@@ -19,6 +19,7 @@ export default function Compose(props) {
     e.preventDefault();
     dispatch({type: actions.SEND_MESSAGE, message: compose.trim()});
     setCompose("");
+    props.updateMsg();
   }
 
 
