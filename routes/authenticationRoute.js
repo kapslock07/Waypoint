@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const URL = process.env.APP_URL || "http://localhost:3000"
 
 module.exports = app => {
     // Using the passport.authenticate middleware with our local strategy.
@@ -96,7 +97,7 @@ module.exports = app => {
     app.get('/auth/google/callback',
         passport.authenticate('google', { failureRedirect: '/auth/failure' }),
         function (req, res) {
-            res.redirect("http://localhost:3000/")
+            res.redirect(URL)
         })
 
     app.get('/auth/failure', function (req, res) {
@@ -106,7 +107,7 @@ module.exports = app => {
     // Route for logging user out
     app.get("/logout", function (req, res) {
         req.logout();
-        res.redirect("http://localhost:3000/");
+        res.redirect(URL);
     });
 
     // Route for getting some data about our user to be used client side

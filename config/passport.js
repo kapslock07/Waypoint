@@ -6,6 +6,8 @@ require("dotenv").config();
 
 var db = require("../models");
 
+const callbackURL = process.env.CALLBACK_URL || "http://localhost:3001"
+
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(new LocalStrategy(
     // Our user will sign in using an email, rather than a "username"
@@ -44,7 +46,7 @@ passport.use(new LocalStrategy(
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/auth/google/callback"
+    callbackURL: callbackURL + "auth/google/callback"
 },
     function (accessToken, refreshToken, profile, done) {
         //console.log(profile)
