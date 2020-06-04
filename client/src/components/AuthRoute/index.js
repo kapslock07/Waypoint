@@ -3,7 +3,7 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login"
 import Onboarding from "../../pages/Onboarding"
-import Chat from "../../pages/Chat";
+import Chat from "../../pages/NewChat";
 import Profile from "../../pages/Profile";
 import NoMatch from "../../pages/NoMatch";
 import Loading from "../../pages/Loading"
@@ -87,10 +87,10 @@ function AuthRoute() {
                         (
                             <ChatProvider startChat={true} userObj={{ id: state.id }}>
                                 <Route exact path={["/", "/home"]}>
-                                    <Home navImg={userData.img}/>
+                                    <Home navImg={userData.img} />
                                 </Route>
                                 <Route exact path="/chat">
-                                    <Chat navImg={userData.img}/>
+                                    <Chat navImg={userData.img} />
                                 </Route>
                                 <Route exact path="/profile">
                                     <Profile username={userData.userName} userImage={userData.img} favPlatforms={userData.platforms} favGames={userData.games} changeState={state.changeState} />
