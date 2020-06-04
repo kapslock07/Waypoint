@@ -45,7 +45,7 @@ module.exports = {
                         await newChat.addUsers([creatorData, joineeData]);
                     }
                     else {
-                        console.log("FOUND CHAT WITH " + data.creatorId + " " + data.joineeId);
+                     //   console.log("FOUND CHAT WITH " + data.creatorId + " " + data.joineeId);
                         res.status(200).end();
                     }
                 });
@@ -55,7 +55,7 @@ module.exports = {
     getMessages: function(req, res){
         let chatId = req.params.id;
 
-        console.log("LOOKING FOR MSGS AT " + chatId)
+     //   console.log("LOOKING FOR MSGS AT " + chatId)
 
         db.Chat.findOne({
             where: {

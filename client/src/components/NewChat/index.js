@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-    MDBCard, MDBCardBody, MDBRow, MDBCol, MDBListGroup, MDBListGroupItem, MDBBadge, MDBIcon,
-    MDBBtn
-} from "mdbreact";
+import { MDBCard, MDBCardBody, MDBRow, MDBCol, MDBListGroup } from "mdbreact";
 import Friend from "../Friend";
 import "./index.css";
 import actions from "../../utils/contexts/chatActions";
@@ -60,7 +57,7 @@ export default function NewChat(props){
             <MDBCard className="grey lighten-3 chat-room">
                 <MDBCardBody>
                     <MDBRow className="px-lg-2 px-2">
-                        <MDBCol md="6" xl="4" className="px-0 mb-4 mb-md-0 scrollable-friends-list">
+                        <MDBCol md="4" xl="4" className="px-0 mb-4 mb-md-0 scrollable-friends-list">
                             <h6 className="font-weight-bold mb-3 text-lg-left">Member</h6>
                             <div className="white z-depth-1 p-3">
                                 <MDBListGroup className="friend-list">
@@ -72,7 +69,7 @@ export default function NewChat(props){
                                 </MDBListGroup>
                             </div>
                         </MDBCol>
-                        <MDBCol md="6" xl="8" className="pl-md-3 mt-4 mt-md-0 px-lg-auto">
+                        <MDBCol md="8" xl="8" className="pl-md-3 mt-4 mt-md-0 px-lg-auto">
                             <div className="scrollable-chat">
                                 <MDBListGroup className="list-unstyled pl-3 pr-3">
                                     <MessageList MY_USER_ID={state.user.id} SelectedUser={title}/>

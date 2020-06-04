@@ -8,9 +8,7 @@ import Profile from "../../pages/Profile";
 import NoMatch from "../../pages/NoMatch";
 import Loading from "../../pages/Loading"
 import Auth from "../../utils/Auth";
-// import UserContext from '../../utils/UserContext';
 import { ChatProvider } from "../../utils/contexts/chatContext";
-import GameContext from '../Context/GameContext';
 
 
 function AuthRoute() {
