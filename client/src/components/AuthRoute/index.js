@@ -66,7 +66,7 @@ function AuthRoute() {
             .then(res => {
                 console.log("Onboard status:", res.data.onboard)
                 console.log(res.data);
-                setOnboard(res.data.onboard)
+                setOnboard(res.data.onboard);
                 setUserData({
                     img: res.data.profileImage,
                     userName: res.data.userName,

@@ -19,10 +19,12 @@ module.exports = (server, db) => {
     });
   })
 
-  server.put("/api/users", isAuthenticated, (req, res) => {
+  server.put("/api/users", (req, res) => {
 
     let data = req.body;
     let userId = data.id;
+
+    console.log(data)
 
     db.User.findOne({
       where: {
