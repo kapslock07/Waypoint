@@ -9,36 +9,23 @@ import API from "../../utils/API";
 
 import './Messenger.css';
 
-export default function Messenger(props) {
+export default function Messenger(props) {  
 
   const [conversations, setConversations] = useState([]);
-  const [messages, setMessages] = useState([]);
   const [state, dispatch] = useChatContext();
 
 
   useEffect(() => {
     getConversations()
   },[])
-  
+
 
   const getMessages = (chatId, chatWithId) => {
     API.getMessages(chatId).then(res => {
 
       let msgData = res.data;
-      dispatch({type: actions.SELECT_USER, id: chatWithId})
-
-      if(msgData.length === 0){
-        setMessages([{
-          id: 1,
-          author: state.user.id,
-          message: 'There are currently no Messages',
-          timestamp: new Date().getTime()
-        }])
-      }
-      else {
-        setMessages(msgData);
-      }
-    })
+      dispatch({type: actions.SELECT_USER, id: chatWithId, chatId: chatId, messages: msgData}) //select the user that was clicked
+    });
   }
 
  const getConversations = () => {
@@ -64,7 +51,7 @@ export default function Messenger(props) {
   }
 
   return (
-    <div className="messenger">
+    <div className="messenger" >
 
       <Toolbar
         leftItems={[
@@ -80,7 +67,7 @@ export default function Messenger(props) {
       </div>
 
       <div className="scrollable content">
-        <MessageList messages={messages} MY_USER_ID={state.user.id}/>
+        <MessageList MY_USER_ID={state.user.id}/>
       </div>
     </div>
   );

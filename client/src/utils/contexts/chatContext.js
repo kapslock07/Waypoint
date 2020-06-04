@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext } from "react";
+import React, { createContext, useReducer, useContext, useRef } from "react";
 import io from "socket.io-client";
 import chatActions from "./chatActions";
 import API from "../API";
@@ -18,20 +18,22 @@ const reducer = (state, action) => {
             createChat(action.creatorId,action.joineeId);
             return {...state}
         case(chatActions.SELECT_USER):
-            return { ...state, chattingWith: action.id, currentChat: action.chatId }
+            return { ...state, chattingWith: action.id, currentChat: action.chatId, messages: action.messages }
         case(chatActions.SEND_MESSAGE):
             sendMessage(state, action.message);
             return {...state}
         case(chatActions.GET_CHATS):
             console.log("Get chats!");
             break;
+        case(chatActions.SET_CHAT_FUNCTION):
+            return {...state, getMessages: action.func}
         default:
             throw new Error(`invalid action type: ${action.type}`);
     }
 }
 
 const ChatProvider = ({ userObj = {}, ...props}) => {
-    const [state, dispatch] = useReducer(reducer, { user: userObj, chattingWith: 0, currentChat: 0 });
+    const [state, dispatch] = useReducer(reducer, { user: userObj, chattingWith: 0, currentChat: 0, messages: [], getMessages: {} });
 
     if(props.startChat){
         loadSocket(state);
@@ -73,9 +75,11 @@ function loadSocket(state){ //connects to socket on server whoo!
             console.log(`user with id ${data.creatorId} wants to chat!`);
         });
 
-        socket.on("recieve_message", incomingMessage => {
-            console.log("INCOMING MESSAGE")
-            console.log(incomingMessage);
+        socket.on("recieve_message", incomingChatId => {
+            API.getMessages(incomingChatId).then(res => {
+                state.messages = res.data;
+                console.log(res)
+            });
         });
 }
 

@@ -3,5 +3,5 @@ module.exports = {
     CREATE_CHAT: "createChat",
     SELECT_USER: "selectUser",
     SEND_MESSAGE: "sendChat",
-    GET_CHATS: "getChats"
+    SET_CHAT_FUNCTION: "setChatFunction"
 }

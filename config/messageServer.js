@@ -39,7 +39,7 @@ module.exports = (app) => {
         socket.on("send_message", data => {
             let message = data.message;
             let sender = data.sender;
-            let chatId = data.chatid;
+            let chatId = data.chatId;
 
             let reciever = data.reciever;
             let recSocket = connectedUsers.get(reciever);
@@ -57,7 +57,7 @@ module.exports = (app) => {
                 }
 
                 chatController.createMessage(chatData).then(createdMessage => {
-                    io.to(recSocket.sId).emit("recieve_message", createdMessage);
+                    io.to(recSocket.sId).emit("recieve_message", chatId);
                 });
             }
         });

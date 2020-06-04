@@ -17,8 +17,7 @@ module.exports = function(sequelize, DataTypes) {
           defaultValue: ""
       },
       timestamp: {
-          type: DataTypes.STRING,
-          defaultValue: new Date().getTime()
+          type: DataTypes.STRING
       }
     });
 

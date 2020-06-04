@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Compose from '../Compose';
 import Toolbar from '../Toolbar';
 import ToolbarButton from '../ToolbarButton';
 import Message from '../Message';
 import moment from 'moment';
+import { useChatContext } from "../../utils/contexts/chatContext";
 
 import './MessageList.css';
 
 export default function MessageList(props) {
 
+  const [state, dispatch] = useChatContext();
+  const [messages, setMessages] = useState([]);
+
+
   const MY_USER_ID = props.MY_USER_ID;
-  let messages = props.messages;
+
+  useEffect(() => {
+
+    setMessages(state.messages);
+
+  }, [state.messages])
 
   const renderMessages = () => {
 
@@ -22,7 +32,7 @@ export default function MessageList(props) {
       let previous = messages[i - 1];
       let current = messages[i];
       let next = messages[i + 1];
-      let isMine = current.author === MY_USER_ID;
+      let isMine = current.authorId === MY_USER_ID;
       let currentMoment = moment(current.timestamp);
       let prevBySameAuthor = false;
       let nextBySameAuthor = false;
