@@ -7,6 +7,10 @@ import { Redirect } from "react-router-dom";
 
 function Profile(props) {
 
+
+    console.log("PROFILE PROPS ------------------------------")
+    console.log(props);
+
     const logout = () => {
         Auth.Logout()
             .then(() => {
@@ -85,7 +89,7 @@ function Profile(props) {
                                                     className="removeGameBtn z-depth-1a aqua-gradient"
                                                 >
                                                     x
-                                    </MDBBtn>
+                                                </MDBBtn>
                                             </div>
                                         </div>
 

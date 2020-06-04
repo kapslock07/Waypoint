@@ -3,14 +3,12 @@ import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login"
 import Onboarding from "../../pages/Onboarding"
-import Chat from "../../pages/NewChat";
+import Chat from "../../pages/Chat";
 import Profile from "../../pages/Profile";
 import NoMatch from "../../pages/NoMatch";
 import Loading from "../../pages/Loading"
 import Auth from "../../utils/Auth";
-// import UserContext from '../../utils/UserContext';
 import { ChatProvider } from "../../utils/contexts/chatContext";
-import GameContext from '../Context/GameContext';
 
 
 function AuthRoute() {

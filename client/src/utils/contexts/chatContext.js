@@ -94,6 +94,11 @@ function sendMessage(state, message){
         reciever: state.chattingWith
     }
 
+    state.messages.push({
+        authorId: state.user.id,
+        message: message
+    });
+
     socket.emit("send_message", outGoingMsg);
 }
 
