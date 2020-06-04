@@ -4,6 +4,8 @@ import ChatBtn from "../ChatBtn";
 import "./style.css";
 
 function searchResultsBox(props) {
+
+    
     return (
         <li id={props.id}>
             <Container fluid>
@@ -20,9 +22,10 @@ function searchResultsBox(props) {
                                 </Col>
                                 <Col lg={4}>
                                     <h5><strong>Favorite Consoles</strong></h5>
+                                    
 
-                                    {props.favoriteConsoles ? Array.isArray(props.favoriteConsoles) ? props.favoriteConsoles.map((console, i) => (
-                                        <p>{console}</p>
+                                    {props.favoriteConsoles ? Array.isArray(props.favoriteConsoles) ? props.favoriteConsoles.map((platform, i) => (
+                                        <p key={platform.title}>{platform.title}</p>
                                     )) : <p>props.favoriteConsoles</p>
                                         : <p>No favorite platforms!</p>
                                     }
@@ -31,7 +34,7 @@ function searchResultsBox(props) {
                                     <h5><strong>Favorite Games</strong></h5>
 
                                     {props.favoriteGames ? Array.isArray(props.favoriteGames) ? props.favoriteGames.map((game, i) => (
-                                        <p>{game}</p>
+                                        <p key={game.title}>{game.title}</p>
                                     )) : <p>props.favoriteGames</p> : <p>No favorite games!</p>}
                                 </Col>
 
