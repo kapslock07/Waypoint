@@ -13,7 +13,7 @@ function ProfileSummary(props) {
                         <h4>Favorite Platforms</h4>
                         <div className="mt-2">
                             {props.favPlatformsImgs.map((favPlatformImg, i) => (
-                                <div>
+                                <div key={favPlatformImg}>
                                     <div className="myPlatforms mt-3">
                                         <img className="platformImg" src={favPlatformImg} alt="platform1" width="100" height="100"></img>
                                     </div>
@@ -24,7 +24,7 @@ function ProfileSummary(props) {
                         <h4 className="mt-5">Favorite Games</h4>
                         <div className="myGames mt-2">
                             {props.favGamesImgs.map((favGameImg, i) => (
-                                <div>
+                                <div key={favGameImg}>
                                     <div className="mt-3">
                                         <img className="gameImg" src={favGameImg} alt="platform1" width="100" height="100"></img>
                                     </div>

@@ -3,7 +3,7 @@ import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login"
 import Onboarding from "../../pages/Onboarding"
-import Chat from "../../pages/Chat";
+import Chat from "../../pages/NewChat";
 import Profile from "../../pages/Profile";
 import NoMatch from "../../pages/NoMatch";
 import Loading from "../../pages/Loading"

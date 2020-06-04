@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Container,
@@ -11,19 +11,13 @@ import {
 } from 'react-bootstrap';
 import SampleImg from '../../assets/images/mainLogo.jpeg';
 import API from '../../utils/API';
-// import { useParams } from 'react-router-dom';
+import { MDBContainer, MDBInput } from "mdbreact";
 import './style.css';
-// import GameContext from '../Context/GameContext';
+
 
 function Nav(props) {
 
-
-
   const location = useLocation();
-
-  // const game = useParams();
-  // const { platform } = useParams();
-  // console.log({ game, platform });
 
   const [show, setShow] = useState(false);
   const [games, setGames] = useState([]);
@@ -51,7 +45,6 @@ function Nav(props) {
     API.getGames()
       .then((res) => {
         setGames(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }
@@ -147,34 +140,37 @@ function Nav(props) {
                             onChange={handleInputChange}
                           // onChange={handleSearchInputChange}
                           >
+                            <option disabled selected value> -- select a game -- </option>
                             {games.map((game, i) => (
                               <option key={game.id}>{game.title}</option>
                             ))}
                           </Form.Control>
                         </Form.Group>
-                        <Form.Group>
-                          <div key={`default-radio`} className="mb-3">
-                            {platforms.map((platform, i) => (
-                              <div key={`default-radio`} className="mb-3">
-                                <Form.Check
-                                  key={i}
-                                  name="platform"
-                                  type="radio"
-                                  id={`default-radio-${i}`}
-                                  label={platform}
-                                  value={platform}
-                                  onClick={(event) =>
-                                    setDisplay({
-                                      ...display,
-                                      platform: event.target.value,
-                                    })
-                                  }
-                                />
-                                <br />
-                              </div>
-                            ))}
-                          </div>
-                        </Form.Group>
+                        <h5 className="my-2">Choose A Console</h5>
+
+                        <MDBContainer className="mt-3">
+                          {platforms.map((platform, i) => (
+                            <div key={`default-radio`} className="mb-3 mx-5 ChoosePlatforms">
+                              <MDBInput
+                                style={{ width: 100 + "px" }}
+                                key={i}
+                                name="platform"
+                                type="radio"
+                                id={`default-radio-${i}`}
+                                label={platform}
+                                value={platform}
+                                onClick={(event) =>
+                                  setDisplay({
+                                    ...display,
+                                    platform: event.target.value,
+                                  })
+                                }
+                              />
+                              <br />
+                            </div>
+                          ))}
+                          {/* </div> */}
+                        </MDBContainer>
                       </Form>
                     </Col>
                   </Row>

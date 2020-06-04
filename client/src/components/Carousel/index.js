@@ -70,23 +70,25 @@ class Carousel extends React.Component {
         index: 0
     };
 
-    toggle = e =>
+    toggle = e => {
+        console.log("current index", this.state.index)
         this.setState(state => ({
             index: state.index === 8 ? 0 : state.index + 1
         }))
+    }
     render() {
         const { index } = this.state;
         var self = this
-        setTimeout(function () {
+        setInterval(function () {
             self.toggle()
-        }, 5000)
+        }, 10000)
         return (
             <div style={{ height: "100vh" }}>
                 <Container >
                     <Transition
                         native
-                        reset
-                        unique
+                        reset="false"
+                        unique="false"
                         items={index}
                         from={{ opacity: 0, transform: "translate3d(100%, 0 ,0)" }}
                         enter={{ opacity: 1, transform: "translate3d(0%, 0, 0)" }}

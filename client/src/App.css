@@ -42,6 +42,14 @@ html {
   display: inline-block
 }
 
+.ChoosePlatform {
+  float: left
+}
+
+.platformChoice {
+  display: inline-block
+}
+
 .platformOptions {
   /* display: inline-block */
 }
