@@ -77,10 +77,11 @@ function Nav(props) {
 
 
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setInput;
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.changeState(display.game, display.platform);
+    handleClose();
+  };
 
   return (
     <nav className="navbar fixed-top navbar-expand-lg mb-4 z-depth-2 navbar-light">
@@ -198,14 +199,14 @@ function Nav(props) {
             </Modal.Body>
             <Modal.Footer>
               <Link
-                to={`/home?game=${selectedGame}&platform=${selectedPlatform}`}
+                to={`/home?game=${display.game}&platform=${display.platform}`}
               >
                 {/* <form onSubmit={handleSubmit}>
                 <input type="text" name="search" id="search" /> */}
                 <button
                   className="btn aqua-gradient btn-rounded btn-sm my-0 text-light"
                   type="submit"
-                  onClick={() => props.changeState(display.game, display.platform)}
+                  onClick={handleSubmit}
                 >
                   <strong>Search</strong>
                 </button>

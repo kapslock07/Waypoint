@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login"
 import Onboarding from "../../pages/Onboarding"
@@ -100,7 +100,10 @@ function AuthRoute() {
                             <Route exact path={["/", "/onboarding"]} render={() => <Onboarding changeState={state.changeState} onboard={state.onboard} id={state.id} />} />
                         )
                     : (
-                        <Route><Login isAuthenticated={state.isAuthenticated} changeState={state.changeState} /></Route>
+
+                        <Route><Login isAuthenticated={state.isAuthenticated} changeState={state.changeState} />
+                            <Redirect to="/" />
+                        </Route>
                     )}
             <Route>
                 <NoMatch />

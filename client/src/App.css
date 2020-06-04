@@ -1,4 +1,3 @@
-
 body {
   /* background-color: rgb(39, 39, 39);
   color: rgb(216, 215, 215); */
@@ -7,7 +6,7 @@ body {
   /* padding-top: 200px;  */
   background-size: cover;
   min-height: 100%;
-    /* font-family: 'Red Hat Text', sans-serif; */
+  /* font-family: 'Red Hat Text', sans-serif; */
   /* font-family: 'Spinnaker', sans-serif; */
   font-family: 'Telex', sans-serif;
 }
@@ -17,45 +16,45 @@ html {
 }
 
 .homeComponent, .noMatchComponent, .profileComponent {
-    padding-top: 200px; 
+  padding-top: 200px;
 }
 
 .chatComponent {
-  padding-top: 210px; 
+  padding-top: 210px;
 }
 
 .myPlatforms, .myGames {
-  display:inline-block;
-  position:relative;
- }
+  display: inline-block;
+  position: relative;
+}
+
 .removePlatformBtn, .removeGameBtn {
   position: absolute;
-  right:0;
-  color:white;
+  right: 0;
+  color: white;
   font-weight: bold;
-  padding:0.2em ;
+  padding: 0.2em;
   margin-right: 2px;
   margin-top: 2px
- }
+}
 
- .avatarOptions {
-   display: inline-block
- }
-
- .ChoosePlatform {
-float: left
- }
-
- .platformChoice {
+.avatarOptions {
   display: inline-block
+}
 
- }
+.ChoosePlatform {
+  float: left
+}
 
- .platformOptions {
+.platformChoice {
+  display: inline-block
+}
+
+.platformOptions {
   /* display: inline-block */
 }
- 
- .onboarding {
+
+.onboarding {
   background-color: white;
   border: 10px solid;
   border-image-slice: 1;
@@ -64,4 +63,6 @@ float: left
   height: 100%;
 }
 
-
+ul {
+  list-style-type: none;
+}
