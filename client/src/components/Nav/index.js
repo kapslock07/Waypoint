@@ -84,10 +84,11 @@ function Nav(props) {
 
 
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setInput;
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.changeState(display.game, display.platform);
+    handleClose();
+  };
 
   return (
     <nav className="navbar fixed-top navbar-expand-lg mb-4 z-depth-2 navbar-light">
@@ -209,7 +210,7 @@ function Nav(props) {
                 <button
                   className="btn aqua-gradient btn-rounded btn-sm my-0 text-light"
                   type="submit"
-                  onClick={() => props.changeState(display.game, display.platform)}
+                  onClick={handleSubmit}
                 >
                   <strong>Search</strong>
                 </button>
