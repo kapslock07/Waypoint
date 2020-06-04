@@ -14,7 +14,7 @@ function searchResultsBox(props) {
                                 <Col lg={4} className="text-center">
                                     <div>
                                         <h5>{props.username}</h5>
-                                        <img src={props.image} alt="User Image" width="25%"></img>
+                                        <img src={props.image} alt={props.image} width="25%"></img>
                                     </div>
                                     <ChatBtn joineeId={props.id} />
                                 </Col>
@@ -23,7 +23,7 @@ function searchResultsBox(props) {
 
                                     {
                                         props.favoriteConsoles.length !== 0 ? props.favoriteConsoles.map((platform, i) => (
-                                            <p key={platform.title}>
+                                            <p key={i}>
                                                 {platform.title}
                                             </p>
                                         ))  : <p>No favorite platforms!</p>
@@ -33,7 +33,7 @@ function searchResultsBox(props) {
                                     <h5><strong>Favorite Games</strong></h5>
                                     {
                                         props.favoriteGames.length !== 0 ?  props.favoriteGames.map((game, i) => (
-                                            <p key={game.title}>{game.title}</p>
+                                            <p key={i}>{game.title}</p>
                                         )): <p>No favorite games!</p>
                                     }
                                 </Col>

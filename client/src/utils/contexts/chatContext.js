@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext, useRef } from "react";
+import React, { createContext, useReducer, useContext } from "react";
 import io from "socket.io-client";
 import chatActions from "./chatActions";
 import API from "../API";

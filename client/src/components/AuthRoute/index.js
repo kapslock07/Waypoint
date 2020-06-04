@@ -12,15 +12,6 @@ import { ChatProvider } from "../../utils/contexts/chatContext";
 
 
 function AuthRoute() {
-    const [search, setSearch] = useState({
-        game: '',
-        platform: '',
-
-
-    });
-
-    // console.log(search.game, search.platform);
-
     const [loading, setLoading] = useState(true)
     const [userData, setUserData] = useState({
         img: "",
@@ -85,7 +76,7 @@ function AuthRoute() {
                         (
                             <ChatProvider startChat={true} userObj={{ id: state.id }}>
                                 <Route exact path={["/", "/home"]}>
-                                    <Home navImg={userData.img} />
+                                    <Home navImg={userData.img} userData={userData} />
                                 </Route>
                                 <Route exact path="/chat">
                                     <Chat navImg={userData.img} />
