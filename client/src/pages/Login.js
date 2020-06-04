@@ -17,11 +17,6 @@ const Login = (props) => {
         email: ""
     })
 
-    const [login, setLogin] = useState({
-        emailLogin: "",
-        passwordLogin: ""
-    })
-
     const [loggedIn, setLoggedIn] = useState({
         email: "",
         password: ""
@@ -36,15 +31,13 @@ const Login = (props) => {
     const handleInputSignUpChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
-        console.log('we r typing!!', event.target.value)
         setSignup({ ...signUp, [name]: value })
     }
 
     const handleLoginChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
-        console.log('we r typing!!', event.target.value)
-        setLogin({ ...login, [name]: value })
+        setLoggedIn({ ...loggedIn, [name]: value })
     }
 
     const handleSignUpSubmit = event => {
@@ -67,41 +60,18 @@ const Login = (props) => {
 
     const handleLogInSubmit = event => {
         event.preventDefault();
-        console.log("Change state is ", props.changeState)
         console.log("User logging in")
         Auth.LogIn(loggedIn.email, loggedIn.password)
             .then(res => {
+                console.log("Response from server is ", res)
                 if (res.status === 200) {
+                    console.log("User log in success")
                     //update state of authentication to true
                     //change window location to where it needs to go
                     props.changeState("isAuthenticated", true);
                 }
             })
     }
-
-  /*  const handleLoginSubmit = event => {
-        event.preventDefault();
-
-        const emailLogin = login.emailLogin;
-        const passwordLogin = login.passwordLogin;
-
-
-        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        console.log('IS EMAIL VALID!!', re.test(email));
-        if (re.test(email) === true && password.length > 7) {
-            console.log('save to BE!!')
-            Auth.LogIn(email, password)
-                .then(res => {
-                    if (res.status === 200) {
-                        //update state of authentication to true
-                        //change window location to where it needs to go
-                        props.changeState("isAuthenticated", true);
-                    }
-                })
-        } else {
-            alert('invalid email/pass')
-        }
-    }*/
 
     return (
         <MDBContainer>
@@ -127,7 +97,7 @@ const Login = (props) => {
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
-                            <MDBInput name="emailLogin" label="Your email" group type="text" validate className="needs-validation"
+                            <MDBInput name="email" label="Your email" group type="text" validate className="needs-validation"
                                 onChange={handleLoginChange}
                             />
                             <MDBInput
@@ -136,7 +106,7 @@ const Login = (props) => {
                                 type="password"
                                 validate
                                 containerClass="mb-0"
-                                name="passwordLogin"
+                                name="password"
                                 onChange={handleLoginChange}
 
                             />
