@@ -11,7 +11,7 @@ function SearchResults(props) {
     let [users, setUsers] = React.useState([]); //state for users
     const [results, setResults] = React.useState([])
     const [state] = useChatContext();
-    console.log(state);
+    //console.log(state);
     const { game, platform } = props.search;
     console.log(game, platform)
 
