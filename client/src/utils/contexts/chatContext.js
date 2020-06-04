@@ -68,11 +68,11 @@ function loadSocket(state, dispatch){ //connects to socket on server whoo!
         socket.emit("user_connect", state.user.id);
     
         socket.on("user_connect", (data) => { //Listen from server
-          console.log("Connected to Chat Server with Id of ", data);
+       //   console.log("Connected to Chat Server with Id of ", data);
         });
     
         socket.on("created_chat", data => { //Listen from server
-            console.log(`user with id ${data.creatorId} wants to chat!`);
+           // console.log(`user with id ${data.creatorId} wants to chat!`);
         });
 
         socket.on("recieve_message", incomingChatId => {

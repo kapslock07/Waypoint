@@ -18,7 +18,7 @@ module.exports = (app) => {
                 uId: data
             });
 
-            console.log("Total Users Online", connectedUsers.size);
+           // console.log("Total Users Online", connectedUsers.size);
             socket.emit("user_connect", connectedUsers.get(data).sId);
         });
 
@@ -27,7 +27,7 @@ module.exports = (app) => {
             let reciever = connectedUsers.get(data.joineeId);
             
             if(reciever === undefined){
-                console.log("One user not online")
+               // console.log("One user not online") this is useless
             }
             else {
                 io.to(reciever.sId).emit("created_chat", { //have this feature either send if online, or instead just add chat notification in db?
@@ -51,14 +51,11 @@ module.exports = (app) => {
             }
 
             if(recSocket === undefined){
-                console.log("One user not online to recieve message");
                 chatController.createMessage(chatData).then(createdMessage => {
                     socket.emit("call_send_message");
                 });
             }
             else{
-                console.log("Sending message from " + sender + " to " + reciever);
-
                 socket.emit("call_send_message");
 
                 chatController.createMessage(chatData).then(createdMessage => {
