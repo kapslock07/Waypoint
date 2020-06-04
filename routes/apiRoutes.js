@@ -13,13 +13,13 @@ module.exports = (server, db) => {
 
     */
 
-  server.get("/api/users", (req, res) => {
+  server.get("/api/users", isAuthenticated, (req, res) => {
     db.User.findAll({}).then(data => {
       res.json(data);
     });
   })
 
-  server.put("/api/users", (req, res) => {
+  server.put("/api/users", isAuthenticated, (req, res) => {
 
     let data = req.body;
     let userId = data.id;
@@ -39,7 +39,7 @@ module.exports = (server, db) => {
 
 
   //returns all games from db
-  server.get("/api/games", (req, res) => {
+  server.get("/api/games", isAuthenticated, (req, res) => {
     //return res.json(["mario or something"]);
     db.Games.findAll({}).then((data) => {
       res.json(data);
@@ -47,21 +47,21 @@ module.exports = (server, db) => {
   });
 
   //return all platforms
-  server.get("/api/platforms", (req,res) => {
+  server.get("/api/platforms", isAuthenticated, (req,res) => {
     db.Platform.findAll({}).then(data => {
       res.json(data);
     });
   });
 
     //return all avatars
-    server.get("/api/avatars", (req,res) => {
+    server.get("/api/avatars", isAuthenticated, (req,res) => {
       db.Avatar.findAll({}).then(data => {
         res.json(data);
       });
     });
 
   //returns all games by title
-  server.get("/api/games/:title", (req, res) => {
+  server.get("/api/games/:title", isAuthenticated, (req, res) => {
     db.Games.findAll({
       where: {
         title: sequelize.where(
@@ -74,6 +74,4 @@ module.exports = (server, db) => {
       res.json(data);
     });
   });
-
-
 };
