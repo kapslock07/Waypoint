@@ -69,7 +69,8 @@ const Login = (props) => {
         event.preventDefault();
         console.log("Change state is ", props.changeState)
         console.log("User logging in")
-        Auth.LogIn(loggedIn.email, loggedIn.password)
+        console.log(login);
+        Auth.LogIn(login.email, login.password)
             .then(res => {
                 if (res.status === 200) {
                     //update state of authentication to true

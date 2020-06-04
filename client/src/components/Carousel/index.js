@@ -71,7 +71,6 @@ class Carousel extends React.Component {
     };
 
     toggle = e => {
-        console.log("current index", this.state.index)
         this.setState(state => ({
             index: state.index === 8 ? 0 : state.index + 1
         }))
