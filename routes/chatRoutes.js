@@ -9,15 +9,15 @@ module.exports = (server, db) => {
 
     //https://sequelize.org/master/manual/creating-with-associations.html  <-- refrence theses docs when creating this
 
-    server.post("/api/chat", (req, res) => {
+    server.post("/api/chat", isAuthenticated, (req, res) => {
         chatController.createChat(req, res);
     });
 
-    server.get("/api/chat/:id", (req,res) => {
+    server.get("/api/chat/:id", isAuthenticated, (req,res) => {
         chatController.getChat(req,res);
     });
 
-    server.get("/api/chat/messages/:id", (req, res) => {
+    server.get("/api/chat/messages/:id", isAuthenticated, (req, res) => {
         chatController.getMessages(req, res);
     });
 
