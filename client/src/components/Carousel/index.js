@@ -71,17 +71,20 @@ class Carousel extends React.Component {
     };
 
     toggle = e => {
-        console.log("current index", this.state.index)
-        this.setState(state => ({
-            index: state.index === 8 ? 0 : state.index + 1
-        }))
+        setInterval(() => {
+            console.log("current index", this.state.index)
+            this.setState(state => ({
+                index: state.index === 8 ? 0 : state.index + 1
+            }))
+        }, 5000)
     }
+
+    componentDidMount() {
+        this.toggle();
+    }
+
     render() {
-        const { index } = this.state;
-        var self = this
-        setInterval(function () {
-            self.toggle()
-        }, 7000)
+        const { index } = this.state
         return (
             <div style={{ height: "100vh" }}>
                 <Container >
