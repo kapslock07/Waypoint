@@ -5,7 +5,7 @@ import "./style.css";
 
 function searchResultsBox(props) {
 
-    
+
     return (
         <li id={props.id}>
             <Container fluid>
@@ -22,10 +22,12 @@ function searchResultsBox(props) {
                                 </Col>
                                 <Col lg={4}>
                                     <h5><strong>Favorite Consoles</strong></h5>
-                                    
+
 
                                     {props.favoriteConsoles ? Array.isArray(props.favoriteConsoles) ? props.favoriteConsoles.map((platform, i) => (
-                                        <p key={platform.title}>{platform.title}</p>
+                                        <p key={platform.title}>
+                                            {platform.title}
+                                        </p>
                                     )) : <p>props.favoriteConsoles</p>
                                         : <p>No favorite platforms!</p>
                                     }
