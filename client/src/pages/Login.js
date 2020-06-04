@@ -127,7 +127,9 @@ const Login = (props) => {
 
                                         {/* Removed the following code from this a tag */}
                                         {/* target="popup" onClick={() => window.open('http://localhost:3001/auth/google','name','width=600,height=400')}*/}
-                                        <a href="http://localhost:3001/auth/google">
+                                        {/* This is the logo for Sign in with Google */}
+                                        {/* <img src="https://avatars1.githubusercontent.com/u/7328930?v=4" alt="google" height="30" length="30"></img> */}
+                                        <a href="https://ancient-dusk-51587.herokuapp.com/auth/google">
                                             <MDBBtn className="z-depth-2 aqua-gradient"><img className="mr-1" src="https://avatars1.githubusercontent.com/u/7328930?v=4" alt="google" height="30" length="30"></img> Sign In With Google </MDBBtn>
                                         </a>
 
