@@ -202,7 +202,7 @@ function Nav(props) {
             </Modal.Body>
             <Modal.Footer>
               <Link
-                to={`/home?game=${selectedGame}&platform=${selectedPlatform}`}
+                to={`/home?game=${display.game}&platform=${display.platform}`}
               >
                 {/* <form onSubmit={handleSubmit}>
                 <input type="text" name="search" id="search" /> */}

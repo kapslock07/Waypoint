@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login"
 import Onboarding from "../../pages/Onboarding"
@@ -87,10 +87,10 @@ function AuthRoute() {
                         (
                             <ChatProvider startChat={true} userObj={{ id: state.id }}>
                                 <Route exact path={["/", "/home"]}>
-                                    <Home navImg={userData.img}/>
+                                    <Home navImg={userData.img} />
                                 </Route>
                                 <Route exact path="/chat">
-                                    <Chat navImg={userData.img}/>
+                                    <Chat navImg={userData.img} />
                                 </Route>
                                 <Route exact path="/profile">
                                     <Profile username={userData.userName} userImage={userData.img} favPlatforms={userData.platforms} favGames={userData.games} changeState={state.changeState} />
@@ -100,7 +100,10 @@ function AuthRoute() {
                             <Route exact path={["/", "/onboarding"]} render={() => <Onboarding changeState={state.changeState} onboard={state.onboard} id={state.id} />} />
                         )
                     : (
-                        <Route><Login isAuthenticated={state.isAuthenticated} changeState={state.changeState} /></Route>
+
+                        <Route><Login isAuthenticated={state.isAuthenticated} changeState={state.changeState} />
+                            <Redirect to="/" />
+                        </Route>
                     )}
             <Route>
                 <NoMatch />
