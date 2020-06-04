@@ -81,7 +81,7 @@ class Carousel extends React.Component {
         var self = this
         setInterval(function () {
             self.toggle()
-        }, 10000)
+        }, 7000)
         return (
             <div style={{ height: "100vh" }}>
                 <Container >
