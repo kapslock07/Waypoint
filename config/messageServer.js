@@ -3,11 +3,11 @@
 module.exports = (app) => {
 
     const chatServer = require('http').createServer(app);
-    let io = require('socket.io')(chatServer);
+    let io = require('socket.io')(app);
     const chatController = require("../controllers/chatController");
     require("dotenv").config();
 
-    const PORT = 6006;
+    const PORT = 80;
 
     let connectedUsers = new Map(); //this is where we store connected users
 
@@ -76,7 +76,7 @@ module.exports = (app) => {
         });
     });
 
-    chatServer.listen(PORT, () => {
-        console.log("Chat server started 🖥");
-    });
+    // chatServer.listen(PORT, () => {
+    //     console.log("Chat server started 🖥");
+    // });
 }
