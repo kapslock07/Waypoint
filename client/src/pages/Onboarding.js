@@ -32,7 +32,7 @@ function Onboarding(props) {
         setUserPlatforms([...userPlatforms, { title }]);
     }
 
-    function addGame(title) {
+    function addGame(title, image) {
         setUserGames([...userGames, { title }]);
     }
 
@@ -41,8 +41,6 @@ function Onboarding(props) {
     }
 
     function putUserData(userId) {
-        //get data from inputs here
-        //  console.log({userAvatar, userGames, userPlatforms});
 
         API.putOnboardData({
             id: userId,
@@ -117,7 +115,7 @@ function Onboarding(props) {
                                                         id={game.id}
                                                         name="game"
                                                         label={game.title}
-                                                        onClick={() => addGame(game.title)}
+                                                        onClick={() => addGame(game.title, game.image)}
                                                     />
 
                                                 </div>
@@ -137,7 +135,6 @@ function Onboarding(props) {
                                                         id={avatar.id}
                                                         name="avatar"
                                                         label={avatar.title}
-                                                        name={"avatar"}
                                                         onClick={() => addAvatar(avatar.src)}
                                                     />
 

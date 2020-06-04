@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext, useRef } from "react";
+import React, { createContext, useReducer, useContext } from "react";
 import io from "socket.io-client";
 import chatActions from "./chatActions";
 import API from "../API";
@@ -22,9 +22,8 @@ const reducer = (state, action) => {
         case(chatActions.SEND_MESSAGE):
             sendMessage(state, action.message);
             return {...state}
-        case(chatActions.GET_CHATS):
-            console.log("Get chats!");
-            break;
+        case(chatActions.RESET):
+            return { ...state, chattingWith: 0, currentChat: action.chatId, messages: []}
         case("reload"):
             return {...state, messages: action.msg}
         default:
