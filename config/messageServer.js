@@ -7,7 +7,7 @@ module.exports = (app) => {
     const chatController = require("../controllers/chatController");
     require("dotenv").config();
 
-    const PORT = process.env.PORT || 3002;
+    const PORT = 6006;
 
     let connectedUsers = new Map(); //this is where we store connected users
 
