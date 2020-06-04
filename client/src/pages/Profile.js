@@ -32,6 +32,7 @@ function Profile(props) {
                 return <Redirect to='/' push={true} />
             })
     }
+    //<img className="PlatformImg" src={favPlatformImg} alt="platform1" width="100" height="100"></img>
     return (
         <Container fluid>
             <Nav img={props.userImage} />
@@ -67,16 +68,7 @@ function Profile(props) {
                                 {props.favPlatforms.map((favPlatformImg, i) => (
                                     <div>
                                         <div className="myPlatforms mt-3">
-                                            <img className="PlatformImg" src={favPlatformImg} alt="platform1" width="100" height="100"></img>
-                                            <MDBBtn
-                                                rounded
-                                                type="button"
-                                                className="removePlatformBtn z-depth-1a aqua-gradient"
-
-
-                                            >
-                                                x
-                                            </MDBBtn>
+                                            <h3 key={favPlatformImg.title}>{favPlatformImg.title}</h3>
                                         </div>
                                     </div>
 
@@ -96,13 +88,6 @@ function Profile(props) {
                                         <div>
                                             <div className="mt-3">
                                                 <img className="gameImg" src={profKey.get(favGameImg.title)} alt="games" id={favGameImg.title} width="100" height="100"></img>
-                                                <MDBBtn
-                                                    rounded
-                                                    type="button"
-                                                    className="removeGameBtn z-depth-1a aqua-gradient"
-                                                >
-                                                    x
-                                                </MDBBtn>
                                             </div>
                                         </div>
                                     ))}
