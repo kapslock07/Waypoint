@@ -25,24 +25,26 @@ export default function Compose(props) {
   return (
 
     <div className="form-group basic-textarea">
-        <textarea 
-          ref={inputRef}
-          onChange={handleInputChange}
-          value={compose}
-        
-          className="form-control pl-2 my-0" 
-          id="exampleFormControlTextarea2" 
-          rows="3"
-          placeholder="Type your message here..." />
-        <MDBBtn
-            color="info"
-            rounded
-            size="sm"
-            className="float-right mt-4"
-            onClick={handleSendMessage}
-          >   
-            Send
-        </MDBBtn>
+      <form onSubmit={handleSendMessage}>
+          <input 
+            ref={inputRef}
+            onChange={handleInputChange}
+            value={compose}
+          
+            className="form-control pl-2 my-0" 
+            id="exampleFormControlTextarea2" 
+            rows="3"
+            placeholder="Type your message here..." />
+          <MDBBtn
+              color="info"
+              rounded
+              size="sm"
+              className="float-right mt-4"
+              onClick={handleSendMessage}
+            >   
+              Send
+          </MDBBtn>
+      </form>
     </div>
   );
 }
