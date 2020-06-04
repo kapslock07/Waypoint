@@ -24,14 +24,14 @@ function searchResultsBox(props) {
                                 <h5><strong>Favorite Consoles</strong></h5>
 
                                 {props.favoriteConsoles.map((console, i) => (
-                                    <p>{console}</p>
+                                    <p key={console}>{console}</p>
                                 ))}
                             </Col>
                             <Col lg={4}>
                                 <h5><strong>Favorite Games</strong></h5>
 
                                 {props.favoriteGames.map((game, i) => (
-                                    <p>{game}</p>
+                                    <p key={game}>{game}</p>
                                 ))}
                             </Col>
 

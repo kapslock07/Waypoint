@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext } from "react";
+import React, { createContext, useReducer, useContext, useRef } from "react";
 import io from "socket.io-client";
 import chatActions from "./chatActions";
 import API from "../API";
@@ -12,27 +12,31 @@ const reducer = (state, action) => {
     switch(action.type){
         case(chatActions.LOAD_IO):
             loadSocket(state);
-            break;
+            return {...state}
         case(chatActions.CREATE_CHAT):
             console.log("Create Chat with " + action.creatorId + " and " + action.joineeId);
             createChat(action.creatorId,action.joineeId);
-            break;
+            return {...state}
+        case(chatActions.SELECT_USER):
+            return { ...state, chattingWith: action.id, currentChat: action.chatId, messages: action.messages }
         case(chatActions.SEND_MESSAGE):
-            sendMessage();
-            break;
+            sendMessage(state, action.message);
+            return {...state}
         case(chatActions.GET_CHATS):
             console.log("Get chats!");
             break;
+        case("reload"):
+            return {...state, messages: action.msg}
         default:
             throw new Error(`invalid action type: ${action.type}`);
     }
 }
 
 const ChatProvider = ({ userObj = {}, ...props}) => {
-    const [state, dispatch] = useReducer(reducer, { user: userObj, hasLoaded: false });
+    const [state, dispatch] = useReducer(reducer, { user: userObj, chattingWith: 0, currentChat: 0, messages: [], getMessages: {} });
 
     if(props.startChat){
-        loadSocket(state);
+        loadSocket(state, dispatch);
     }
 
     return <Provider value={[state, dispatch]} {...props} />;
@@ -57,24 +61,46 @@ function createChat(creatorId,joineeId){
 }
 
 
-function loadSocket(state){ //connects to socket on server whoo!
+function loadSocket(state, dispatch){ //connects to socket on server whoo!
  
         socket = io('http://localhost:3002');
     
         socket.emit("user_connect", state.user.id);
     
         socket.on("user_connect", (data) => { //Listen from server
-          console.log("Connected to Chat Server with Id of ", data);
+       //   console.log("Connected to Chat Server with Id of ", data);
         });
     
         socket.on("created_chat", data => { //Listen from server
-            console.log(`user with id ${data.creatorId} wants to chat!`);
+           // console.log(`user with id ${data.creatorId} wants to chat!`);
+        });
+
+        socket.on("recieve_message", incomingChatId => {
+            grabMsgFromAPI(incomingChatId, dispatch);
+        });
+
+        socket.on("call_send_message", data => {
+            grabMsgFromAPI(state.currentChat, dispatch);
         });
 }
 
 
-function sendMessage(message){
+function sendMessage(state, message){
 
+    let outGoingMsg = {
+        sender: state.user.id,
+        chatId: state.currentChat,
+        message: message,
+        reciever: state.chattingWith
+    }
+
+    socket.emit("send_message", outGoingMsg);
+}
+
+function grabMsgFromAPI(chatId, dispatch){
+    API.getMessages(chatId).then(res => {
+        dispatch({type: "reload", msg: res.data})
+    });
 }
 
 export { ChatProvider, useChatContext };

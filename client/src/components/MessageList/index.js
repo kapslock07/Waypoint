@@ -4,15 +4,21 @@ import Toolbar from '../Toolbar';
 import ToolbarButton from '../ToolbarButton';
 import Message from '../Message';
 import moment from 'moment';
+import { useChatContext } from "../../utils/contexts/chatContext";
 
 import './MessageList.css';
 
-//THIS IS THE REAL
-
 export default function MessageList(props) {
 
+  const [state, dispatch] = useChatContext();
+  const [messages, setMessages] = useState([]);
+
+
   const MY_USER_ID = props.MY_USER_ID;
-  let messages = props.messages;
+
+  useEffect(() => {
+    setMessages(state.messages);
+  }, [state.messages])
 
   const renderMessages = () => {
 
@@ -24,8 +30,8 @@ export default function MessageList(props) {
       let previous = messages[i - 1];
       let current = messages[i];
       let next = messages[i + 1];
-      let isMine = current.author === MY_USER_ID;
-      let currentMoment = moment(current.timestamp);
+      let isMine = current.authorId === MY_USER_ID;
+      let currentMoment = moment(current.createdAt);
       let prevBySameAuthor = false;
       let nextBySameAuthor = false;
       let startsSequence = true;
@@ -33,7 +39,7 @@ export default function MessageList(props) {
       let showTimestamp = true;
 
       if (previous) {
-        let previousMoment = moment(previous.timestamp);
+        let previousMoment = moment(previous.createdAt);
         let previousDuration = moment.duration(currentMoment.diff(previousMoment));
         prevBySameAuthor = previous.author === current.author;
 
@@ -47,7 +53,7 @@ export default function MessageList(props) {
       }
 
       if (next) {
-        let nextMoment = moment(next.timestamp);
+        let nextMoment = moment(next.createdAt);
         let nextDuration = moment.duration(nextMoment.diff(currentMoment));
         nextBySameAuthor = next.author === current.author;
 
@@ -70,12 +76,10 @@ export default function MessageList(props) {
       // Proceed to the next message.
       i += 1;
     }
-    console.log('this is TEMP MESSAGES to display!! should b 11 after we add 1', tempMessages)
 
     return tempMessages;
   }
 
-  console.log('THIS IS MESSSAGES STE!! -------', messages)
   return (
     <div className="message-list">
       <Toolbar
