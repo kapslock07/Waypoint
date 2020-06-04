@@ -4,5 +4,6 @@ module.exports = {
     SELECT_USER: "selectUser",
     SEND_MESSAGE: "sendChat",
     SET_CHAT_FUNCTION: "setChatFunction",
-    RESET: "reset"
+    RESET: "reset",
+    UPDATE_MSG: "updatemsg"
 }

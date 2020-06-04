@@ -85,7 +85,7 @@ export default function MessageList(props) {
 
       <div className="message-list-container">{renderMessages()}</div>
 
-      <Compose />
+      <Compose updateMsg={props.updateMsg}/>
     </div>
   );
 }
