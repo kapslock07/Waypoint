@@ -11,9 +11,9 @@ function SearchResults(props) {
     let [users, setUsers] = React.useState([]); //state for users
     const [results, setResults] = React.useState([])
     const [state] = useChatContext();
-    //console.log(state);
     const { game, platform } = props.search;
     console.log(game, platform)
+
 
 
     React.useEffect(() => { //grabs users
@@ -58,8 +58,13 @@ function SearchResults(props) {
                                         <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
                                     </ul>)
                         }) : users.length !== 0 ? users.map(e => {
-                            if (e.id !== state.user.id)
-                                return <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
+                            console.log("Users being mapped: ", e)
+                            if (e.id !== state.user.id && e.onboard === true)
+                                return (
+                                    <ul>
+                                        <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
+                                    </ul>
+                                )
                         }) : <h1>No Users Found</h1>}
                     </MDBAnimation>
                 </Col>
