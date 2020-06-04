@@ -5,7 +5,7 @@ module.exports = (app) => {
     const chatServer = require('http').createServer(app);
     let io = require('socket.io')(chatServer);
     const chatController = require("../controllers/chatController");
-    require(dotenv).config();
+    require("dotenv").config();
 
     const PORT = process.env.PORT || 3002;
 
