@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login"
 import Onboarding from "../../pages/Onboarding"
