@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Compose from '../Compose';
 import Toolbar from '../Toolbar';
-import ToolbarButton from '../ToolbarButton';
 import Message from '../Message';
 import moment from 'moment';
 import { useChatContext } from "../../utils/contexts/chatContext";

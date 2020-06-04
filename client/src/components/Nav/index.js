@@ -6,8 +6,7 @@ import {
   Col,
   Navbar,
   Modal,
-  Form,
-  Image,
+  Form
 } from 'react-bootstrap';
 import SampleImg from '../../assets/images/mainLogo.jpeg';
 import API from '../../utils/API';
@@ -23,8 +22,8 @@ function Nav(props) {
   const [games, setGames] = useState([]);
   const [platforms, setPlatforms] = React.useState([]);
 
-  const [selectedPlatform, setSelectedPlatform] = useState('');
-  const [selectedGame, setSelectedGame] = useState('');
+  //const [selectedPlatform, setSelectedPlatform] = useState('');
+ // const [selectedGame, setSelectedGame] = useState('');
 
   const [display, setDisplay] = useState({
     game: "",
