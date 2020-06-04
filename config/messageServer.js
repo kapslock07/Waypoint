@@ -56,6 +56,8 @@ module.exports = (app) => {
                     ChatId: chatId
                 }
 
+                socket.emit("call_send_message");
+
                 chatController.createMessage(chatData).then(createdMessage => {
                     io.to(recSocket.sId).emit("recieve_message", chatId);
                 });

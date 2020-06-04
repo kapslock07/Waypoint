@@ -17,15 +17,10 @@ export default function MessageList(props) {
   const MY_USER_ID = props.MY_USER_ID;
 
   useEffect(() => {
-
     setMessages(state.messages);
-    console.log("CHANGE")
-
   }, [state.messages])
 
   const renderMessages = () => {
-
-    console.log("RENDER")
 
     let i = 0;
     let messageCount = messages.length;

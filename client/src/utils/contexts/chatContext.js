@@ -76,9 +76,11 @@ function loadSocket(state, dispatch){ //connects to socket on server whoo!
         });
 
         socket.on("recieve_message", incomingChatId => {
-            API.getMessages(incomingChatId).then(res => {
-                dispatch({type: "reload", msg: res.data})
-            });
+            grabMsgFromAPI(incomingChatId, dispatch);
+        });
+
+        socket.on("call_send_message", data => {
+            grabMsgFromAPI(state.currentChat, dispatch);
         });
 }
 
@@ -93,6 +95,12 @@ function sendMessage(state, message){
     }
 
     socket.emit("send_message", outGoingMsg);
+}
+
+function grabMsgFromAPI(chatId, dispatch){
+    API.getMessages(chatId).then(res => {
+        dispatch({type: "reload", msg: res.data})
+    });
 }
 
 export { ChatProvider, useChatContext };
