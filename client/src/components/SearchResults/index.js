@@ -48,7 +48,6 @@ function SearchResults(props) {
                         <Header name={"Users"} />
                     </MDBAnimation>
                     <MDBAnimation type="fadeInUp">
-<<<<<<< HEAD
 
                         {results.length !== 0 ? results.map(e => {
                             console.log("Inside result is ", e)
@@ -59,9 +58,6 @@ function SearchResults(props) {
                                         <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
                                     </ul>)
                         }) : users.length !== 0 ? users.map(e => {
-=======
-                        {users.length > 1 ? users.map(e => {
->>>>>>> 216b27b0245c405148e4d6b16019f4cad7c4cdf3
                             if (e.id !== state.user.id)
                                 return <SearchResultsBox key={e.id} id={e.id} username={e.userName} image={e.profileImage} favoriteGames={e.games} favoriteConsoles={e.platforms} />
                         }) : <h1>No Users Found</h1>}
