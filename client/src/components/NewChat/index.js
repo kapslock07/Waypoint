@@ -16,7 +16,6 @@ export default function NewChat(props){
 
 
     useEffect(() => {
-        
         getConversations();
     },[])
 
@@ -28,8 +27,16 @@ export default function NewChat(props){
           setTitle(nameOfChatter);
         });
       }
+
+      const updateMessages = () => {
+          API.getMessages(state.currentChat).then(res => {
+            let msgData = res.data;
+            dispatch({type: actions.UPDATE_MSG, messages: msgData})
+          })
+      }
     
      const getConversations = () => {
+         dispatch({ type: actions.RESET });
         API.getChats(state.user.id).then(res => {
     
             let chats = res.data;
@@ -72,7 +79,7 @@ export default function NewChat(props){
                         <MDBCol md="8" xl="8" className="pl-md-3 mt-4 mt-md-0 px-lg-auto">
                             <div className="scrollable-chat">
                                 <MDBListGroup className="list-unstyled pl-3 pr-3">
-                                    <MessageList MY_USER_ID={state.user.id} SelectedUser={title}/>
+                                    <MessageList MY_USER_ID={state.user.id} SelectedUser={title} updateMsg={updateMessages}/>
                                 </MDBListGroup>
                             </div>
                         </MDBCol>

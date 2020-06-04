@@ -6,8 +6,7 @@ import {
   Col,
   Navbar,
   Modal,
-  Form,
-  Image,
+  Form
 } from 'react-bootstrap';
 import SampleImg from '../../assets/images/mainLogo.jpeg';
 import API from '../../utils/API';
@@ -23,8 +22,8 @@ function Nav(props) {
   const [games, setGames] = useState([]);
   const [platforms, setPlatforms] = React.useState([]);
 
-  const [selectedPlatform, setSelectedPlatform] = useState('');
-  const [selectedGame, setSelectedGame] = useState('');
+  //const [selectedPlatform, setSelectedPlatform] = useState('');
+ // const [selectedGame, setSelectedGame] = useState('');
 
   const [display, setDisplay] = useState({
     game: "",
@@ -102,7 +101,7 @@ function Nav(props) {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon justify-content-start"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         {/* <form class="form-inline md-form mb-4 mx-auto">

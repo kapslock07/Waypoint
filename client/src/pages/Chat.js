@@ -4,7 +4,6 @@ import Nav from "../components/Nav";
 import NewChat from "../components/NewChat";
 
 function Chat(props) {
-
     return (
         <Container fluid>
             <Nav img={props.navImg} />
