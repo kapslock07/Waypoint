@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { MDBBtn} from "mdbreact";
 import './Compose.css';
 import actions from "../../utils/contexts/chatActions";
 import { useChatContext } from "../../utils/contexts/chatContext";
@@ -22,23 +23,26 @@ export default function Compose(props) {
 
 
   return (
-    <div className="compose">
-      <form onSubmit={handleSendMessage}>
-        <input
-          type="text"
-          className="compose-input"
-          placeholder="Type a message"
+
+    <div className="form-group basic-textarea">
+        <textarea 
           ref={inputRef}
           onChange={handleInputChange}
           value={compose}
-        />
-        <button onClick={handleSendMessage}>Chat!</button>
-
-      </form>
-
-      {
-        props.rightItems
-      }
+        
+          className="form-control pl-2 my-0" 
+          id="exampleFormControlTextarea2" 
+          rows="3"
+          placeholder="Type your message here..." />
+        <MDBBtn
+            color="info"
+            rounded
+            size="sm"
+            className="float-right mt-4"
+            onClick={handleSendMessage}
+          >   
+            Send
+        </MDBBtn>
     </div>
   );
 }

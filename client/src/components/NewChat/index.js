@@ -1,15 +1,89 @@
-import React, { Component, Container } from "react";
+import React, { useState, useEffect } from "react";
 import {
     MDBCard, MDBCardBody, MDBRow, MDBCol, MDBListGroup, MDBListGroupItem, MDBBadge, MDBIcon,
     MDBBtn
 } from "mdbreact";
-import Nav from "../components/Nav"
-import "./NewChat.css";
+import Friend from "../Friend";
+import "./index.css";
+import actions from "../../utils/contexts/chatActions";
+import { useChatContext } from "../../utils/contexts/chatContext";
+import API from "../../utils/API";
+import MessageList from "../MessageList";
 
-class NewChat extends Component {
-    constructor() {
-        super();
-        this.state = {
+
+export default function NewChat(props){
+
+    const [conversations, setConversations] = useState([]);
+    const [state, dispatch] = useChatContext();
+
+
+    useEffect(() => {
+        getConversations()
+    },[])
+
+    const getMessages = (chatId, chatWithId) => {
+        API.getMessages(chatId).then(res => {
+    
+          let msgData = res.data;
+          dispatch({type: actions.SELECT_USER, id: chatWithId, chatId: chatId, messages: msgData}) //select the user that was clicked
+        });
+      }
+    
+     const getConversations = () => {
+       API.getChats(state.user.id).then(res => {
+    
+        let chats = res.data;
+        let convoUsers = [];
+    
+        chats.forEach(chat => { //for every chat we have
+          //get the user thats not us
+          let userThatsNotMe = chat.Users.filter(user => user.id !== state.user.id);
+          
+          //push a shortened object version of them to convoUsers
+          convoUsers.push({
+                id: userThatsNotMe[0].id,
+                name: userThatsNotMe[0].userName,
+                avatar: userThatsNotMe[0].profileImage,
+                chatId: userThatsNotMe[0].UserChats.ChatId
+              });
+        });
+        setConversations(convoUsers);//set the convoUsers to state
+       });
+      }
+
+
+      return (
+          <div>
+            <MDBCard className="grey lighten-3 chat-room">
+                <MDBCardBody>
+                    <MDBRow className="px-lg-2 px-2">
+                        <MDBCol md="6" xl="4" className="px-0 mb-4 mb-md-0 scrollable-friends-list">
+                            <h6 className="font-weight-bold mb-3 text-lg-left">Member</h6>
+                            <div className="white z-depth-1 p-3">
+                                <MDBListGroup className="friend-list">
+                                    {conversations.map(conversation => (
+                                        <Friend key={conversation.id}
+                                        data={conversation}
+                                        getMessages={getMessages} />
+                                    ))}
+                                </MDBListGroup>
+                            </div>
+                        </MDBCol>
+                        <MDBCol md="6" xl="8" className="pl-md-3 mt-4 mt-md-0 px-lg-auto">
+                            <div className="scrollable-chat">
+                                <MDBListGroup className="list-unstyled pl-3 pr-3">
+                                    <MessageList MY_USER_ID={state.user.id}/>
+                                </MDBListGroup>
+                            </div>
+                        </MDBCol>
+                    </MDBRow>
+                </MDBCardBody>
+            </MDBCard>
+        </div>
+    );
+}
+  
+     /*   this.state = {
             friends: [
                 {
                     name: "John Doe",
@@ -131,115 +205,10 @@ class NewChat extends Component {
                 }
             ]
         };
-    }
+    
 
-    render() {
-        return (
-            // <Nav img={props.navImg} />
-            <MDBCard className="grey lighten-3 chat-room">
-                <MDBCardBody>
-                    <MDBRow className="px-lg-2 px-2">
-                        <MDBCol md="6" xl="4" className="px-0 mb-4 mb-md-0 scrollable-friends-list">
-                            <h6 className="font-weight-bold mb-3 text-lg-left">Member</h6>
-                            <div className="white z-depth-1 p-3">
-                                <MDBListGroup className="friend-list">
-                                    {this.state.friends.map(friend => (
-                                        <Friend key={friend.name} friend={friend} />
-                                    ))}
-                                </MDBListGroup>
-                            </div>
-                        </MDBCol>
-                        <MDBCol md="6" xl="8" className="pl-md-3 mt-4 mt-md-0 px-lg-auto">
-                            <div className="scrollable-chat">
 
-                                <MDBListGroup className="list-unstyled pl-3 pr-3">
-                                    {this.state.messages.map(message => (
-                                        <ChatMessage key={message.author + message.when} message={message} />
-                                    ))}
-                                </MDBListGroup>
-                            </div>
-                            <div className="form-group basic-textarea">
-                                <textarea className="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3"
-                                    placeholder="Type your message here..." />
-                                <MDBBtn
-                                    color="info"
-                                    rounded
-                                    size="sm"
-                                    className="float-right mt-4"
-                                >
-                                    Send
-                </MDBBtn>
-                            </div>
-                        </MDBCol>
-                    </MDBRow>
-                </MDBCardBody>
-            </MDBCard>
-        );
-    }
-}
 
-const Friend = ({
-    friend: { name, avatar, message, when, toRespond, seen, active }
-}) => (
-        <MDBListGroupItem
-            href="#!"
-            className="d-flex justify-content-between p-2 border-light"
-            style={{ backgroundColor: active ? "#eeeeee" : "" }}
-        >
-            {/* <MDBAvatar
-                tag="img"
-                src={avatar}
-                alt="avatar"
-                circle
-                className="mr-2 z-depth-1"
-            /> */}
-            <div style={{ fontSize: "0.95rem" }}>
-                <strong>{name}</strong>
-                <p className="text-muted">{message}</p>
-            </div>
-            <div>
-                <p className="text-muted mb-0" style={{ fontSize: "0.75rem" }}>
-                    {when}
-                </p>
-                {seen ? (
-                    <span className="text-muted float-right">
-                        <MDBIcon className="fa-check" aria-hidden="true" />
-                    </span>
-                ) : toRespond ? (
-                    <MDBBadge color="danger" className="float-right">
-                        {toRespond}
-                    </MDBBadge>
-                ) : (
-                            <span className="text-muted float-right">
-                                <MDBIcon icon="reply" aria-hidden="true" />
-                            </span>
-                        )}
-            </div>
-        </MDBListGroupItem>
-    );
+*/
 
-const ChatMessage = ({ message: { author, when, message } }) => (
-    <li className="chat-message d-flex justify-content-between mb-4">
-        {/* <MDBAvatar
-            tag="img"
-            src={avatar}
-            alt="avatar"
-            circle
-            className="mx-2 z-depth-1"
-        /> */}
-        <MDBCard>
-            <MDBCardBody>
-                <div>
-                    <strong className="primary-font">{author}</strong>
-                    <small className="pull-right text-muted">
-                        <i className="far fa-clock" /> {when}
-                    </small>
-                </div>
-                <hr />
-                <p className="mb-0">{message}</p>
-            </MDBCardBody>
-        </MDBCard>
-    </li>
-);
 
-export default NewChat;
