@@ -33,7 +33,7 @@ export default function MessageList(props) {
       let current = messages[i];
       let next = messages[i + 1];
       let isMine = current.authorId === MY_USER_ID;
-      let currentMoment = moment(current.timestamp);
+      let currentMoment = moment(current.createdAt);
       let prevBySameAuthor = false;
       let nextBySameAuthor = false;
       let startsSequence = true;
@@ -41,7 +41,7 @@ export default function MessageList(props) {
       let showTimestamp = true;
 
       if (previous) {
-        let previousMoment = moment(previous.timestamp);
+        let previousMoment = moment(previous.createdAt);
         let previousDuration = moment.duration(currentMoment.diff(previousMoment));
         prevBySameAuthor = previous.author === current.author;
 
@@ -55,7 +55,7 @@ export default function MessageList(props) {
       }
 
       if (next) {
-        let nextMoment = moment(next.timestamp);
+        let nextMoment = moment(next.createdAt);
         let nextDuration = moment.duration(nextMoment.diff(currentMoment));
         nextBySameAuthor = next.author === current.author;
 

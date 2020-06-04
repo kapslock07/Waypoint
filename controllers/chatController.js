@@ -4,12 +4,13 @@ const sequelize = require("sequelize");
 module.exports = {
 
     getChat: function(req, res){
-        let creatorId = req.params.id;
+        let userId = req.params.id;
     
         db.Chat.findAll({
-            where: {
-                creatorId: creatorId
-            },
+            where: sequelize.or(
+                {creatorId: userId},
+                {joineeId: userId}
+            ),
             include: [db.Message, db.User]
         }).then(data => {
             res.json(data);
