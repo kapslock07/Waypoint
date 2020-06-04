@@ -28,21 +28,21 @@ function Onboarding(props) {
         props.changeState("onboard", true);
     };
 
-    function addPlatform(title){
-        setUserPlatforms([ ...userPlatforms, { title } ]);
+    function addPlatform(title) {
+        setUserPlatforms([...userPlatforms, { title }]);
     }
 
-    function addGame(title){
-        setUserGames([ ...userGames, { title } ]);
+    function addGame(title) {
+        setUserGames([...userGames, { title }]);
     }
 
-    function addAvatar(src){
+    function addAvatar(src) {
         setUserAvatar(src);
     }
 
-    function putUserData(userId){
+    function putUserData(userId) {
         //get data from inputs here
-      //  console.log({userAvatar, userGames, userPlatforms});
+        //  console.log({userAvatar, userGames, userPlatforms});
 
         API.putOnboardData({
             id: userId,
@@ -63,21 +63,21 @@ function Onboarding(props) {
         API.getGames().then(res => {
             setGames(res.data);
         })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
     function loadPlatforms() { //uses API util to loadPlatforms from our express server
         API.getPlatforms().then(res => {
             setPlatforms(res.data);
         })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
     function loadAvatars() { //uses API util to loadAvatars from our express server
         API.getAvatars().then(res => {
             setAvatars(res.data);
         })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
 
     return (
@@ -92,35 +92,36 @@ function Onboarding(props) {
                             <div className="onboarding p-4">
                                 <Row>
                                     <Col lg={6}>
-                                        <h3 className="mb-4">Choose Your Favorite Platforms</h3>
-                                        {platforms.map((platform, i) => (
-                                            <div key={platform.id} className="mb-3 platformOptions">
-                                                <Form.Check
-                                                    type='checkbox'
-                                                    id={platform.id}
-                                                    label={platform.title}
-                                                    onClick={() => addPlatform(platform.title)}
-                                                />
-                                            </div>
-                                        ))}
-
+                                        <div className="ml-5 mb-5">
+                                            <h3 className="mb-4">Choose Your Favorite Platforms</h3>
+                                            {platforms.map((platform, i) => (
+                                                <div key={platform.id} className="mb-3 platformOptions">
+                                                    <Form.Check
+                                                        type='checkbox'
+                                                        id={platform.id}
+                                                        label={platform.title}
+                                                        onClick={() => addPlatform(platform.title)}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
                                     </Col>
                                     <Col lg={6}>
                                         <div className="ml-5">
-                                        <h3 className="mb-4">Choose Your Favorite Games</h3>
+                                            <h3 className="mb-4">Choose Your Favorite Games</h3>
 
-                                        {games.map((game, i) => (
-                                            <div key={game.id} className="mb-3 gameOptions">
-                                                <Form.Check
-                                                    type='checkbox'
-                                                    id={game.id}
-                                                    name="game"
-                                                    label={game.title}
-                                                    onClick={() => addGame(game.title)}
-                                                />
+                                            {games.map((game, i) => (
+                                                <div key={game.id} className="mb-3 gameOptions">
+                                                    <Form.Check
+                                                        type='checkbox'
+                                                        id={game.id}
+                                                        name="game"
+                                                        label={game.title}
+                                                        onClick={() => addGame(game.title)}
+                                                    />
 
-                                            </div>
-                                        ))}
+                                                </div>
+                                            ))}
                                         </div>
                                     </Col>
                                 </Row>

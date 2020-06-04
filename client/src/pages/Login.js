@@ -91,9 +91,11 @@ const Login = (props) => {
                             {/*  style={{ fontFamily: "Uni Sans Caps" }} */}
                             {/* </MDBRow> */}
                             <MDBRow className="d-flex justify-content-center mt-5">
-                                <h3 style={{ fontFamily: "Uni Sans" }}> A place where Gamers meet! </h3>
-                                {/* removed h3 font */}
-                                {/*  style={{ fontFamily: "Uni Sans Caps" }} */}
+                                <MDBCol lg="12">
+                                    <h3 className="mx-2 text-center"> A place where Gamers meet! </h3>
+                                    {/* removed h3 font */}
+                                    {/*  style={{ fontFamily: "Uni Sans Caps" }} */}
+                                </MDBCol>
                             </MDBRow>
                         </div>
                         <MDBCardBody className="mx-4 mt-4">
@@ -111,7 +113,7 @@ const Login = (props) => {
 
                             />
                             <MDBRow className="d-flex align-items-center mb-4 mt-5">
-                                <MDBCol md="5" className="d-flex align-items-start">
+                                <MDBCol md="4" className="d-flex align-items-start p-1 justify-content-center">
                                     <div className="text-center">
                                         <MDBBtn
                                             rounded
@@ -124,13 +126,11 @@ const Login = (props) => {
                                     </div>
 
                                 </MDBCol>
-                                <MDBCol md="7" className="d-flex justify-content-end p-1">
+                                <MDBCol md="8" className="d-flex justify-content-end p-1">
                                     <div className="text-center">
 
                                         {/* Removed the following code from this a tag */}
                                         {/* target="popup" onClick={() => window.open('http://localhost:3001/auth/google','name','width=600,height=400')}*/}
-                                        {/* This is the logo for Sign in with Google */}
-                                        {/* <img src="https://avatars1.githubusercontent.com/u/7328930?v=4" alt="google" height="30" length="30"></img> */}
                                         <a href="http://localhost:3001/auth/google">
                                             <MDBBtn className="z-depth-2 aqua-gradient"><img className="mr-1" src="https://avatars1.githubusercontent.com/u/7328930?v=4" alt="google" height="30" length="30"></img> Sign In With Google </MDBBtn>
                                         </a>
