@@ -26,7 +26,7 @@ const reducer = (state, action) => {
             return { ...state }
         case (chatActions.RESET):
             return { ...state, chattingWith: 0, currentChat: action.chatId, messages: [] }
-        case ("reload"):
+        case (chatActions.UPDATE_MSG):
             return { ...state, messages: action.msg }
         default:
             throw new Error(`invalid action type: ${action.type}`);
