@@ -2,12 +2,12 @@
 
 module.exports = (app) => {
 
-    const chatServer = require('http').createServer(app);
-    let io = require('socket.io')(chatServer);
+    // const chatServer = require('http').createServer(app);
+    let io = require('socket.io')(app);
     const chatController = require("../controllers/chatController");
     require("dotenv").config();
 
-    const PORT = 80;
+    const PORT = 3002 || process.env.PORT;
 
     let connectedUsers = new Map(); //this is where we store connected users
 
