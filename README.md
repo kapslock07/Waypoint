@@ -61,7 +61,7 @@ Typically gamers can choose to connect with others that they are randomly matche
 
 
 ## Image
-![Waypoint](waypoint.jpg)
+![Waypoint](client/src/assets/images/waypoint.jpg)
 
 ## Deployed Application
 <a href="https://ancient-dusk-51587.herokuapp.com/">Waypoint</a>
