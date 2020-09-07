@@ -1,16 +1,9 @@
 # Waypoint
 A social networking platform and instant messenger for gamers to connect with each other.
 
-## User Story
-```
-AS A user,
-I WANT a gaming social network,
-SO THAT I can meet and communicate with other gamers who play the same games as myself.
-```
 ## Table of Contents
 
   * [Waypoint](#waypoint)
-  * [User Story](#user-story)
   * [Installation](#installation)
   * [Usage](#Usage)
   * [Motivation](#motivation)
